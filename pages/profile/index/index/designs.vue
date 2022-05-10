@@ -11,8 +11,7 @@
 				<div class="row d-flex justify-content-center my-3">
 					<div class="text-primary col-lg-6 text-center">
 						<span>
-							Downloading a design is for your use only, the download link is
-							removed after 3 downloads or after 2 years expire
+							Each universal design has a license for a one-time apply. Buy an additional license for each vehicle you want to wrap. The download link expires after 3 downloads.
 						</span>
 					</div>
 				</div>

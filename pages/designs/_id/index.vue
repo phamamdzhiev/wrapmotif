@@ -22,13 +22,13 @@
                   text-primary
                 ">
                 <i class="fas fa-angle-left"></i>
-                <span class="ml-2 text-nowrap">BACK TO MARKET</span>
+                <span class="ml-2 text-nowrap">BACK TO DESIGNS</span>
               </nuxt-link>
             </div>
             <div class="col-md-4 d-none d-md-flex justify-content-md-around">
               <h2 class="mb-0 text-sm">
-                MARKET
-                <span class="text-primary">STOCK DESIGN</span>
+                UNIVERSAL
+                <span class="text-primary">DESIGNS</span>
               </h2>
             </div>
           </div>
@@ -43,7 +43,7 @@
             <div class="w-100">
               <div>
                 <client-only>
-                  <hero-slider :showSecondary="true" :imgHeight="620" :slides="product.mediaCollection"></hero-slider>
+                  <hero-slider :showSecondary="true"  :imgHeight="620" :slides="product.mediaCollection"></hero-slider>
                 </client-only>
               </div>
             </div>
@@ -55,7 +55,7 @@
               <span> {{ product.name }} </span>
             </h1>
             <div class="text-sm">
-              Digital Product: <span>{{ product.sku }}</span>
+              DESIGN ID: <span>{{ product.sku }}</span>
             </div>
             <h4 class="font-semibold text-md mb-0 mt-2">
               <span class="font-normal text-uppercase">Price:</span>
@@ -74,7 +74,12 @@
             </h4>
             <div class="d-flex flex-column mt-3">
               <addtocart-button :item="product"> </addtocart-button>
-
+              <img
+                src="/images/secure.png"
+                alt="Trust Badge"
+                style=""
+                class="img-fluid m-2"
+              />
               <nuxt-link class="btn btn-secondary mt-2" :to="`/color-changes/${product.id}/detail`">
                 COLOR CHANGE
               </nuxt-link>
@@ -97,17 +102,17 @@
                       <span> {{ product.category.name }} </span>
                     </div>
                     <div class="col-12 pb-2">
-                      <span class="font-bold">Story of design:</span>
+                      <span class="font-bold">Story:</span>
                       <span> {{ product.description }} </span>
                     </div>
                     <div class="col-12 pb-2">
-                      <span class="font-bold">Please note:</span>
+                      <span class="font-bold">Note:</span>
                       <span class="text-secondary">
                         {{ product.note }}
                       </span>
                     </div>
                     <div class="col-12">
-                      <span class="font-bold">Print data format:</span>
+                      <span class="font-bold">Ready to print file:</span>
                       <span> {{ product.printDataFormat }} </span>
                     </div>
                   </div>
@@ -122,7 +127,7 @@
               <div class="col-sm-12 mt-2">
                 <div>
                   <h6 class="text-uppercase fs-12">
-                    <strong>Recommended material</strong>
+                    <strong>RECOMMENDED VINYL FOIL</strong>
                   </h6>
                   <p>{{ product.recommendedMaterial }}</p>
                 </div>
@@ -300,6 +305,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.btn-primary{
+  background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+}
+
+.btn-warning{
+  color: #000000;
+  border: 1px solid #16181b;
+  background: transparent;
+}
+
+.btn-secondary{
+  /*color: #00FFEB;
+  border: 3px solid transparent; !*2*!
+  //background: linear-gradient(#33A49B 0%, #00FFEB 75%) border-box;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #33a49b, #00ffeb);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;*/
+
+  color: #000000;
+  border: 1px solid #16181b;
+  background: transparent;
+}
 .dropdown-item:hover,
 .dropdown-item:focus {
   color: #16181b;

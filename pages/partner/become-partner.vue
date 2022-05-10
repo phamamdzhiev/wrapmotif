@@ -2,18 +2,15 @@
 	<div>
 		<div class="page-wrapper">
 			<!-- Header Image -->
-			<div class="container-fluid header-image">
+			<div class="container-fluid header-image" :style="{ '--colour': 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + getPartnerPageContent.secondaryMediaUrl + ')' }">
 				<div class="container light-section" style="min-height: 530px; height: 100%">
 					<div class="row justify-content-center align-items-center h-100">
 						<div class="col-lg-4 text-center text-white">
 							<h1 class="text-uppercase mb-3 text-6xl partner-title">
-								<b>Become</b> <span>our partner</span>
+<!--								<b>Become</b> <span>our partner</span>-->
+                <b>{{ getPartnerPageContent.data.title_sign }}</b>
 							</h1>
-							<p>
-								We are constantly looking for partners to be on board with us to
-								expand our network. Our goal is to offer a wide range of
-								printing and wrapping companies for our customers who can
-								contact you in your region for printing or wrapping services.
+							<p v-html="getPartnerPageContent.data.content_sign">
 							</p>
 						</div>
 					</div>
@@ -29,12 +26,19 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
 	head() {
 		return {
 			title: "Become A Partner",
 		};
 	},
+  computed: {
+    ...mapGetters({
+      getPartnerPageContent: "config/getPartnerPageContent"
+    })
+  },
 	data() {
 		return {
 			stepData: [
@@ -58,8 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 .header-image {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url(/images/features/wrapping-company.jpg);
+	background-image: var(--colour);
 	background-color: #000;
 	background-repeat: no-repeat;
 	height: 507px;

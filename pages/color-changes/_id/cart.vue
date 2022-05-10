@@ -43,10 +43,7 @@
                       {{ product.description | truncate(50) }}
                     </div>
                     <div class="text-sm">
-                      This design is universal, that means you can apply it to
-                      any car type, it just depends how much material you will
-                      print. For most of the cars 20m of wrapping material is
-                      enough.
+                      {{ getCheckout.data.note_color }}
                     </div>
                   </span>
                 </p>
@@ -211,6 +208,7 @@ import Stripe from "~/components/Stripe.vue";
 import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
+import {mapGetters} from "vuex";
 
 export default {
   components: {
@@ -268,6 +266,9 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      getCheckout: "config/getCheckout",
+    }),
     // Get user vat amount
     vatAmount() {
       return this.$auth.loggedIn ? this.$auth.user.vat.amount : 0;

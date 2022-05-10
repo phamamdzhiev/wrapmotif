@@ -2,7 +2,7 @@
 	<div class="col-lg-8 mx-auto">
 		<div class="row">
 			<div class="col-12">
-				<h3 class="mb-3">Specify your wishes about vehicle design</h3>
+				<h3 class="mb-3">Specifications of the custom design</h3>
 			</div>
 			<!-- Button Group -->
 			<!-- <div class="col-sm-6">
@@ -30,7 +30,7 @@
 					<i v-if="$v.filters.colors.$dirty && !$v.filters.colors.$anyError" class="fas fa-check text-success" :style="{ 'font-size': '15px' }"></i>
 					<i v-else class="fas fa-circle text-danger" :style="{ 'font-size': '8px' }"></i>
 				</div>
-				<p>What color the design should have?</p>
+				<p>What color do you prefer on the design?</p>
 				<div class="
             d-flex
             flex-row flex-wrap
@@ -39,7 +39,7 @@
           ">
 					<checkbox-field v-for="color in colors" :key="color.id" class="mt-2 mr-3 mb-2" :id="`color-id-${color.id}`" :value="color.id" :isBigBox="true" :bgColor="color.code" :title="color.name" :gradient="color.primaryMediaUrl" checkmarkColor="#FFFFFF" v-model="filters.colors" @change="colorChanges"></checkbox-field>
 				</div>
-				<small-checkbox v-model="form.notConditioned" id="not_a_condition" label="Is not a condition" class="mt-5"></small-checkbox>
+				<small-checkbox v-model="form.notConditioned" id="not_a_condition" label="Color preference is not a condition" class="mt-5"></small-checkbox>
 			</div>
 
 			<!-- Right side -->
@@ -70,7 +70,7 @@
 
 			<!-- Note full width -->
 			<div class="col-12">
-				<text-field placeholder="Type Here other notes, ideas and requirements, specify exactly your whishes about colors of design." label="Note" v-model="form.designNote">
+				<text-field placeholder="Any requirements or ideas for the custom design? Color specifications? Style preferences? Logo? Specific characters?" label="Note" v-model="form.designNote">
 				</text-field>
 			</div>
 
@@ -98,7 +98,7 @@
 
 			<!-- Upload area -->
 			<div class="col-12 mt-5">
-				<p class="mb-4">Upload Your Files</p>
+				<p class="mb-4">Upload an image of a design you prefer</p>
 
 				<image-control label="Upload a photo of the vehicle with the design which you like or images which can help us during making design" v-model="form.referenceDesigns" imageWidth="300px">
 				</image-control>
@@ -216,11 +216,15 @@ export default {
 			return queryString;
 		},
 		handleLoadMore($state) {
+
 			this.$axios
 				.get(`/products?page=${this.page}${this.getQueries()}`)
 				.then((res) => {
 					const result = res.data.data;
 					if (result.length) {
+            if(this.filters.tags.length || this.filters.colors.length){
+              this.products = [];
+            }
 						result.forEach((value) => {
 							this.products.push(value);
 						});

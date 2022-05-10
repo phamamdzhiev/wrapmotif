@@ -21,7 +21,7 @@
           to="/how-it-works"
           class=" btn btn btn-primary section-btn text-xl px-4 howitworks-btn text-center"
         >
-          Read More
+          {{ getHowItWorks.data.button }}
         </nuxt-link>
       </div>
     </div>

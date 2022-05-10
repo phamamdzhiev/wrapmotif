@@ -1,9 +1,7 @@
 <template>
   <div>
     <nav
-      class="navbar shadow-sm bottom-shadow zindex d-flex align-items-center justify-content-between"
-      :class="{ 'navbar-dark': type == 'dark', 'navbar-light': type != 'dark' }"
-    >
+      class="navbar shadow-sm bottom-shadow zindex d-flex align-items-center justify-content-between navbar-dark" >
       <!-- brand -->
       <div class="brand">
         <nuxt-link to="/" class="logo">

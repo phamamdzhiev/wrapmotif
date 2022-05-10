@@ -3,7 +3,7 @@
     <!-- Main slider -->
     <splide :options="primaryOptions" ref="primary">
       <splide-slide v-for="slide in slides" :key="slide.url">
-        <img :style="{ imgHeight }" :src="slide.url" />
+        <expandable-image :style="{ imgHeight }" :src="slide.url" />
         <div class="d-flex align-items-center justify-content-center h-100">
           <div class="text-center text-white">
             <h2
@@ -53,8 +53,13 @@
 </template>
 
 <script>
+import ExpandableImage from "~/components/layouts/ExpandableImage";
 export default {
   name: "HeroSlider",
+  components: {
+    ExpandableImage
+  },
+
   props: {
     slides: {
       type: Array
@@ -124,7 +129,7 @@ export default {
     if (this.$refs.secondary?.splide) {
       this.$refs.primary.sync(this.$refs.secondary.splide);
     }
-  }
+  },
 };
 </script>
 

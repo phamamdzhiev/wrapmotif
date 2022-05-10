@@ -22,13 +22,13 @@
                   text-primary
                 ">
 								<i class="fas fa-angle-left"></i>
-								<span class="ml-2 text-nowrap">BACK TO MARKET</span>
+								<span class="ml-2 text-nowrap">BACK TO DESIGNS</span>
 							</nuxt-link>
 						</div>
 						<div class="col-md-4 d-none d-md-flex justify-content-md-around">
 							<h2 class="mb-0 text-sm">
-								MARKET
-								<span class="text-primary">STOCK DESIGN</span>
+                UNIVERSAL
+								<span class="text-primary">DESIGN</span>
 							</h2>
 						</div>
 					</div>
@@ -56,7 +56,7 @@
 							<span> ({{ product.name }}) </span>
 						</h1>
 						<div class="text-sm">
-							SKU: <span>{{ product.sku }}</span>
+							DESIGN ID: <span>{{ product.sku }}</span>
 						</div>
 						<h4 class="font-semibold text-md mb-0 mt-2">
 							<span class="font-normal">Price:</span>
@@ -101,16 +101,15 @@
 											</span>
 										</div>
 										<div class="col-12 pb-2">
-											<span class="font-bold">ALERT:</span>
+											<span class="font-bold">NOTE:</span>
 											<span class="text-secondary">
 												Color change is an additional feature that you can avail
 												of for changing the color of your favorite design on our
-												website. Satisfied with the new color? You can purchase
-												its print data on your profile.
+												website. Satisfied with the new color? You can purchase the ready-to-print file on your profile.
 											</span>
 										</div>
 										<div class="col-12">
-											<span class="font-bold">Print data format:</span>
+											<span class="font-bold">Ready to print file:</span>
 											<span> {{ product.printDataFormat }} </span>
 										</div>
 									</div>

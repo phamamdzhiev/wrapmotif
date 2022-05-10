@@ -15,7 +15,7 @@
         <input-field type="url" label="Website" v-model="form.companyWebsite" placeholder="http://www.example.com" :error="validationErrors.companyWebsite"></input-field>
 
         <!-- Services -->
-        <validated-select-field v-model="form.service" label="Services" :options="allServices" :validation="$v.form.service" track="value">
+        <validated-select-field v-model="form.service" label="Services" :options="allServices" :validation="$v.form.service" track="value" placeholder="Select">
         </validated-select-field>
         <!-- Billing Address -->
         <h5 class="font-bold mt-4">Address</h5>

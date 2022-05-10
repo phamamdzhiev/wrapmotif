@@ -39,9 +39,9 @@
               rounded-pill
               mt-3
               text-3xl
-              
+
             "
-            >choose design</nuxt-link
+            >{{ getHeroSection.data.button }}</nuxt-link
           >
         </div>
       </video-background>

@@ -9,6 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "-": "^0.0.1",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@nuxtjs/auth-next": "5.0.0-1622718665.cc99959",
     "@nuxtjs/axios": "^5.13.1",
@@ -18,14 +19,18 @@
     "@splidejs/vue-splide": "^0.3.5",
     "@vue-stripe/vue-stripe": "^4.2.5",
     "animate.css": "^4.1.1",
+    "async": "^3.2.3",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "cookie-universal-nuxt": "^2.1.5",
     "core-js": "^3.9.1",
+    "http": "^0.0.1-security",
+    "js": "^0.1.0",
     "laravel-vue-pagination": "^2.3.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "nuxt": "^2.15.3",
+    "parser": "^0.1.4",
     "pretty-checkbox-vue": "^1.1.9",
     "vue-currency-select": "^0.2.1",
     "vue-html2pdf": "^1.8.0",
@@ -38,7 +43,8 @@
     "vue-toastification": "^1.7.11",
     "vue-window-size": "^0.6.2",
     "vue2-google-maps": "^0.10.7",
-    "vuelidate": "^0.7.6"
+    "vuelidate": "^0.7.6",
+    "wrap": "^0.1.2"
   },
   "devDependencies": {
     "fibers": "^5.0.0",

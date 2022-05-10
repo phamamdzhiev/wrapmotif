@@ -2,7 +2,8 @@ import Vue from "vue";
 
 Vue.filter("currency", function(value, currency, exchangeRate) {
   if (currency == "EUR") {
-    return "€ " + Math.ceil(value);
+    // return "€ " + Math.ceil(value);
+    return "€ " + value;
   } else {
     return "$ " + Math.ceil(parseFloat(value) * parseFloat(exchangeRate));
   }

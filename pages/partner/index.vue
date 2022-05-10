@@ -18,10 +18,10 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <div class="col-md-10 col-lg-8">
+          <div class="col-md-10 col-lg-8 text-center">
             <img
               :src="getPartnerPageContent.primaryMediaUrl"
-              class="img-fluid w-100 mx-auto py-2"
+              class="img-fluid w-75 mx-auto py-2"
             />
           </div>
         </div>

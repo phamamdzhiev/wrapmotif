@@ -4,10 +4,10 @@
       <!-- Header -->
       <div class="col-12">
         <p class="mb-5 text-center">
-          Please tell us how big the project and your budget for design will be.
+          Select the design type and your budget for the custom car wrap design
         </p>
         <p class="mb-3">
-          <span class="mr-2">Select character of design </span>
+          <span class="mr-2">Select design type </span>
           <i v-if="
               $v.form.characterOfDesign.$dirty &&
               !$v.form.characterOfDesign.$anyError
@@ -42,14 +42,14 @@
         <div class="row">
           <div class="col-md-8 mx-auto">
             <p class="text-center mb-3">
-              Select your budget for graphic design and data:
+              Select your budget for custom design:
             </p>
-            <client-only>
-              <vue-slider :min="450" :max="1400" :enable-cross="false" v-model="form.priceValue" :height="10" :dotSize="22" />
+            <client-only >
+              <vue-slider :marks="marks" :min="1000" :max="3000" :enable-cross="false" v-model="form.priceValue" :height="10" :dotSize="22" />
             </client-only>
 
             <p class="text-center mt-3 lead">
-              Your budget will be in range ${{ form.priceValue[0] }} to ${{
+              Your budget will be in between {{ $store.state.currency.selectedCurrency === 'EUR' ? '€':'$' }} {{ form.priceValue[0] }} to ${{
                 form.priceValue[1]
               }}
             </p>
@@ -71,8 +71,30 @@ export default {
 
   data() {
     return {
+      marks: {
+        '1000': {
+          label: 'Simple',
+            labelStyle: {
+              left: '100%',
+              margin: '0 0 0 10px',
+              top: '50%',
+              transform: 'translate(-80px,-50%)',
+              fontSize: '18px',
+            }
+        },
+        '3000': {
+          label: 'Complex',
+          labelStyle: {
+            left: '100%',
+            margin: '0 0 0 10px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            fontSize: '18px',
+          }
+        }
+      },
       form: {
-        priceValue: [450, 1400],
+        priceValue: [1000, 3000],
         characterOfDesign: ""
       },
       designs: []

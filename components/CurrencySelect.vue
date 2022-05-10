@@ -53,6 +53,6 @@ export default {
   font-family: inherit;
   outline: none;
   cursor: pointer;
-  color: #343a40;
+  //color: #343a40;
 }
 </style>

@@ -197,6 +197,9 @@ export default {
         .then(res => {
           const result = res.data.data;
           if (result.length) {
+            if(this.filters.search !== ""){
+              this.products = [];
+            }
             result.forEach(value => {
               this.products.push(value);
             });

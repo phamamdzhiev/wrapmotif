@@ -45,10 +45,7 @@
                       {{ product.description | truncate(50) }}
                     </div>
                     <div class="text-sm">
-                      This design is universal, that means you can apply it to
-                      any car type, it just depends how much material you will
-                      print. For most of the cars 20m of wrapping material is
-                      enough.
+                      {{ getCheckout.data.note_preview }}
                     </div>
                   </span>
                 </p>
@@ -264,7 +261,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      validationErrors: "validation/validationErrors"
+      validationErrors: "validation/validationErrors",
+      getCheckout: "config/getCheckout",
     }),
     // Get user vat amount
     vatAmount() {

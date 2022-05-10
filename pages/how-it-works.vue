@@ -4,7 +4,7 @@
       class="container"
       v-if="getHowItWorksPageContent && getHowItWorksPageContent.data"
     >
-      <!-- header section -->
+      <!-- header section Customer -->
       <div class="row justify-content-center mt-5">
         <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8">
           <h1 class="text-center text-uppercase text-6xl font-bold how-title">
@@ -33,6 +33,18 @@
           <img :src="getHowItWorks.primaryMediaUrl" class="img-fluid" />
         </div>
       </div>
+
+      <!-- header section Universal-->
+      <div class="row justify-content-center mt-5">
+        <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8">
+          <h1 class="text-center text-uppercase text-6xl font-bold how-title">
+            {{ getHowItWorksPageContent.data.title_universal }}
+          </h1>
+          <p class="text-center text-xl how-subtitle">
+            {{ getHowItWorksPageContent.data.subtitle_universal }}
+          </p>
+        </div>
+      </div>
       <!-- universal section -->
       <div class="row pt-4">
         <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8">
@@ -51,7 +63,7 @@
 Here you go:</p>
           <div v-for="(category, index) in categories" :key="index">
             <p class="font-bold text-xl mt-4">TUTORIALS - {{ category.name }}</p>
-            <ul>  
+            <ul>
               <li
                 class="font-semibold text-xl mt-4"
                 v-for="(media, index) in category.mediaCollection"

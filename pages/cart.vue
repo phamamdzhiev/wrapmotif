@@ -10,12 +10,12 @@
               <span class="ml-2 text-nowrap">BACK TO DESIGNS</span>
             </nuxt-link>
           </div>
-          <div class="col-md-4 d-none d-md-flex justify-content-md-around">
-            <h2 class="mb-0 text-sm">
-              MARKET
-              <span class="text-primary">STOCK DESIGN</span>
-            </h2>
-          </div>
+<!--          <div class="col-md-4 d-none d-md-flex justify-content-md-around">-->
+<!--            <h2 class="mb-0 text-sm">-->
+<!--              MARKET-->
+<!--              <span class="text-primary">STOCK DESIGN</span>-->
+<!--            </h2>-->
+<!--          </div>-->
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
 
                 <div class="col-8 col-md-6">
                   <h4 class="pt-3 pt-md-0">{{ cartItem.name }}</h4>
-                  <div class="text-muted">SKU: {{ cartItem.sku }}</div>
+                  <div class="text-muted">DESIGN ID: {{ cartItem.sku }}</div>
 
                   <p class="mt-2">
                     <span class="text-muted">
@@ -45,10 +45,7 @@
                         {{ cartItem.description | truncate(50) }}
                       </div>
                       <div class="text-sm">
-                        This design is universal, that means you can apply it to
-                        any car type, it just depends how much material you will
-                        print. For most of the cars 20m of wrapping material is
-                        enough.
+                        {{ getCheckout.data.note_universal }}
                       </div>
                     </span>
                   </p>
@@ -83,10 +80,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="mt-4">
+<!--                <div class="mt-4">
                   <h5>Notes</h5>
                   <text-field v-model="note"></text-field>
-                </div>
+                </div>-->
               </div>
 
               <!-- Customer information -->
@@ -124,7 +121,7 @@
 
                   <!-- Total -->
                   <div class="row mt-3">
-                    <div class="col-8">Total</div>
+                    <div class="col-8">Ammount</div>
                     <div class="col-4 text-right subtotal-price">
                       {{getTotalPrice | currency($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
                     </div>
@@ -148,14 +145,15 @@
 
                   <!-- Vat -->
                   <div class="row mt-3">
-                    <div class="col-8">VAT MOSS</div>
+                    <div class="col-8">VAT ({{ vatAmount }}
+                      {{ vatType }})</div>
                     <div class="col-4 text-right mossvat-price">
-                      <span v-if="vatType == '%'">
+<!--                      <span v-if="vatType == '%'">
                         {{ vatAmount }}
                         {{ vatType }}
-                      </span>
-                      <span v-else>
-                        {{vatAmount| currency($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      </span>-->
+                      <span >
+                        {{ getCustomerGrandTotal - getTotalPrice  | currency($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
                       </span>
                     </div>
                   </div>
@@ -163,7 +161,7 @@
                   <hr />
                   <div class="row mt-3">
                     <div class="col-8">
-                      <h5 class="mb-0">Grand Total</h5>
+                      <h5 class="mb-0">Total</h5>
                     </div>
                     <div class="col-4 text-right total-price">
                       <h5 class="mb-0">
@@ -189,9 +187,7 @@
                     <div class="form-group">
                       <div class="custom-control custom-checkbox">
                         <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input" />
-                        <label for="agree1" class="custom-control-label user-select-none">I have read the
-                          <a href="/terms-conditions#general-terms" target="_blank" title="Wrapmotif Terms and Conditions">terms and conditions</a>
-                          of the Wrapmotif and agree with them</label>
+                        <label for="agree1" class="custom-control-label user-select-none">I have read and agree to the <a href="/terms-conditions#general-terms" target="_blank" title="Wrapmotif Terms and Conditions">terms and conditions</a></label>
                       </div>
                     </div>
                   </div>
@@ -266,7 +262,7 @@ export default {
       disablePayButton: false,
       coupon: null,
       couponCode: "",
-      note: null
+      note: null,
     };
   },
 
@@ -275,11 +271,20 @@ export default {
       getCartItems: "cart/getCartItems",
       getTotalItem: "cart/getTotalItem",
       getTotalPrice: "cart/getTotalPrice",
-      validationErrors: "validation/validationErrors"
+      validationErrors: "validation/validationErrors",
+      getCheckout: "config/getCheckout",
     }),
     // Get discount amount
     discount() {
-      return this.coupon ? this.coupon.amount : 0;
+      if(this.coupon){
+        if(this.coupon.type !== 'amount'){
+          console.log((this.getTotalPrice * this.coupon.amount / 100).toFixed(1))
+          return (this.getTotalPrice * this.coupon.amount / 100).toFixed(1);
+        }else{
+          this.coupon.amount
+        }
+      }
+      return 0;
     },
     // Get customer vat amount/percentage
     vatAmount() {
@@ -291,7 +296,6 @@ export default {
     },
     // Calculate customer total vat
     getVatAmount() {
-      console.log(this.discountedAmount);
       let vatAmount;
       if (this.vatType == "%") {
         vatAmount = (this.vatAmount / 100) * this.discountedAmount;
@@ -299,7 +303,8 @@ export default {
         vatAmount = this.vatAmount;
       }
 
-      return Math.ceil(vatAmount);
+      return vatAmount;
+      // return Math.ceil(vatAmount);
     },
     // Calculate grand total
     getGrandTotal() {

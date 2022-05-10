@@ -21,10 +21,7 @@
       <div class="row">
         <div class="col-lg-6 offset-lg-3 mt-3 mb-5">
           <p class="text-center">
-            Bright, unique, and trendy- We design this aesthetic car wraps to
-            make you stand among the crowds. If you are looking for something
-            different to go beyond the rhymes, let us help you with that. We
-            love new challenges!
+            {{ getCustomOrderImage.data.description }}
           </p>
         </div>
       </div>

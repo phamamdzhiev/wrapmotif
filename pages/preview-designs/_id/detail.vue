@@ -22,13 +22,14 @@
                   text-primary
                 ">
 								<i class="fas fa-angle-left"></i>
-								<span class="ml-2 text-nowrap">BACK TO MARKET</span>
+								<span class="ml-2 text-nowrap">BACK TO DESIGNS</span>
 							</nuxt-link>
 						</div>
 						<div class="col-md-4 d-none d-md-flex justify-content-md-around">
 							<h2 class="mb-0 text-sm text-uppercase">
-								{{ product.name }}
-								<span class="text-primary">PREVIEW DESIGN</span>
+<!--								{{ product.name }}-->
+                UNIVERSAL
+								<span class="text-primary">DESIGN</span>
 							</h2>
 						</div>
 					</div>
@@ -56,7 +57,7 @@
 							<span> ({{ product.name }}) </span>
 						</h1>
 						<div class="text-sm">
-							SKU: <span>{{ product.sku }}</span>
+							DESIGN ID: <span>{{ product.sku }}</span>
 						</div>
 						<h4 class="font-semibold text-md mb-0 mt-2">
 							<span class="font-normal">Price:</span>
@@ -101,16 +102,15 @@
 											</span>
 										</div>
 										<div class="col-12 pb-2">
-											<span class="font-bold">ALERT:</span>
+											<span class="font-bold">NOTE:</span>
 											<span class="text-secondary">
 												Preview design is an additional feature that you can
 												avail of for seeing your favorite design on a specific
-												car. Satisfied with the preview? You can purchase its
-												print data on your profile or in the marketplace.
+												car. Satisfied with the preview? You can purchase the ready-to-print file on your profile or in the shop.
 											</span>
 										</div>
 										<div class="col-12">
-											<span class="font-bold">Print data format:</span>
+											<span class="font-bold">Ready to print file:</span>
 											<span> {{ product.printDataFormat }} </span>
 										</div>
 									</div>

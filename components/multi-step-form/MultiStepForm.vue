@@ -3,10 +3,10 @@
 		<!-- Step List -->
 		<div class="step-wrapper">
 			<div :style="{ width: stepWidth }" class="d-flex justify-content-between step-ul">
-				<span :style="activeLineWidth(activeIndex)" class="active-line"></span>
-				<div v-for="(item, i) in stepData" :key="i" class="step-btn-wrapper text-center d-flex flex-column align-items-center step-li" :class="{ active: activeIndex >= i }">
+<!--				<span :style="activeLineWidth(activeIndex)" class="active-line"></span>-->
+				<div v-if="barShow" v-for="(item, i) in stepData" :key="i" class="step-btn-wrapper text-center d-flex flex-column align-items-center step-li" :class="{ active: activeIndex >= i }">
 					<!--  -->
-					<span @click="i < activeIndex ? (activeIndex = i) : null" class="step-btn">{{ i + 1 }}</span>
+					<span @click="i < activeIndex ? (activeIndex = i) : null" class="step-btn"><!--{{ i + 1 }}--></span>
 					<p class="step-title">{{ item.title }}</p>
 				</div>
 			</div>
@@ -32,6 +32,7 @@ export default {
 	data() {
 		return {
 			activeIndex: 0,
+      barShow: false,
 		};
 	},
 	computed: {},
@@ -53,6 +54,11 @@ export default {
 	},
 	watch: {
 		activeIndex() {
+      if(this.activeIndex > 0){
+        this.barShow = true;
+      }else{
+        this.barShow = false;
+      }
 			this.adjustWindow();
 		},
 	},
@@ -85,7 +91,7 @@ export default {
 
 			margin-left: auto;
 			margin-right: auto;
-			&::before {
+			/*&::before {
 				content: "";
 				height: 3px;
 				position: absolute;
@@ -99,7 +105,7 @@ export default {
 					right: 10px;
 					top: 15px;
 				}
-			}
+			}*/
 			.active-line {
 				max-width: 100%;
 				height: 3px;
@@ -133,18 +139,21 @@ export default {
 			}
 		}
 		.step-btn-wrapper {
-			width: 80px;
+			//width: 80px;
+			width: 100px;
 			@media (max-width: 650px) {
 				width: 47px;
 			}
 		}
 		.step-btn {
-			display: block;
+			//display: block;
 			width: 100%;
-			height: 37px;
-			padding-top: 9px;
+			height: 3px;
+			//height: 37px;
+			//padding-top: 9px;
 			padding-bottom: 9px;
-			border-radius: 20px;
+			border-radius: 3px;
+			//border-radius: 20px;
 			color: #9a9a9a;
 			background-color: #ece9f0;
 			display: flex;
@@ -153,9 +162,9 @@ export default {
 			border: 0;
 			transition: all 0.4s ease;
 
-			@media (max-width: 650px) {
+			/*@media (max-width: 650px) {
 				height: 30px;
-			}
+			}*/
 		}
 		.step-title {
 			color: #9a9a9a;

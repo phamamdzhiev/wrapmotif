@@ -19,7 +19,7 @@
           }}</span>
         </div>
         <div class="d-flex justify-content-between lead">
-          <p>VAT MOSS</p>
+          <p>VAT</p>
           <span v-if="vatType == '%'">
             {{ vatAmount }}
             {{ vatType }}
@@ -56,9 +56,8 @@
           <div class="form-group mb-1">
             <div class="custom-control custom-checkbox">
               <input v-model="termsAndCondition" id="agree1" type="checkbox" class="custom-control-input" />
-              <label for="agree1" class="custom-control-label">I have read the
-                <a href="/terms-conditions#general-terms" target="_blank" title="Wrapmotif Terms and Conditions">terms and conditions</a>
-                of the Wrapmotif and agree with them</label>
+              <label for="agree1" class="custom-control-label">I have read and agree to the terms and
+                conditions <a href="/terms-conditions#general-terms" target="_blank" title="Wrapmotif Terms and Conditions">terms and conditions</a></label>
             </div>
           </div>
           <div class="form-group">

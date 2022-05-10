@@ -25,7 +25,7 @@
             <div class="col-3">
               <img
                 width="43"
-                src="/images/icons/blue-pin.png"
+                src="/images/icons/wrap.png"
                 alt="Printing company"
                 class="pb-3"
               />
@@ -36,7 +36,7 @@
             <div class="col-3">
               <img
                 width="43"
-                src="/images/icons/yellow-pin.png"
+                src="/images/icons/print_wrap.png"
                 alt="Wrapping company"
                 class="pb-3"
               />
@@ -47,7 +47,7 @@
             <div class="col-3">
               <img
                 width="43"
-                src="/images/icons/black-pin.png"
+                src="/images/icons/print.png"
                 alt="Printing and wrapping company"
                 class="pb-3"
               />

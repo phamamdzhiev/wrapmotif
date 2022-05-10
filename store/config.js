@@ -26,6 +26,9 @@ export const getters = {
   getHowItWorks(state) {
     return state.appearances?.find(item => item.name == "how_it_works");
   },
+  getCheckout(state) {
+    return state.appearances?.find(item => item.name == "checkout");
+  },
   getHowItWorksPageContent(state) {
     return state.appearances?.find(item => item.name == "how_it_works_page");
   },

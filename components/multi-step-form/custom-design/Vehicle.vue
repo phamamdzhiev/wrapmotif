@@ -2,34 +2,34 @@
   <div class="col-lg-8 mx-auto">
     <div class="row">
       <div class="col-12">
-        <h3 class="mb-3">Specify your vehicle</h3>
+        <h3 class="mb-3">Specifications</h3>
       </div>
       <!-- Left Column -->
       <div class="col-sm-6">
         <div class="pr-sm-3">
           <!-- Your vehicle manufacturer -->
-          <validated-select-field label="Your vehicle manufacturer" v-model="form.vehicleId" :validation="$v.form.vehicleId" :options="vehicles" track="id" @input="getVehicleModel"></validated-select-field>
+          <validated-select-field label="Car brand" v-model="form.vehicleId" :validation="$v.form.vehicleId" :options="vehicles" track="id" @input="getVehicleModel" placeholder="Select"></validated-select-field>
 
           <!-- Your vehicle model -->
-          <validated-select-field label="Your vehicle model" v-model="form.vehicleModelId" :validation="$v.form.vehicleModelId" :options="vehicleModels" track="id"></validated-select-field>
+          <validated-select-field label="Car model" v-model="form.vehicleModelId" :validation="$v.form.vehicleModelId" :options="vehicleModels" track="id" placeholder="Select"></validated-select-field>
 
           <!-- bodywork options -->
-          <validated-select-field label="Bodywork" v-model="form.bodywork" :validation="$v.form.bodywork" :options="bodyWorkOptions" track="value" title="value"></validated-select-field>
+          <validated-select-field label="Bodywork" v-model="form.bodywork" :validation="$v.form.bodywork" :options="bodyWorkOptions" track="value" title="value" placeholder="Select"></validated-select-field>
 
           <!-- manufacture Year -->
-          <validated-text-field v-model="form.vehicleManufactureYear" :validation="$v.form.vehicleManufactureYear" type="number" label="Year of manufacture" placeholder="e.g. 2018"></validated-text-field>
+          <validated-text-field v-model="form.vehicleManufactureYear" :validation="$v.form.vehicleManufactureYear" type="number" label="Construction year" ></validated-text-field>
 
           <!-- Vehicle paint color -->
-          <validated-text-field v-model="form.vehicleColor" :validation="$v.form.vehicleColor" type="color" label="Vehicle paint color" imedieate></validated-text-field>
+          <validated-text-field v-model="form.vehicleColor" :validation="$v.form.vehicleColor" type="color" label="Color" imedieate></validated-text-field>
         </div>
       </div>
 
       <!-- Right Column -->
       <div class="col-sm-6">
         <!-- Note -->
-        <text-field label="Note" placeholder="Does your vehicle have some packet or modification?" v-model="form.vehicleNote"></text-field>
+        <text-field label="Note" placeholder="Any modifications to your car? Special package?" v-model="form.vehicleNote"></text-field>
         <!-- File Upload -->
-        <image-control v-model="form.vehiclePhotos" label="Upload photo of your vehicle">
+        <image-control v-model="form.vehiclePhotos" label="Upload a picture of your car">
         </image-control>
         <!-- <MultipleImage label="Upload photo of your vehicle" v-model="form.vehiclePhotos" /> -->
       </div>

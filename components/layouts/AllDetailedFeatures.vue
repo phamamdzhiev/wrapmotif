@@ -21,7 +21,7 @@
           <nuxt-link
             to="/designs"
             class="btn btn-primary section-btn mt-1 px-4 text-xl mt-4 features-btn"
-            >Buy designs</nuxt-link
+            >{{ getDesignSection.data.button }}</nuxt-link
           >
         </div>
       </div>
@@ -62,7 +62,7 @@
           <nuxt-link
             to="/custom-design"
             class="btn btn-primary section-btn mt-1 text-xl px-4 mt-4 features-btn"
-            >Order here</nuxt-link
+            >{{ getCustomSection.data.button }}</nuxt-link
           >
         </div>
       </div>
@@ -95,7 +95,7 @@
           <nuxt-link
             to="/wrapping-companies"
             class="btn btn-primary section-btn text-xl px-4 mt-4 features-btn"
-            >List of our partners</nuxt-link
+            >{{ getPartnerSection.data.button }}</nuxt-link
           >
         </div>
       </div>

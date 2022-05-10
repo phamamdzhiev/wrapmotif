@@ -1,18 +1,18 @@
 <template>
-  <footer :class="[bgWhite ? 'bg-white' : 'bg-cream']">
+  <footer class="bg-black">
     <div class="container">
       <div class="row">
         <div class="col-md-12 offset-md-0 col-lg-10 offset-lg-1">
           <div class="row pt-5 pl-5 pr-5">
             <div class="col-md-3 col-6 pt-3">
-              <h4 class="text-primary font-semibold text-xl text-nowrap footer-header">Wrapmotif</h4>
+              <h4 class="text-white font-semibold text-xl text-nowrap footer-header">Categories</h4>
               <ul>
                 <li>
                   <nuxt-link
                     to="/designs"
                     title="Wrapmotif designs"
                     class="text-footer-links text-nowrap"
-                  >Choose design</nuxt-link>
+                  >Universal designs</nuxt-link>
                 </li>
                 <li>
                   <nuxt-link
@@ -40,29 +40,29 @@
 
             <div class="col-md-3 col-6 pt-3">
               <h4
-                class="text-primary font-semibold text-xl text-nowrap footer-header"
-              >Become a partner</h4>
+                class="text-white font-semibold text-xl text-nowrap footer-header"
+              >Partnership</h4>
               <ul>
                 <li>
                   <nuxt-link
                     to="/partner"
                     title="Wrapping companies"
                     class="text-footer-links text-nowrap"
-                  >Wrapping companies</nuxt-link>
+                  >Become a partner</nuxt-link>
                 </li>
                 <li>
                   <nuxt-link
                     to="/partner/become-partner"
                     title="Printing companies"
                     class="text-footer-links text-nowrap"
-                  >Become a partner</nuxt-link>
+                  >Sign up as a partner</nuxt-link>
                 </li>
               </ul>
             </div>
 
             <div class="col-md-3 col-6 pt-3">
               <h4
-                class="text-primary font-semibold text-xl text-nowrap footer-header text-nowrap"
+                class="text-white font-semibold text-xl text-nowrap footer-header text-nowrap"
               >Terms</h4>
               <ul>
                 <li>
@@ -100,7 +100,7 @@
 
             <div class="col-md-3 col-6 pt-3">
               <h4
-                class="text-primary font-semibold text-xl text-nowrap footer-header text-nowrap"
+                class="text-white font-semibold text-xl text-nowrap footer-header text-nowrap"
               >Support</h4>
               <ul>
                 <li>
@@ -127,11 +127,28 @@
     <hr class="mt-5 mb-4" />
 
     <div class="container">
-      <div class="row pb-5">
+      <div class="row">
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0">
           <div class="d-flex justify-content-between pb-5 pl-5 pr-5 row">
             <div class="pt-3">
-              <h4 class="pb-2 font-semibold text-xl footer-header" style="color: #30d5c8">Follow us</h4>
+              <img
+                class="logo"
+                :src="
+                  getWebsiteSettings
+                    ? getWebsiteSettings.secondaryMediaUrl
+                    : null
+                "
+                alt="logo"
+              />
+
+              <p class="mt-3 text-footer-links">
+                © 2021 Wrapmotif.
+                <span class="ml-1">All rights reserved</span>
+              </p>
+            </div>
+
+            <div class="pt-3">
+              <h4 class="pb-2 font-semibold text-xl footer-header blue-gradient">Follow us</h4>
               <a
                 target="_blank"
                 href="https://www.instagram.com/wrapmotif/"
@@ -163,7 +180,7 @@
 
             <div class="pt-3">
               <h4
-                class="pb-2 font-semibold text-xl footer-header"
+                class="pb-2 font-semibold text-xl footer-header blue-gradient"
                 style="color: #30d5c8"
               >Join our mailing list!</h4>
               <p class="text-footer-links">Get updates on new designs, special promotions and more.</p>
@@ -178,7 +195,7 @@
                   <div class="input-group-append h-100">
                     <button
                       type="submit"
-                      class="btn btn-subs sub-btn rounded-pill py-2 px-4"
+                      class="btn btn-subs sub-btn rounded-pill py-2 px-4 btn-blue"
                     >Subscribe</button>
                   </div>
                 </div>
@@ -188,23 +205,26 @@
                 ></error>
               </form>
             </div>
-
-            <div class="pt-3">
-              <img
-                class="logo"
-                :src="
-                  getWebsiteSettings
-                    ? getWebsiteSettings.secondaryMediaUrl
-                    : null
-                "
-                alt="logo"
-              />
-
-              <p class="mt-3 text-footer-links">
-                © 2021 Wrapmotif.
-                <span class="ml-1">All rights reserved</span>
-              </p>
-            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row pb-5 ">
+        <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0">
+          <div class="d-flex justify-content-center pb-5 pl-5 pr-5 row">
+            <img
+              src="/images/cart/paypal-white.png"
+              alt="PayPall"
+              style="height: 32px"
+              class="img-fluid"
+            />
+            <img
+              src="/images/cart/gplogo-white.png"
+              alt="Stripe"
+              style="height: 32px"
+              class="img-fluid ml-2"
+            />
           </div>
         </div>
       </div>
@@ -253,8 +273,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.blue-gradient{
+  background: linear-gradient(#33A49B 0%, #00FFEB 75%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-blue{
+  background: linear-gradient(#33A49B 0%, #00FFEB 75%);
+}
 .text-footer-links {
-  color: #9d9ea0 !important;
+  color: #b0b0b0 !important;
 }
 
 a {

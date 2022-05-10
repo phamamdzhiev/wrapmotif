@@ -1,7 +1,7 @@
 $primary: #d4774c;
 $primary-light: #db4305;
 $secondary: #149a98;
-$black: #000;
+$black: #181818;
 
 .text-dark-gray {
   color: #9a9a9a;
@@ -21,9 +21,12 @@ $black: #000;
 }
 
 .bg-cream {
-  background: #faf8fa;
+  background: #F1F1F1;
 }
 
+.bg-white{
+  background: #F1F1F1 !important;
+}
 .border-cream {
   border: 1px solid #efefef !important;
 }

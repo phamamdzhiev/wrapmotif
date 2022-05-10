@@ -5,7 +5,7 @@
         <div class="col-12 col-md-6">
           <h3 class="profile-tab-header">Profile settings</h3>
           <div class="h5">{{ $auth.user.email }}</div>
-          <nuxt-link class="btn btn-secondary px-5" to="/profile/change-password">Change Password</nuxt-link>
+          <nuxt-link class="btn btn-primary px-5" to="/profile/change-password">Change Password</nuxt-link>
 
           <div class="mt-4">
             <image-control style="width: 250px;" v-model="photo" label="Change your avatar:" :url="$auth.user.profilePhotoUrl" :error="validationErrors.photo">
