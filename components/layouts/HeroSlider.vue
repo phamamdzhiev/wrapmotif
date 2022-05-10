@@ -3,7 +3,8 @@
     <!-- Main slider -->
     <splide :options="primaryOptions" ref="primary">
       <splide-slide v-for="slide in slides" :key="slide.url">
-        <expandable-image :style="{ imgHeight }" :src="slide.url" />
+        <expandable-image v-if="expand" :style="{ imgHeight }" :src="slide.url" />
+        <img v-if="!expand" :style="{ imgHeight }" :src="slide.url"/>
         <div class="d-flex align-items-center justify-content-center h-100">
           <div class="text-center text-white">
             <h2
@@ -65,6 +66,10 @@ export default {
       type: Array
     },
     topText: {
+      type: Boolean,
+      default: false
+    },
+    expand: {
       type: Boolean,
       default: false
     },
@@ -134,6 +139,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.btn-primary{
+  color: #FFFFFF;
+}
 .tshadow {
   text-shadow: 2px 2px 4px #000;
 }

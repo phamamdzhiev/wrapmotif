@@ -124,30 +124,14 @@
       </div>
     </div>
 
-    <hr class="mt-5 mb-4" />
+    <hr class="mt-5 mb-4 white-line" />
 
     <div class="container">
       <div class="row">
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0">
-          <div class="d-flex justify-content-between pb-5 pl-5 pr-5 row">
-            <div class="pt-3">
-              <img
-                class="logo"
-                :src="
-                  getWebsiteSettings
-                    ? getWebsiteSettings.secondaryMediaUrl
-                    : null
-                "
-                alt="logo"
-              />
+          <div class="d-flex justify-content-between pb-5 pl-5 pr-5 row ">
 
-              <p class="mt-3 text-footer-links">
-                © 2021 Wrapmotif.
-                <span class="ml-1">All rights reserved</span>
-              </p>
-            </div>
-
-            <div class="pt-3">
+            <div class="pt-3 order-sm-1">
               <h4 class="pb-2 font-semibold text-xl footer-header blue-gradient">Follow us</h4>
               <a
                 target="_blank"
@@ -178,7 +162,7 @@
               </a>
             </div>
 
-            <div class="pt-3">
+            <div class="pt-3 order-sm-2">
               <h4
                 class="pb-2 font-semibold text-xl footer-header blue-gradient"
                 style="color: #30d5c8"
@@ -190,7 +174,7 @@
                     type="email"
                     v-model="subscriptionEmail"
                     class="form-control px-3 border-0 rounded-pill bg-transparent"
-                    placeholder="Your email"
+                    placeholder="Email"
                   />
                   <div class="input-group-append h-100">
                     <button
@@ -205,6 +189,24 @@
                 ></error>
               </form>
             </div>
+
+            <div class="pt-3 order-sm-0">
+              <img
+                class="logo"
+                :src="
+                  getWebsiteSettings
+                    ? getWebsiteSettings.secondaryMediaUrl
+                    : null
+                "
+                alt="logo"
+              />
+
+              <p class="mt-3 text-footer-links">
+                © 2021 WRAPMOTIF.
+                <span class="ml-1">All rights reserved</span>
+              </p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -273,6 +275,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+@media only screen and (min-width: 500px) {
+  .order-sm-2{
+    order: 2;
+  }
+
+  .order-sm-0{
+    order: 0;
+  }
+
+  .order-sm-1{
+    order: 1;
+  }
+}
+
+.white-line{
+  background: #505050;
+}
+
 .blue-gradient{
   background: linear-gradient(#33A49B 0%, #00FFEB 75%);
   -webkit-background-clip: text;

@@ -43,7 +43,7 @@
             <div class="w-100">
               <div>
                 <client-only>
-                  <hero-slider :showSecondary="true"  :imgHeight="620" :slides="product.mediaCollection"></hero-slider>
+                  <hero-slider :expand="true" :showSecondary="true"  :imgHeight="620" :slides="product.mediaCollection"></hero-slider>
                 </client-only>
               </div>
             </div>

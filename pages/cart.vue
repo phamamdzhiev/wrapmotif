@@ -121,9 +121,9 @@
 
                   <!-- Total -->
                   <div class="row mt-3">
-                    <div class="col-8">Ammount</div>
+                    <div class="col-8">Amount</div>
                     <div class="col-4 text-right subtotal-price">
-                      {{getTotalPrice | currency($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      {{getTotalPrice | currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
                     </div>
                   </div>
 
@@ -131,7 +131,7 @@
                   <div class="row mt-3">
                     <div class="col-8">Discount (-)</div>
                     <div class="col-4 text-right subtotal-price">
-                      {{discount | currency($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      {{discount | currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
                     </div>
                   </div>
 
@@ -139,7 +139,7 @@
                   <div class="row mt-3">
                     <div class="col-8">Subtotal</div>
                     <div class="col-4 text-right subtotal-price">
-                      {{discountedAmount | currency($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      {{discountedAmount | currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
                     </div>
                   </div>
 
@@ -148,12 +148,11 @@
                     <div class="col-8">VAT ({{ vatAmount }}
                       {{ vatType }})</div>
                     <div class="col-4 text-right mossvat-price">
-<!--                      <span v-if="vatType == '%'">
-                        {{ vatAmount }}
-                        {{ vatType }}
-                      </span>-->
-                      <span >
-                        {{ getCustomerGrandTotal - getTotalPrice  | currency($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      <span v-if="vatType == '%'">
+                        {{getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      </span>
+                      <span v-else>
+                        {{vatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
                       </span>
                     </div>
                   </div>
@@ -278,7 +277,6 @@ export default {
     discount() {
       if(this.coupon){
         if(this.coupon.type !== 'amount'){
-          console.log((this.getTotalPrice * this.coupon.amount / 100).toFixed(1))
           return (this.getTotalPrice * this.coupon.amount / 100).toFixed(1);
         }else{
           this.coupon.amount
@@ -297,12 +295,12 @@ export default {
     // Calculate customer total vat
     getVatAmount() {
       let vatAmount;
+
       if (this.vatType == "%") {
         vatAmount = (this.vatAmount / 100) * this.discountedAmount;
       } else {
         vatAmount = this.vatAmount;
       }
-
       return vatAmount;
       // return Math.ceil(vatAmount);
     },
@@ -312,6 +310,7 @@ export default {
     },
     // Calculate grand total
     getCustomerGrandTotal() {
+      console.log(this.convertCurrency(this.getTotalPrice))
       return (
         this.convertCurrency(this.getTotalPrice) -
         this.convertCurrency(this.discount) +

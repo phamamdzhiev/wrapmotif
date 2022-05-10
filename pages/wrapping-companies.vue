@@ -25,34 +25,34 @@
             <div class="col-3">
               <img
                 width="43"
-                src="/images/icons/wrap.png"
+                src="/images/icons/print.png"
                 alt="Printing company"
                 class="pb-3"
               />
               <h6>
-                <i>Printing company</i>
+                <i>Printing</i>
+              </h6>
+            </div>
+            <div class="col-3">
+              <img
+                width="43"
+                src="/images/icons/wrap.png"
+                alt="Wrapping company"
+                class="pb-3"
+              />
+              <h6>
+                <i><span>Wrapping</span></i>
               </h6>
             </div>
             <div class="col-3">
               <img
                 width="43"
                 src="/images/icons/print_wrap.png"
-                alt="Wrapping company"
-                class="pb-3"
-              />
-              <h6>
-                <i><span>Wrapping company</span></i>
-              </h6>
-            </div>
-            <div class="col-3">
-              <img
-                width="43"
-                src="/images/icons/print.png"
                 alt="Printing and wrapping company"
                 class="pb-3"
               />
               <h6>
-                <i><span>Printing and wrapping company</span></i>
+                <i><span>Printing and wrapping</span></i>
               </h6>
             </div>
           </div>
@@ -198,7 +198,11 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+
+.bg-primary{
+  background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+}
 .search-btn {
   width: 80px;
   height: 67px;

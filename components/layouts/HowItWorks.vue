@@ -7,10 +7,10 @@
     </h2>
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-md-10 col-lg-8">
+        <div class="col-md-10 col-lg-8 text-center">
           <img
             :src="getHowItWorks.primaryMediaUrl"
-            class="img-fluid howitworks-image "
+            class="img-fluid howitworks-image w-75"
             alt=""
             style=""
           />

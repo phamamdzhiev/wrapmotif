@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-5">
     <!-- Headers -->
     <client-only>
       <hero-slider class="hero-slider" v-if="getDesignPageSlider && getDesignPageSlider.slides.length" :slides="getDesignPageSlider.slides"></hero-slider>
@@ -197,7 +197,7 @@ export default {
         .then(res => {
           const result = res.data.data;
           if (result.length) {
-            if(this.filters.search !== ""){
+            if(this.filters.search !== "" || this.filters.colors.length || this.filters.categories.length || this.filters.tags.length){
               this.products = [];
             }
             result.forEach(value => {

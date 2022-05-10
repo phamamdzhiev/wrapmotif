@@ -49,9 +49,9 @@
             </client-only>
 
             <p class="text-center mt-3 lead">
-              Your budget will be in between {{ $store.state.currency.selectedCurrency === 'EUR' ? '€':'$' }} {{ form.priceValue[0] }} to ${{
+              Your budget will be in between {{ $store.state.currency.selectedCurrency === 'EUR' ? '€':'$' }} {{ form.priceValue[0] }} to {{ $store.state.currency.selectedCurrency === 'EUR' ? '€':'$' }} {{
                 form.priceValue[1]
-              }}
+              }} excl. VAT
             </p>
           </div>
         </div>

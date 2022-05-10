@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-5">
     <div
       class="container"
       v-if="getHowItWorksPageContent && getHowItWorksPageContent.data"
@@ -20,7 +20,7 @@
       <div class="row pt-3 pt-sm-5 pt-md-7 pt-lg-10">
         <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8">
           <h2 class="text-uppercase text-5xl how-header">
-            <span>For</span> <b>customers</b>
+            <span>{{ getHowItWorksPageContent.data.title_customer }}</span>
           </h2>
           <div
             v-html="getHowItWorksPageContent.data.customer"
@@ -29,27 +29,16 @@
         </div>
       </div>
       <div class="row px-1 justify-content-lg-start mt-sm-5">
-        <div class="col-sm-10 offset-sm-1 col-md-9 offset-lg-1">
-          <img :src="getHowItWorks.primaryMediaUrl" class="img-fluid" />
+        <div class="col-sm-10 offset-sm-1 col-md-9 offset-lg-1 text-center">
+          <img :src="getHowItWorks.primaryMediaUrl" class="img-fluid w-75" />
         </div>
       </div>
 
-      <!-- header section Universal-->
-      <div class="row justify-content-center mt-5">
-        <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8">
-          <h1 class="text-center text-uppercase text-6xl font-bold how-title">
-            {{ getHowItWorksPageContent.data.title_universal }}
-          </h1>
-          <p class="text-center text-xl how-subtitle">
-            {{ getHowItWorksPageContent.data.subtitle_universal }}
-          </p>
-        </div>
-      </div>
       <!-- universal section -->
       <div class="row pt-4">
         <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8">
           <h2 class="text-uppercase text-5xl how-header">
-            <b>Universal</b> <span>design</span>
+            <span>{{ getHowItWorksPageContent.data.title_universal }}</span>
           </h2>
           <div
             v-html="getHowItWorksPageContent.data.universal"

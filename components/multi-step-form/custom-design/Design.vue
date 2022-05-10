@@ -100,7 +100,7 @@
 			<div class="col-12 mt-5">
 				<p class="mb-4">Upload an image of a design you prefer</p>
 
-				<image-control label="Upload a photo of the vehicle with the design which you like or images which can help us during making design" v-model="form.referenceDesigns" imageWidth="300px">
+				<image-control label="" v-model="form.referenceDesigns" imageWidth="300px">
 				</image-control>
 			</div>
 
