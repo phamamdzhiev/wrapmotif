@@ -306,9 +306,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.btn-primary{
-  background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
-}
+
 
 .btn-warning{
   color: #000000;

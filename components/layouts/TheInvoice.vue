@@ -6,8 +6,8 @@
         <img class="logo" src="@/static/images/logo-black.png" alt="logo" />
       </div>
 
-      <div class="flex justify-between mt-5">
-        <div>
+      <div class="row justify-content-between mt-5">
+        <div class="col">
           <p class="text-sm">
             Date of issue:
             <br />
@@ -15,7 +15,7 @@
           </p>
         </div>
 
-        <div>
+        <div class="col">
           <p class="text-right">Order receipt</p>
           <p class="text-right text-sm">
             <span class="font-bold">{{ order.invoiceNo }} </span>
@@ -28,15 +28,15 @@
           <h5>Sold By</h5>
           <div class="card">
             <div class="card-body py-2 px-3 text-sm">
-              <p><span class="font-bold">Company: </span>{{ getWebsiteSettings.data.name }}</p>
-              <p><span class="font-bold">VAT No: </span>{{ getWebsiteSettings.data.vatNo }}</p>
+              <p>{{ getWebsiteSettings.data.name }}</p>
               <p>
-                <span class="font-bold">Address: </span>
-                {{ getWebsiteSettings.data.street }}
-                {{ getWebsiteSettings.data.city }} -
-                {{ getWebsiteSettings.data.zip }} ,
+                {{ getWebsiteSettings.data.street }} <br>
+                {{ getWebsiteSettings.data.zip }}
+                {{ getWebsiteSettings.data.city }}<br>
                 {{ getWebsiteSettings.data.country }}
               </p>
+              <p><span class="font-bold">VAT No: </span>{{ getWebsiteSettings.data.vatNo }}</p>
+
             </div>
           </div>
         </div>
@@ -44,16 +44,15 @@
           <h5>Customer</h5>
           <div class="card">
             <div class="card-body py-2 px-3 text-sm">
-              <p><span class="font-bold">Name: </span><span>{{ order.customer.name }}</span> <span>{{ order.customer.surname }}</span></p>
-              <p v-if="order.customer && order.customer.companyName"><span class="font-bold">Company Name: </span>{{ order.customer.companyName }}</p>
-              <p><span class="font-bold">VAT No: </span>{{ order.customer.euVatNo }}</p>
+              <p><span>{{ order.customer.name }}</span> <span>{{ order.customer.surname }}</span></p>
+              <p v-if="order.customer && order.customer.companyName">{{ order.customer.companyName }}</p>
               <p>
-                <span class="font-bold">Address: </span>
-                {{ order.customer.billingAddress.street }} ,
-                {{ order.customer.billingAddress.city }} -
-                {{ order.customer.billingAddress.zipcode }} ,
+                {{ order.customer.billingAddress.street }} <br>
+                {{ order.customer.billingAddress.zipcode }}
+                {{ order.customer.billingAddress.city }} <br>
                 {{ order.customer.billingAddress.country }}
               </p>
+              <p v-if="order.customer && order.customer.companyName && euCountries.includes(order.customer.billingAddress.country)"><span class="font-bold">VAT No: </span>{{ order.customer.euVatNo }}</p>
             </div>
           </div>
         </div>
@@ -88,8 +87,8 @@
               <th scope="col">ID</th>
               <th scope="col">Item name</th>
               <th scope="col" class="text-right">Quantity</th>
+              <th scope="col" class="text-right">Unit price</th>
               <th scope="col" class="text-right">Price</th>
-              <th scope="col" class="text-right">Total price</th>
             </tr>
           </thead>
           <tbody>
@@ -99,44 +98,44 @@
               <td>{{ orderItem.product.name }}</td>
               <td class="text-right">1</td>
               <td class="text-right">
-                {{ orderItem.customerAmountFormatted }}
+                {{ orderItem.customerAmount | currencySymbol(orderItem.customerCurrency)  }}
               </td>
               <td class="text-right">
-                {{ orderItem.customerAmountFormatted }}
+                {{ orderItem.customerAmount | currencySymbol(orderItem.customerCurrency)  }}
               </td>
             </tr>
 
             <tr>
               <th scope="row" colspan="5" class="text-right">
-                Total
+                Amount
               </th>
-              <td class="text-right">{{ order.customerAmountFormatted }}</td>
+              <td class="text-right">{{ order.customerAmount | currencySymbol(order.customerCurrency)  }}</td>
             </tr>
 
             <tr>
               <th scope="row" colspan="5" class="text-right">
                 Discount (-)
               </th>
-              <td class="text-right">{{ order.customerTotalDiscountFormatted }}</td>
+              <td class="text-right">{{ order.customerTotalDiscount | currencySymbol(order.customerCurrency)  }}</td>
             </tr>
 
             <tr>
               <th scope="row" colspan="5" class="text-right">
                 Subtotal
               </th>
-              <td class="text-right">{{ (order.totalAmount - order.totalDiscount) | currencySymbol($store.state.currency.selectedCurrency)  }}</td>
+              <td class="text-right">{{ (order.totalAmount - order.totalDiscount) | currencySymbol(order.customerCurrency)  }}</td>
             </tr>
 
             <tr>
-              <th scope="row" colspan="5" class="text-right">VAT</th>
-              <td class="text-right">{{ order.vat }} {{ order.vatType }}</td>
+              <th scope="row" colspan="5" class="text-right">VAT ({{ order.vat }} {{ order.vatType }})</th>
+              <td class="text-right">{{ order.vatAmount | currencySymbol(order.customerCurrency)  }}</td>
             </tr>
 
             <tr>
               <th scope="row" colspan="5" class="text-right">
-                Grand Total
+                Total
               </th>
-              <th class="text-right">{{ order.customerGrandTotalFormatted }}</th>
+              <th class="text-right">{{ order.grandTotal | currencySymbol(order.customerCurrency)  }}</th>
             </tr>
           </tbody>
         </table>
@@ -173,7 +172,10 @@ export default {
 
   data() {
     return {
-      orders: null
+      orders: null,
+      euCountries: [
+        "Austria", "Belgium", "Bulgaria", "Croatia", "Republic of Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain and Sweden"
+      ]
     };
   },
 
@@ -181,7 +183,7 @@ export default {
     ...mapGetters({
       getWebsiteSettings: "config/getWebsiteSettings"
     })
-  }
+  },
 };
 </script>
 
