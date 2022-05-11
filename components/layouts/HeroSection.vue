@@ -12,7 +12,6 @@
         "
         class="hero__video"
         style=""
-        
       >
         <div
           class="
@@ -70,12 +69,10 @@ export default {
       height: 100vh;
     }
     @media only screen and (max-width: 991px) {
-      //min-height: 400px;
-      max-height: 100vh;
+      min-height: 100vh;
     }
     @media only screen and (max-width: 500px) {
-      //min-height: 280px;
-      max-height: 100vh;
+      min-height: 100vh;
     }
   }
   @media only screen and (min-width: 992px) {
