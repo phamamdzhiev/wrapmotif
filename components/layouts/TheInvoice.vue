@@ -94,7 +94,7 @@
           <tbody>
             <tr v-for="(orderItem, i) in order.orderItems" :key="i">
               <td>{{ i + 1 }}</td>
-              <td>{{ orderItem.productId }}</td>
+              <td>{{ orderItem.product.sku }}</td>
               <td>{{ orderItem.product.name }}</td>
               <td class="text-right">1</td>
               <td class="text-right">
