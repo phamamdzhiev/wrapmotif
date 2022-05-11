@@ -2,7 +2,7 @@
 	<div>
 		<the-header type="light" fixed="top" class="sticky-top stickyHeader">
 			<template #logo>
-				<Logo :dark="true" />
+				<Logo />
 			</template>
 		</the-header>
 		<div class="wrapper">

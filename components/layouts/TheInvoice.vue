@@ -123,19 +123,19 @@
               <th scope="row" colspan="5" class="text-right">
                 Subtotal
               </th>
-              <td class="text-right">{{ (order.totalAmount - order.totalDiscount) | currencySymbol(order.customerCurrency)  }}</td>
+              <td class="text-right">{{ (order.customerAmount - order.customerTotalDiscount) | currencySymbol(order.customerCurrency)  }}</td>
             </tr>
 
             <tr>
               <th scope="row" colspan="5" class="text-right">VAT ({{ order.vat }} {{ order.vatType }})</th>
-              <td class="text-right">{{ order.vatAmount | currencySymbol(order.customerCurrency)  }}</td>
+              <td class="text-right">{{ order.customerVatAmount | currencySymbol(order.customerCurrency)  }}</td>
             </tr>
 
             <tr>
               <th scope="row" colspan="5" class="text-right">
                 Total
               </th>
-              <th class="text-right">{{ order.grandTotal | currencySymbol(order.customerCurrency)  }}</th>
+              <th class="text-right">{{ order.customerGrandTotal | currencySymbol(order.customerCurrency)  }}</th>
             </tr>
           </tbody>
         </table>
