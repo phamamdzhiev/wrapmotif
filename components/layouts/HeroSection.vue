@@ -12,7 +12,7 @@
         "
         class="hero__video"
         style=""
-        overlay="linear-gradient(45deg,#2a4ae430,#fb949e6b)"
+        
       >
         <div
           class="
@@ -65,14 +65,17 @@ export default {
 .hero {
   &__video {
     @media only screen and (min-width: 992px) {
-      max-height: 550px;
+      max-height: 100vh;
+      //max-height: 550px;
       height: 100vh;
     }
     @media only screen and (max-width: 991px) {
-      min-height: 400px;
+      //min-height: 400px;
+      max-height: 100vh;
     }
     @media only screen and (max-width: 500px) {
-      min-height: 280px;
+      //min-height: 280px;
+      max-height: 100vh;
     }
   }
   @media only screen and (min-width: 992px) {

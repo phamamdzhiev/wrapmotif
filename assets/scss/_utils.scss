@@ -15,7 +15,11 @@
   border-color: #c96130;
   background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
 }
-
+.btn-primary:hover{
+  background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .btn-primary.section-btn:hover{
   color: #FFFFFF !important;
 }

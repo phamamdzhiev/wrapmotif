@@ -6,8 +6,8 @@
         <img class="logo" src="@/static/images/logo-black.png" alt="logo" />
       </div>
 
-      <div class="row justify-content-between mt-5">
-        <div class="col">
+      <div class="flex justify-between mt-5">
+        <div>
           <p class="text-sm">
             Date of issue:
             <br />
@@ -15,7 +15,7 @@
           </p>
         </div>
 
-        <div class="col">
+        <div>
           <p class="text-right">Order receipt</p>
           <p class="text-right text-sm">
             <span class="font-bold">{{ order.invoiceNo }} </span>

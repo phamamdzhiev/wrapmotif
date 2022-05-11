@@ -28,8 +28,8 @@
           ></div>
         </div>
       </div>
-      <div class="row px-1 justify-content-lg-start mt-sm-5">
-        <div class="col-sm-10 offset-sm-1 col-md-9 offset-lg-1 text-center">
+      <div class="row px-1 justify-content-lg-start">
+        <div class="col-md-10 col-lg-8 text-center offset-md-1 offset-lg-2">
           <img :src="getHowItWorks.primaryMediaUrl" class="img-fluid w-75" />
         </div>
       </div>
