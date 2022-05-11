@@ -141,7 +141,6 @@
         </table>
       </div>
     </div>
-
     <!-- footer -->
     <div class="d-flex flex-column align-items-center">
       <p class="text-xs">
