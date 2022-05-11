@@ -28,14 +28,14 @@ export default {
   props: {
     dark: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   computed: {
     ...mapGetters({
       getWebsiteSettings: "config/getWebsiteSettings"
     })
-  }
+  },
 };
 </script>
 

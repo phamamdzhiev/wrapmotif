@@ -11,20 +11,20 @@ Vue.filter("currency", function(value, currency, exchangeRate) {
 Vue.filter("currencyCart", function(value, currency, exchangeRate) {
   if (currency == "EUR") {
     // return "€ " + Math.ceil(value);
-    return "€ " + roundToTwo(value);
+    return "€ " + parseFloat(value.toFixed(2));
   } else {
     // return "$ " + Math.ceil(parseFloat(value) * parseFloat(exchangeRate));
-    return "$ " + roundToTwo(parseFloat(value) * parseFloat(exchangeRate));
+    return "$ " + roundToTwo((parseFloat(value) * parseFloat(exchangeRate)).toFixed(2));
   }
 });
 
 Vue.filter("currencySymbol", function(value, currency) {
   if (currency == "EUR") {
     // return "€ " + Math.ceil(value);
-    return "€ " + roundToTwo(value);
+    return "€ " + parseFloat(value.toFixed(2));
   } else {
     // return "$ " + Math.ceil(value);
-    return "$ " + roundToTwo(value);
+    return "$ " + parseFloat(value.toFixed(2));
   }
 });
 
