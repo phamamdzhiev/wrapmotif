@@ -195,7 +195,7 @@
                 class="logo"
                 :src="
                   getWebsiteSettings
-                    ? getWebsiteSettings.secondaryMediaUrl
+                    ? getWebsiteSettings.primaryMediaUrl
                     : null
                 "
                 alt="logo"
