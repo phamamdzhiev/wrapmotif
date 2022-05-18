@@ -129,7 +129,7 @@
           <li class="pt-2">
             <!-- Currency icon -->
             <div class="nav-icon mr-2" style="cursor: pointer;">
-              <currency-select :label="Currency" :showText="true"></currency-select>
+              <currency-select label="Currency" :showText="true"></currency-select>
             </div>
           </li>
         </ul>
