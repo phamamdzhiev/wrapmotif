@@ -81,8 +81,8 @@ export default {
       if(this.width < 600){
         const video = this.getHeroSection.media ? this.getHeroSection.media.find(element => element.collection_name === 'video_mobile') : null;
         const photo = this.getHeroSection.media ? this.getHeroSection.media.find(element => element.collection_name === 'poster_mobile') : null;
-        this.videoSrc = video ? video.original_url : null;
-        this.posterSrc = photo ? photo.original_url : null;
+        this.videoSrc = video ? video.original_url : (this.getHeroSection.primaryMediaUrl ? this.getHeroSection.primaryMediaUrl : null);
+        this.posterSrc = photo ? photo.original_url : (this.getHeroSection.secondaryMediaUrl ? this.getHeroSection.secondaryMediaUrl : null);
       }else{
         this.videoSrc = this.getHeroSection.primaryMediaUrl ? this.getHeroSection.primaryMediaUrl : null;
         this.posterSrc = this.getHeroSection.secondaryMediaUrl ? this.getHeroSection.secondaryMediaUrl : null;
