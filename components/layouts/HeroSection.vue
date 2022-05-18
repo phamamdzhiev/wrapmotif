@@ -65,6 +65,7 @@ export default {
     this.videoSrc = this.getHeroSection.primaryMediaUrl ? this.getHeroSection.primaryMediaUrl : null,
     this.posterSrc = this.getHeroSection.secondaryMediaUrl ? this.getHeroSection.secondaryMediaUrl : null,
     window.addEventListener('resize', this.setWith);
+    this.setWith();
   },
   unmounted() {
     window.removeEventListener('resize', this.setWith);
@@ -79,8 +80,8 @@ export default {
     setWith() {
       this.width = document.documentElement.clientWidth;
       if(this.width < 600){
-        const video = this.getHeroSection.media ? this.getHeroSection.media.find(element => element.collection_name === 'video_mobile') : null;
-        const photo = this.getHeroSection.media ? this.getHeroSection.media.find(element => element.collection_name === 'poster_mobile') : null;
+        const video = this.getHeroSection.media ? this.getHeroSection.media.find(element => element.collection_name == 'video_mobile') : null;
+        const photo = this.getHeroSection.media ? this.getHeroSection.media.find(element => element.collection_name == 'poster_mobile') : null;
         this.videoSrc = video ? video.original_url : (this.getHeroSection.primaryMediaUrl ? this.getHeroSection.primaryMediaUrl : null);
         this.posterSrc = photo ? photo.original_url : (this.getHeroSection.secondaryMediaUrl ? this.getHeroSection.secondaryMediaUrl : null);
       }else{
