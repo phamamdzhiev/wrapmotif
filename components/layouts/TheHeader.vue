@@ -111,18 +111,18 @@
         <ul
           class=""
         >
-          <li class="pt-2">
-            <nuxt-link class="side-link text-nowrap font-semibold" to="/designs">UNIVERSAL DESIGNS</nuxt-link>
+          <li class="pt-2" @click="show = false">
+            <nuxt-link class="side-link text-nowrap font-semibold" to="/designs"  >UNIVERSAL DESIGNS</nuxt-link>
           </li>
 
-          <li class="pt-2">
+          <li class="pt-2" @click="show = false">
             <nuxt-link
               class="side-link text-nowrap font-semibold"
               to="/custom-design">CUSTOM DESIGN</nuxt-link
             >
           </li>
-          <li class="pt-2">
-            <nuxt-link class="side-link text-nowrap font-semibold" to="/partner">
+          <li class="pt-2" @click="show = false">
+            <nuxt-link class="side-link text-nowrap font-semibold" to="/partner" >
               <span class="">BECOME A PARTNER </span>
             </nuxt-link>
           </li>

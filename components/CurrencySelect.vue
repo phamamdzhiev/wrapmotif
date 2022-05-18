@@ -4,6 +4,7 @@
       v-model="selectedCurrency"
       class="currency-select no-caret font-semibold text-lg mb-1"
       @change="handleChange"
+      :style="{ color: showText ? '#919191 !important': ''}"
     >
       <option value="EUR">€ <span v-if="showText">EUR</span></option>
       <option value="USD">$ <span v-if="showText">USD</span></option>
