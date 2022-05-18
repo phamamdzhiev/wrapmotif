@@ -19,8 +19,7 @@
           <!-- Name  -->
           <validated-text-field
             v-if="!emailExits"
-            label="Your name"
-            placeholder="John Doe"
+            label="Name"
             v-model="formData.name"
             :validation="$v.formData.name"
             :error="validationErrors.name"
@@ -29,8 +28,7 @@
           <!-- surname  -->
           <input-field
             v-if="!emailExits"
-            label="Your surname"
-            placeholder="Newman"
+            label="Surname"
             v-model="formData.surname"
             :error="validationErrors.surname"
           >
@@ -39,8 +37,7 @@
           <!-- Email  -->
           <validated-text-field
             type="email"
-            label="Your Email"
-            placeholder="user@example.com"
+            label="Email"
             v-model="formData.email"
             :validation="$v.formData.email"
             @blur="checkEmailExits"
@@ -51,8 +48,7 @@
           <validated-text-field
             v-if="!$auth.user"
             type="password"
-            label="Your Password"
-            placeholder="Password"
+            label="Password"
             v-model="formData.password"
             :validation="$v.formData.password"
             :error="validationErrors.password"
@@ -62,7 +58,6 @@
             v-if="!$auth.user && !emailExits"
             type="password"
             label="Confirm Password"
-            placeholder="Confirm Password"
             v-model="formData.password_confirmation"
             :validation="$v.formData.password_confirmation"
           ></validated-text-field>
@@ -71,8 +66,7 @@
           <validated-text-field
             v-if="!emailExits"
             type="tel"
-            label="Phone Number"
-            placeholder="+420 777 123 123"
+            label="Phone"
             v-model="formData.phone"
             :validation="$v.formData.phone"
             :error="validationErrors.phone"
@@ -82,7 +76,6 @@
           <validated-text-field
             v-if="!emailExits"
             label="Street"
-            placeholder="Street"
             v-model="formData.billingAddress.street"
             :validation="$v.formData.billingAddress.street"
             :error="validationErrors.street"
@@ -92,7 +85,6 @@
           <validated-text-field
             v-if="!emailExits"
             label="City"
-            placeholder="City"
             v-model="formData.billingAddress.city"
             :validation="$v.formData.billingAddress.city"
             :error="validationErrors.city"
@@ -101,7 +93,6 @@
           <validated-text-field
             v-if="!emailExits"
             label="Zip Code"
-            placeholder="760 06"
             v-model="formData.billingAddress.zipcode"
             :validation="$v.formData.billingAddress.zipcode"
             :error="validationErrors.zipcode"
@@ -112,6 +103,7 @@
             v-if="!emailExits"
             v-model="formData.billingAddress.country"
             label="Country/Region"
+            placeholder="Select"
             :options="countries"
             :validation="$v.formData.billingAddress.country"
           >

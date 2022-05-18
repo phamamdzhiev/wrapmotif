@@ -5,11 +5,10 @@
       <div class="row justify-content-center mt-3 mt-sm-5 mt-md-7 mt-lg-10">
         <div class="col-sm-10 col-md-7 col-lg-5">
           <h1 class="text-center text-uppercase text-6xl wrapping-title">
-            <span>OUR</span> <b>partners</b>
+<!--            <span>OUR</span> <b>partners</b>-->
+            {{ getCompanies.data.title }}
           </h1>
-          <p class="text-center pt-4 text-xl wrapping-subtitle">
-            Let’s look around! Find out where you can print the design and where
-            you can wrap your car, or as we recommend, both in one place.
+          <p class="text-center pt-4 text-xl wrapping-subtitle" v-html="getCompanies.data.description">
           </p>
         </div>
       </div>
@@ -116,10 +115,16 @@
 import blackPin from "@/static/images/icons/black-pin.png";
 import bluePin from "@/static/images/icons/blue-pin.png";
 import yellowPin from "@/static/images/icons/yellow-pin.png";
+import {mapGetters} from "vuex";
 
 export default {
   name: "wrapping-companies",
   components: {},
+  computed:{
+    ...mapGetters({
+      getCompanies: 'config/getCompanies',
+    })
+  },
   data() {
     return {
       companies: [],

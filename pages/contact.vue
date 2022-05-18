@@ -4,7 +4,7 @@
       <div class="col-sm-12 text-center">
         <h1 class="text-6xl contact-title"><b>Contact</b></h1>
         <p>
-          We’d love to hear from you!
+          Let us give your vehicle the visual appeal, class, and taste it deserves. <br> Please allow us to make your car wrap design a head-turner in town today! We would love to hear from you!
         </p>
       </div>
     </div>

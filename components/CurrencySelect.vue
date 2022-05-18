@@ -5,14 +5,20 @@
       class="currency-select no-caret font-semibold text-lg mb-1"
       @change="handleChange"
     >
-      <option value="EUR">€</option>
-      <option value="USD">$</option>
+      <option value="EUR">€ <span v-if="showText">EUR</span></option>
+      <option value="USD">$ <span v-if="showText">USD</span></option>
     </select>
   </div>
 </template>
 
 <script>
 export default {
+  props:{
+    showText:{
+      type: Boolean,
+      default: false,
+    }
+  },
   data() {
     return {
       selectedCurrency: null
@@ -35,6 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .currency-select {
   background: transparent;
   border: none;

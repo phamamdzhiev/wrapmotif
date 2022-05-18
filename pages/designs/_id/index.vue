@@ -142,7 +142,7 @@
                   <div class="col-6">
                     <div class="d-flex align-items-center">
                       <img src="~/static/images/black-favicon.png" alt="" style="height: 25px" />
-                      <b class="text-primary ml-2">Wrapmotif </b>
+                      <b class=" ml-2">WRAPMOTIF </b>
                     </div>
                   </div>
                   <div class="col-6 d-flex align-items-center">
@@ -150,7 +150,7 @@
                     <div>
                       <b-dropdown no-caret variant="link">
                         <template #button-content>
-                          <i class="fas fa-share-alt fa-lg"></i>
+                          <i class="fas fa-share-alt fa-lg text-black"></i>
                         </template>
                         <b-form-group class="bg-transparent m-0 p-0" style="padding-bottom: -8px">
                           <social-share :link="shareLink" :sharingProduct="product" :title="product.name"></social-share>
@@ -337,5 +337,8 @@ export default {
 .activeTab {
   border-bottom: 2px solid #c85007;
   color: #c85007;
+}
+.text-black{
+  color: black;
 }
 </style>

@@ -5,17 +5,17 @@
 
       <form @submit.prevent="register" class="mt-4">
         <!-- Name -->
-        <input-field label="Your Name" v-model="form.name" :error="validationErrors.name" :required="true"></input-field>
+        <input-field label="Name" v-model="form.name" :error="validationErrors.name" :required="true"></input-field>
         <!-- Surname -->
-        <input-field label="Your Surname" v-model="form.surname" :error="validationErrors.surname" :required="true"></input-field>
+        <input-field label="Surname" v-model="form.surname" :error="validationErrors.surname" :required="true"></input-field>
         <!-- Email -->
-        <input-field label="Your Email" type="email" v-model="form.email" :error="validationErrors.email" :required="true"></input-field>
+        <input-field label="Email" type="email" v-model="form.email" :error="validationErrors.email" :required="true"></input-field>
         <!-- Password -->
-        <input-field label="Your Password" type="password" v-model="form.password" :error="validationErrors.password" :required="true"></input-field>
+        <input-field label="Password" type="password" v-model="form.password" :error="validationErrors.password" :required="true"></input-field>
         <!-- Confirm Password -->
         <input-field label="Confirm Password" type="password" v-model="form.password_confirmation" :required="true"></input-field>
         <!-- Phone Number -->
-        <input-field label="Phone Number" type="number" v-model="form.phone" :error="validationErrors.phone" :required="true"></input-field>
+        <input-field label="Phone" type="number" v-model="form.phone" :error="validationErrors.phone" :required="true"></input-field>
         <!-- billingAddress -->
         <input-field label="Street" v-model="form.billingAddress.street" :error="validationErrors['billingAddress.street']" :required="true"></input-field>
         <!-- billingAddress -->
@@ -23,7 +23,7 @@
         <!-- ZIP code -->
         <input-field label="ZIP code" v-model="form.billingAddress.zipcode" :error="validationErrors['billingAddress.zipcode']" :required="true"></input-field>
         <!-- Country -->
-        <select-field label="Country/Region" v-model="form.billingAddress.country" :error="validationErrors['billingAddress.country']" :options="this.countries" :required="true"></select-field>
+        <select-field label="Country/Region" placeholder="Select" v-model="form.billingAddress.country" :error="validationErrors['billingAddress.country']" :options="this.countries" :required="true"></select-field>
 
         <!-- Optional Company details -->
         <div>
@@ -56,8 +56,8 @@
         <div class="mb-3 form-check">
           <input v-model="form.agree" type="checkbox" class="form-check-input" id="exampleCheck1" />
           <label class="form-check-label" for="exampleCheck1">
-            I have read the
-            <nuxt-link to="/terms-conditions" :class="{ 'text-dark': form.agree }">terms and conditions</nuxt-link> of the Wrapmotif and agree with them
+            I have read and agree to the
+            <nuxt-link to="/terms-conditions" :class="{ 'text-dark': form.agree }">terms and conditions</nuxt-link>
           </label>
         </div>
         <div class="d-flex justify-content-center">

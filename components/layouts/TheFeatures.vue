@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-fluid features">
+    <div class="container-fluid features" id="feature">
       <div class="container py-5">
         <!-- Welcome header -->
         <!-- <div class="text-center text-uppercase">

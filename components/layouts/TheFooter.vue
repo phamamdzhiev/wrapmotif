@@ -302,6 +302,8 @@ export default {
 
 .btn-blue{
   background: linear-gradient(#33A49B 0%, #00FFEB 75%);
+  border: 1px solid #2dafa5;
+
 }
 .text-footer-links {
   color: #b0b0b0 !important;
@@ -355,7 +357,7 @@ footer ul {
 .input-group-newsletter {
   width: 80%;
   border-radius: 40px;
-  border: 1px solid #e7e8ea;
+  //border: 1px solid #e7e8ea;
   background-color: #fff;
   margin-left: 0;
   padding-left: 5px;

@@ -15,12 +15,30 @@
   border-color: #c96130;
   background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
 }
+
+.bg-primary{
+  border-color: #c96130;
+  background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+}
 .btn-primary:hover{
   border: 1px solid #c85007 !important;
-  background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+  //display: inline-block !important;
+  background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+// Gradient text
+.text-primary{
+  display: inline-block !important;
+  background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+button.btn-primary:hover{
+  background: transparent;
+  -webkit-text-fill-color: #c96130;
+}
+
 .btn-primary.section-btn:hover{
   color: #FFFFFF !important;
 }
@@ -44,7 +62,9 @@
 }
 
 .btn-slider:hover {
-  background-color: $primary;
+  //background-color: $primary;
+  border-color: #c96130;
+  background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
   color: white;
 }
 

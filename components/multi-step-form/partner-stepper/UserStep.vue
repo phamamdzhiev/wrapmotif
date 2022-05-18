@@ -4,19 +4,19 @@
 			<div class="col-md-8 col-xl-6 mx-auto">
 				<form @submit.prevent="handleSubmit">
 					<!-- Name  -->
-					<validated-text-field v-if="!emailExits" label="Your name" placeholder="John Doe" v-model="form.name" :validation="$v.form.name" :error="validationErrors.name"></validated-text-field>
+					<validated-text-field v-if="!emailExits" label="Name" v-model="form.name" :validation="$v.form.name" :error="validationErrors.name"></validated-text-field>
 
 					<!-- surname  -->
-					<input-field v-if="!emailExits" label="Your surname" placeholder="Newman" v-model="form.surname" :error="validationErrors.surname">
+					<input-field v-if="!emailExits" label="Surname" v-model="form.surname" :error="validationErrors.surname">
 					</input-field>
 					<!-- Email  -->
-					<validated-text-field type="email" label="Your Email" placeholder="user@example.com" v-model="form.email" :validation="$v.form.email" @blur="checkEmailExits" :error="validationErrors.email"></validated-text-field>
+					<validated-text-field type="email" label="Email" v-model="form.email" :validation="$v.form.email" @blur="checkEmailExits" :error="validationErrors.email"></validated-text-field>
 					<!-- Phone -->
-					<validated-text-field v-if="!emailExits" type="tel" label="Phone" placeholder="e.g. +420 777 123" v-model="form.phone" :validation="$v.form.phone" :error="validationErrors.phone"></validated-text-field>
+					<validated-text-field v-if="!emailExits" type="tel" label="Phone" v-model="form.phone" :validation="$v.form.phone" :error="validationErrors.phone"></validated-text-field>
 					<!-- Password -->
-					<validated-text-field v-if="!$auth.user" type="password" label="Your Password" placeholder="Password" v-model="form.password" :validation="$v.form.password" :error="validationErrors.password"></validated-text-field>
+					<validated-text-field v-if="!$auth.user" type="password" label="Password" v-model="form.password" :validation="$v.form.password" :error="validationErrors.password"></validated-text-field>
 					<!-- Confirm -->
-					<validated-text-field v-if="!$auth.user && !emailExits" type="password" label="Confirm Password" placeholder="Confirm Password" v-model="form.password_confirmation" :validation="$v.form.password_confirmation"></validated-text-field>
+					<validated-text-field v-if="!$auth.user && !emailExits" type="password" label="Confirm Password" v-model="form.password_confirmation" :validation="$v.form.password_confirmation"></validated-text-field>
 
 					<!-- Login -->
 					<button v-if="emailExits && !$auth.user" class="btn btn-primary px-5 mt-4 d-block mx-auto" type="submit" :disabled="$v.form.password.$anyError">

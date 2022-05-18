@@ -1,5 +1,5 @@
 <template>
-	<div class="container-fluid mb-5" id="multi_step-form">
+	<div class="container-fluid mb-5 mt-4" id="multi_step-form">
 		<!-- Step List -->
 		<div class="step-wrapper">
 			<div :style="{ width: stepWidth }" class="d-flex justify-content-between step-ul">

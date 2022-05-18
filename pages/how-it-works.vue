@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="row px-1 justify-content-lg-start">
-        <div class="col-md-10 col-lg-8 text-center offset-md-1 offset-lg-2">
+        <div class="col-md-10 col-lg-8  offset-md-1 ">
           <img :src="getHowItWorks.primaryMediaUrl" class="img-fluid w-75" />
         </div>
       </div>

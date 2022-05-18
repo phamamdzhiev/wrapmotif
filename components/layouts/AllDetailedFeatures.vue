@@ -132,11 +132,13 @@ export default {
 }
 
 .text-section {
-  min-height: 450px;
+  //min-height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .grid-image {

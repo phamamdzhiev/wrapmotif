@@ -30,7 +30,7 @@
       <!-- icons -->
       <div class="ml-auto d-flex align-items-center justify-content-end">
         <!-- Currency icon -->
-        <div class="nav-icon mr-2 " style="cursor: pointer;">
+        <div class="nav-icon mr-2 d-desktop " style="cursor: pointer;">
           <currency-select></currency-select>
         </div>
 
@@ -75,17 +75,19 @@
         <nuxt-link class="nav-icon" to="/login" v-else>
           <i class="fas fa-user"></i>
         </nuxt-link>
+        <button class="btn primary d-lg-none"><span :class="'navbar-toggle-icon '" @click="showMenu"></span></button>
       </div>
     </nav>
 
     <!-- Mobile Nav Items -->
-    <div class="navbar bg-white d-lg-none shadow-sm" style="height: 60px">
+
+    <div class="navbar bg-white  shadow-sm" style="height: 60px" v-show="false">
       <ul
         class="nav-menu d-flex p-0 mb-0 justify-content-around h-100 align-items-center w-100"
       >
         <li class=" mx-lg-4 ">
           <nuxt-link class="nav-link text-nowrap font-semibold" to="/designs"
-            >CHOOSE DESIGN</nuxt-link
+            >UNIVERSAL DESIGNS</nuxt-link
           >
         </li>
 
@@ -98,12 +100,42 @@
         </li>
         <li class=" mx-lg-4 ">
           <nuxt-link class="nav-link text-nowrap font-semibold" to="/partner">
-            <span class="d-none d-sm-inline">BECOME A PARTNER</span>
+            <span class="d-none d-sm-inline">BECOME A PARTNER </span>
             <span class="d-sm-none">PARTNERS </span>
           </nuxt-link>
         </li>
       </ul>
     </div>
+    <transition name="fade">
+      <div class="side-menu" v-show="show">
+        <ul
+          class=""
+        >
+          <li class="pt-2">
+            <nuxt-link class="side-link text-nowrap font-semibold" to="/designs">UNIVERSAL DESIGNS</nuxt-link>
+          </li>
+
+          <li class="pt-2">
+            <nuxt-link
+              class="side-link text-nowrap font-semibold"
+              to="/custom-design">CUSTOM DESIGN</nuxt-link
+            >
+          </li>
+          <li class="pt-2">
+            <nuxt-link class="side-link text-nowrap font-semibold" to="/partner">
+              <span class="">BECOME A PARTNER </span>
+            </nuxt-link>
+          </li>
+          <li class="pt-2">
+            <!-- Currency icon -->
+            <div class="nav-icon mr-2" style="cursor: pointer;">
+              <currency-select :label="Currency" :showText="true"></currency-select>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </transition>
+
   </div>
 </template>
 
@@ -113,6 +145,11 @@ import { mapGetters } from "vuex";
 import CurrencySelect from "../CurrencySelect.vue";
 export default {
   name: "TheHeaderComponent",
+  data(){
+    return {
+      show: false
+    };
+  },
   props: {
     type: {
       type: String,
@@ -141,12 +178,71 @@ export default {
     async logout() {
       await this.$auth.logout();
       this.$router.push("/");
+    },
+    showMenu(){
+      this.show = !this.show;
     }
   }
 };
 </script>
 
 <style lang="scss">
+
+@media only screen and (max-width: 991px) {
+  .navbar{
+    padding-right: 0.1rem;
+  }
+  .d-desktop {
+    display: none!important;
+  }
+}
+.navbar-toggle-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat 50%;
+  background-size: 100% 100%;
+}
+
+
+.navbar-toggle-icon {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.primary{
+  //background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+  color: #919191 !important;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
+.side-menu{
+  position: absolute;
+  width: 100% !important;
+  background: rgba(0, 0, 0, 1);
+  z-index: 99;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+.side-menu li a{
+  color: #919191 !important;
+
+}
+.side-menu li{
+  text-align: right;
+  list-style: none;
+}
+.navbar-button{
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  z-index: 99;
+
+}
 .navbar-menu {
   list-style: none;
 }

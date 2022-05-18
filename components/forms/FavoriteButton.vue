@@ -3,9 +3,9 @@
     <button title="Favorite" class="border-0 bg-transparent px-0">
       <i
         v-show="favourite == false"
-        class="fas fa-star fa-lg fa-outline-2x text-primary"
+        class="fas fa-star fa-lg fa-outline-2x"
       ></i>
-      <i v-show="favourite == true" class="fas fa-star fa-lg text-primary"></i>
+      <i v-show="favourite == true" class="fas fa-star fa-lg "></i>
     </button>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d-flex w-100">
-      <nuxt-link
+<!--      <nuxt-link
         to="/profile"
         class="text-xl text-uppercase text-center py-3 flex-grow-1"
       >
@@ -13,7 +13,7 @@
         v-if="$auth.user.company"
       >
         Company
-      </nuxt-link>
+      </nuxt-link>-->
     </div>
     <nuxt-child></nuxt-child>
   </div>
