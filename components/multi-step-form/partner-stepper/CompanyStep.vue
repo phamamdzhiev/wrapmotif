@@ -28,7 +28,7 @@
         <validated-text-field label="Zip Code" v-model="form.billingAddress.zipcode" :validation="$v.form.billingAddress.zipcode" :error="validationErrors.zipcode"></validated-text-field>
 
         <!-- Country/Region -->
-        <validated-select-field v-model="form.billingAddress.country" label="Country/Region" :options="countries" :validation="$v.form.billingAddress.country">
+        <validated-select-field v-model="form.billingAddress.country" label="Country/Region" placeholder="Select" :options="countries" :validation="$v.form.billingAddress.country">
         </validated-select-field>
 
         <!-- EU VAT registration (optional) -->

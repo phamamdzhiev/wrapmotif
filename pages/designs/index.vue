@@ -110,7 +110,7 @@
             <product-card class="grid-item" v-for="(prod, i) in products" :key="i" :item="prod"></product-card>
           </div>
           <client-only>
-            <infinite-loading @distance="10" @infinite="handleLoadMore" :identifier="infiniteId">
+            <infinite-loading @distance="10" @infinite="handleLoadMore"  :identifier="infiniteId">
               <span slot="no-more"></span>
             </infinite-loading>
           </client-only>
@@ -158,15 +158,10 @@ export default {
   watch: {
     filters: {
       handler: function(newValue, oldValue) {
-        if(newValue.search !== ''){
-          this.filters.search = newValue.search;
-        }else{
-          this.filters.search = null;
-        }
-
-        this.products = [];
-        this.infiniteId++;
         this.page = 1;
+        this.products = [];
+        // this.infiniteId++;
+        this.handleFilter();
       },
       deep: true
     }
@@ -197,16 +192,28 @@ export default {
 
       return queryString;
     },
+    handleFilter() {
+      this.products = [];
+      this.$axios
+        .get(`/products?page=${this.page}${this.getQueries()}`)
+        .then(res => {
+          const result = res.data.data;
+          this.products = [];
+
+          if (result.length) {
+            result.forEach(value => {
+              this.products.push(value);
+            });
+            // this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
+          }
+        });
+    },
     handleLoadMore($state) {
       this.$axios
         .get(`/products?page=${this.page}${this.getQueries()}`)
         .then(res => {
           const result = res.data.data;
           if (result.length) {
-            if(this.filters.search !== '' || this.filters.colors.length || this.filters.categories.length || this.filters.tags.length){
-              this.products = [];
-            }
-
             result.forEach(value => {
               this.products.push(value);
             });
