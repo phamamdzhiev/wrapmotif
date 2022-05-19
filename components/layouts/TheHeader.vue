@@ -128,8 +128,8 @@
           </li>
           <li class="pt-2">
             <!-- Currency icon -->
-            <div class="nav-icon mr-2" style="cursor: pointer;">
-              <currency-select label="Currency" :showText="true"></currency-select>
+            <div class="nav-icon mr-2" style="cursor: pointer;" >
+              <currency-select label="Currency" :showText="true" @click="show = false"></currency-select>
             </div>
           </li>
         </ul>
@@ -230,8 +230,12 @@ export default {
 }
 .side-menu li a{
   color: #919191 !important;
-
 }
+
+.side-menu li a:hover{
+  color: #dedddd !important;
+}
+
 .side-menu li{
   text-align: right;
   list-style: none;

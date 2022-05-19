@@ -48,7 +48,7 @@ export default {
 		// Select placeholder
 		placeholder: {
 			type: String,
-			default: "Select One",
+			default: "Select",
 		},
 
 		// Default selected value

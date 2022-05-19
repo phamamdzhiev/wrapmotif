@@ -158,8 +158,14 @@ export default {
   watch: {
     filters: {
       handler: function(newValue, oldValue) {
-        this.infiniteId++;
+        if(newValue.search !== ''){
+          this.filters.search = newValue.search;
+        }else{
+          this.filters.search = null;
+        }
+
         this.products = [];
+        this.infiniteId++;
         this.page = 1;
       },
       deep: true
@@ -197,9 +203,10 @@ export default {
         .then(res => {
           const result = res.data.data;
           if (result.length) {
-            if(this.filters.search !== "" || this.filters.colors.length || this.filters.categories.length || this.filters.tags.length){
+            if(this.filters.search !== '' || this.filters.colors.length || this.filters.categories.length || this.filters.tags.length){
               this.products = [];
             }
+
             result.forEach(value => {
               this.products.push(value);
             });
@@ -319,8 +326,11 @@ export default {
 }
 
 @media only screen and (max-width: 500px) {
-  .hero-slider {
+  /*.hero-slider {
     display: none;
+  }*/
+  .hero-slider h2{
+    font-size: 32px;
   }
 }
 </style>

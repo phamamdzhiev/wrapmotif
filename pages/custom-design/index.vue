@@ -145,8 +145,12 @@ export default {
 }
 
 @media only screen and (max-width: 500px) {
-  .hero-slider {
+  /*.hero-slider {
     display: none;
+  }*/
+
+  .hero-slider h2{
+    font-size: 32px;
   }
 }
 </style>

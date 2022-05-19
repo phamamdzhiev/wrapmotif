@@ -116,7 +116,7 @@
                   <div class="col-4 text-right subtotal-price">
                     {{
                       previewDesignAmount
-                        | currency(
+                        | currencyCart(
                           $store.state.currency.selectedCurrency,
                           $store.state.currency.exchangeRate
                         )
@@ -125,16 +125,16 @@
                 </div>
 
                 <div class="row mt-3">
-                  <div class="col-8">VAT MOSS</div>
+                  <div class="col-8">VAT ({{ vatAmount }}
+                    {{ vatType }})</div>
                   <div class="col-4 text-right mossvat-price">
                     <span v-if="vatType == '%'">
-                      {{ vatAmount }}
-                      {{ vatType }}
+                      {{getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
                     </span>
                     <span v-else>
                       {{
                         vatAmount
-                          | currency(
+                          | currencyCart(
                             $store.state.currency.selectedCurrency,
                             $store.state.currency.exchangeRate
                           )

@@ -97,8 +97,8 @@ export default {
 .down-icon{
 
   display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
+  width: 2.5em;
+  height: 2.5em;
   vertical-align: middle;
   content: "";
   background: no-repeat 50%;
