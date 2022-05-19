@@ -28,7 +28,7 @@
               <td>{{ order.customerGrandTotalFormatted }}</td>
               <td>
                 <button @click.prevent="download(order.id)" class="btn btn-download">
-                  <i class="fas fa-download"></i>
+                  <i class="fas fa-download text-primary"></i>
                 </button>
               </td>
               <td>
