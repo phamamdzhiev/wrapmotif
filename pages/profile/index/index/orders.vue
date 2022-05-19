@@ -33,7 +33,7 @@
               </td>
               <td>
                 <div>
-                  <i @click="downloadPdf(order.id)" class="fas fa-file-download btn border-0 text-primary"></i>
+                  <i @click="downloadPdf(order.id)" class="fas fa-file-download btn border-0 text-warning"></i>
                 </div>
 
                 <!-- template -->
@@ -98,11 +98,23 @@ export default {
         responseType: "blob"
       })
         .then(response => {
+
+          let filename = `order-${id}.zip`;
+          //  omit the code
+          const disposition = response.headers["content-disposition"];
+          const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+          const matches = filenameRegex.exec(disposition);
+          if (matches != null && matches[1]) {
+            filename = matches[1].replace(/['"]/g, '');
+          }
+          console.log(filename);
+
           var fileURL = window.URL.createObjectURL(new Blob([response.data]));
           var fileLink = document.createElement("a");
 
+
           fileLink.href = fileURL;
-          fileLink.setAttribute("download", `order-${id}.zip`);
+          fileLink.setAttribute("download", filename);
           document.body.appendChild(fileLink);
           fileLink.click();
         })

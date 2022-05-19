@@ -20,7 +20,7 @@
 
 			<div class="col-12">
 				<keep-alive>
-					<component :is="stepData[activeIndex].component" :increment="increment" :decrement="decrement" :adjustWindow="adjustWindow" />
+					<component :is="stepData[activeIndex].component" :increment="increment" :showBar="showBar" :decrement="decrement" :adjustWindow="adjustWindow" />
 				</keep-alive>
 			</div>
 		</div>
@@ -32,11 +32,13 @@ export default {
 	data() {
 		return {
 			activeIndex: 0,
-      barShow: false,
 		};
 	},
 	computed: {},
 	methods: {
+    showBar(){
+      this.barShow = true;
+    },
 		increment() {
 			this.activeIndex++;
 		},
@@ -52,7 +54,10 @@ export default {
 			});
 		},
 	},
-	watch: {
+  mounted() {
+    console.log(this.activeIndex)
+  },
+  watch: {
 		activeIndex() {
       if(this.activeIndex > 0){
         this.barShow = true;
@@ -67,6 +72,10 @@ export default {
 			type: Array,
 			required: true,
 		},
+    barShow: {
+      type: Boolean,
+      default: false,
+    },
 		stepWidth: {
 			type: String,
 			required: true,

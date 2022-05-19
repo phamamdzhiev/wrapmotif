@@ -19,7 +19,7 @@
 
 			<!-- Partner step from -->
 			<div class="mt-5">
-				<multi-step-form stepWidth="210px" :activeLineWidth="activeLineWidth" :stepData="stepData" :offsetTop="160"></multi-step-form>
+				<multi-step-form stepWidth="210px" :activeLineWidth="activeLineWidth" :barShow="true" :stepData="stepData" :offsetTop="160"></multi-step-form>
 			</div>
 		</div>
 	</div>

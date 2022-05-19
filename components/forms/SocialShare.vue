@@ -10,7 +10,7 @@
       :title="title"
       :description="sharingProduct.note"
       :quote="sharingProduct.description"
-      class="py-2 px-3 text-white rounded-lg d-block mb-1 mx-2"
+      class="py-2 px-3 text-primary rounded-lg d-block mb-1 mx-2 "
     >
       <i :class="network.icon"></i>
       <span class="ml-1">{{ network.name }}</span>

@@ -312,6 +312,7 @@ export default {
       }
     },
     orderHere() {
+      this.showBar();
       const user = this.$auth.user;
       if (user) this.goNext();
       else this.collpsedForm = false;
@@ -328,6 +329,9 @@ export default {
   },
   props: {
     increment: {
+      type: Function
+    },
+    showBar: {
       type: Function
     },
     adjustWindow: {

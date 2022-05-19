@@ -40,7 +40,7 @@
 
 							<td>
 								<a href="javascript:void(0)" @click.prevent="download(design.id)">
-									<i class="fas fa-download"></i>
+									<i class="fas fa-download text-primary"></i>
 								</a>
 							</td>
 							<td>{{design.totalDownload}}</td>
@@ -49,7 +49,7 @@
 								<div>
 									<b-dropdown no-caret variant="link">
 										<template #button-content>
-											<i class="fas fa-share-alt fa-lg"></i>
+											<i class="fas fa-share-alt fa-lg gradient"></i>
 										</template>
 										<b-form-group class="bg-transparent m-0 p-0" style="padding-bottom: -8px">
 											<social-share :link="shareLink" :sharingProduct="design" :title="design.product.name"></social-share>
@@ -138,5 +138,16 @@ export default {
 <style lang="scss">
 .table td {
 	vertical-align: middle;
+}
+.text-primary{
+  background-image: linear-gradient(#6F3A1F 0%, #DC7B54 90%) !important;
+}
+
+
+.gradient{
+  background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 20px;
 }
 </style>
