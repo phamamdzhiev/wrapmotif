@@ -75,7 +75,7 @@
         <nuxt-link class="nav-icon" to="/login" v-else>
           <i class="fas fa-user"></i>
         </nuxt-link>
-        <button class="btn primary d-lg-none"><span :class="'navbar-toggle-icon '" @click="showMenu"></span></button>
+        <button class="btn primary d-lg-none"><span :class="'navbar-toggle-icon '" @click="showMenu" id="mob-menu"></span></button>
       </div>
     </nav>
 
@@ -106,8 +106,10 @@
         </li>
       </ul>
     </div>
+
+    <!--  Dropdown menu for mobile  -->
     <transition name="fade">
-      <div class="side-menu" v-show="show">
+      <div class="side-menu" v-show="show" >
         <ul
           class=""
         >
@@ -129,7 +131,7 @@
           <li class="pt-2">
             <!-- Currency icon -->
             <div class="nav-icon mr-2" style="cursor: pointer;" >
-              <currency-select label="Currency" :showText="true" @click="show = false"></currency-select>
+              <currency-select label="Currency" :closeMenu="closeMenu" :showText="true" @click="show = false"></currency-select>
             </div>
           </li>
         </ul>
@@ -175,13 +177,30 @@ export default {
     })
   },
   methods: {
+    closeMenu(){
+      console.log('as')
+      this.show = false;
+    },
     async logout() {
       await this.$auth.logout();
       this.$router.push("/");
     },
     showMenu(){
       this.show = !this.show;
+    },
+    closeIfClickedOutside(event) {
+      console.log(event.target.id)
+      if (!document.getElementById('mob-menu').contains(event.target)) {
+        if( event.target.id != 'currency-change'){
+          this.show = false;
+        }
+
+        document.removeEventListener('click', this.closeIfClickedOutside);
+      }
     }
+  },
+  mounted() {
+    window.addEventListener('click', this.closeIfClickedOutside);
   }
 };
 </script>
@@ -189,9 +208,6 @@ export default {
 <style lang="scss">
 
 @media only screen and (max-width: 991px) {
-  .navbar{
-    padding-right: 0.1rem;
-  }
   .d-desktop {
     display: none!important;
   }

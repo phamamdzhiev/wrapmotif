@@ -177,7 +177,7 @@
                     <div class="custom-control custom-checkbox">
                       <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input" />
                       <label for="agree1" class="custom-control-label user-select-none">I have read the
-                        <a href="/terms-conditions#general-terms" target="_blank" title="Wrapmotif Terms and Conditions">terms and conditions</a>
+                        <a href="/terms-conditions#general-terms" target="_blank" class="text-primary" title="Wrapmotif Terms and Conditions">terms and conditions</a>
                         of the Wrapmotif and agree with them</label>
                     </div>
                   </div>

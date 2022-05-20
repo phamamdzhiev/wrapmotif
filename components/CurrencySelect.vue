@@ -5,6 +5,7 @@
       class="currency-select no-caret font-semibold text-lg mb-1"
       @change="handleChange"
       :style="{ color: showText ? '#919191 !important': ''}"
+      id="currency-change"
     >
       <option value="EUR">€ <span v-if="showText">EUR</span></option>
       <option value="USD">$ <span v-if="showText">USD</span></option>
@@ -18,7 +19,11 @@ export default {
     showText:{
       type: Boolean,
       default: false,
-    }
+    },
+    closeMenu:{
+      type: Function,
+      default: () => 1,
+    },
   },
   data() {
     return {
@@ -27,6 +32,9 @@ export default {
   },
   methods: {
     handleChange() {
+      if(this.showText){
+        this.closeMenu()
+      }
       this.$store.dispatch(
         "currency/setSelectedCurrency",
         this.selectedCurrency

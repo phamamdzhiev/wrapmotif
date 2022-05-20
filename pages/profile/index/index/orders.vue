@@ -107,7 +107,6 @@ export default {
           if (matches != null && matches[1]) {
             filename = matches[1].replace(/['"]/g, '');
           }
-          console.log(filename);
 
           var fileURL = window.URL.createObjectURL(new Blob([response.data]));
           var fileLink = document.createElement("a");

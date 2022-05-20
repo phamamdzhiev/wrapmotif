@@ -92,13 +92,21 @@ export default {
         responseType: "blob"
       })
         .then(response => {
+          let filename = `order-${this.$route.params.id}.zip`;
           var fileURL = window.URL.createObjectURL(new Blob([response.data]));
           var fileLink = document.createElement("a");
+
+          const disposition = response.headers["content-disposition"];
+          const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+          const matches = filenameRegex.exec(disposition);
+          if (matches != null && matches[1]) {
+            filename = matches[1].replace(/['"]/g, '');
+          }
 
           fileLink.href = fileURL;
           fileLink.setAttribute(
             "download",
-            `order-${this.$route.params.id}.zip`
+            filename
           );
           document.body.appendChild(fileLink);
           fileLink.click();
