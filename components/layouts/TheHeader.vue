@@ -208,6 +208,9 @@ export default {
 <style lang="scss">
 
 @media only screen and (max-width: 991px) {
+  /*.navbar{
+    padding-right: 0.1rem;
+  }*/
   .d-desktop {
     display: none!important;
   }

@@ -9,10 +9,10 @@
 				<h3 class="font-semibold profile-tab-header">My designs</h3>
 
 				<div class="row d-flex justify-content-center my-3">
-					<div class="text-primary col-lg-6 text-center">
-						<span>
-							Each universal design has a license for a one-time apply. Buy an additional license for each vehicle you want to wrap. The download link expires after 3 downloads.
-						</span>
+					<div class=" col-lg-6 text-center">
+						<span class="text-primary">
+							Each universal design has a license for a one-time apply.
+						</span> <span class="text-primary">Buy an additional license for each vehicle you want to wrap.</span> <span class="text-primary">The download link expires after 3 downloads.</span>
 					</div>
 				</div>
 				<table class="table table-borderless table-responsive-sm">
