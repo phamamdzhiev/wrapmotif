@@ -181,6 +181,11 @@ label.bold {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.wrapper input#color-id-6 ~ .checkmark:after {
+  border-color: black;
+}
+
 .wrapper .checkmark.bigBox:after {
   left: 11px;
   top: 5px;
