@@ -38,6 +38,9 @@ export const getters = {
   getPartnerPageContent(state) {
     return state.appearances?.find(item => item.name == "partner_page");
   },
+  getAboutUsPageContent(state) {
+    return state.appearances?.find(item => item.name == "about_us_page");
+  },
   getTermsPageContent(state) {
     return state.appearances?.find(item => item.name == "terms_conditions");
   },
