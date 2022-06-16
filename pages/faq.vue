@@ -29,7 +29,7 @@
 
             <b-collapse :id="`customerId${customerFaq.id}`">
               <b-card class="border-0">
-                {{ customerFaq.answer }}
+                <div v-html="customerFaq.answer"></div>
               </b-card>
             </b-collapse>
           </div>
@@ -58,7 +58,7 @@
 
             <b-collapse :id="`companyId${companyFaq.id}`">
               <b-card class="border-0">
-                {{ companyFaq.answer }}
+                <div v-html="companyFaq.answer"></div>
               </b-card>
             </b-collapse>
           </div>
