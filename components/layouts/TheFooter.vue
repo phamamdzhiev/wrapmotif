@@ -9,6 +9,13 @@
               <ul>
                 <li>
                   <nuxt-link
+                    to="/about-us"
+                    title="Wrapmotif About us"
+                    class="text-footer-links text-nowrap"
+                  >About us</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link
                     to="/designs"
                     title="Wrapmotif designs"
                     class="text-footer-links text-nowrap"
