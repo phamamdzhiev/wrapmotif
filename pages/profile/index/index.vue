@@ -48,7 +48,6 @@ export default {};
   -webkit-background-clip: text!important;
   -webkit-text-fill-color: transparent!important;
 }
-}
 
 .nav-tabs {
 	border-bottom: 1px solid #dee2e6;
