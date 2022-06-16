@@ -117,10 +117,11 @@ export default {
         type: "slide",
         rewind: true,
         width: 0,
+        height: '100%',
         gap: "1rem",
         pagination: false,
-        fixedWidth: 200,
-        fixedHeight: 115,
+        fixedWidth: 240,
+        fixedHeight: 155,
         cover: true,
         focus: "center",
         isNavigation: true,
@@ -146,7 +147,7 @@ export default {
   text-shadow: 2px 2px 4px #000;
 }
 .splide__progress__bar {
-  height: 0px;
+  height: 0;
 }
 
 .secondarySplide {

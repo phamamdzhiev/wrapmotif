@@ -39,7 +39,7 @@
       <div class="contain-gallery container-fluid mb-4 w-100">
         <div class="row">
           <!-- thumbnail -->
-          <div class="col-md-8 col-xl-9 w-100 p-0" style="background: #000">
+          <div class="col-md-8 col-xl-9 w-100 p-0">
             <div class="w-100">
               <div>
                 <client-only>
