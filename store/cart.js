@@ -35,11 +35,11 @@ export const mutations = {
     localStorage.setItem("cart", JSON.stringify(state.cart));
   },
 
-  REMOVE_FROM_CART(state, {cardID, url}) {
+  REMOVE_FROM_CART(state, {cartID, url}) {
     console.log('CART STATE', state.cart);
-    console.log('CART ID', cardID);
+    console.log('CART ID', cartID);
     let index = state.cart.findIndex((e) => {
-      console.log(e, '---' ,e.id, '----' , cardID);
+      console.log(e, '---' ,e.id, '----' , cartID);
     });
 
     console.log('Cart INDEX', index);
