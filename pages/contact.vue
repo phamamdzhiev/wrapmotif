@@ -24,19 +24,19 @@
               <input-field
                 name="email"
                 type="email"
-                placeholder="E-mail"
+                placeholder="Email"
                 v-model="form.email"
                 :error="validationErrors.email"
               ></input-field>
               <input-field
                 name="Topic"
-                placeholder="Topic"
+                placeholder="Subject"
                 v-model="form.subject"
                 :error="validationErrors.subject"
               ></input-field>
               <text-field
                 rows="10"
-                placeholder="Your Text"
+                placeholder="Message"
                 v-model="form.message"
                 :error="validationErrors.message"
               ></text-field>
