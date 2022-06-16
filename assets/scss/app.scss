@@ -30,6 +30,33 @@
   --animate-repeat: 1;
 }
 
+html {
+  /* width */
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #181818;
+    border-radius: 20px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #DC7B54;
+    border-radius: 20px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: darken(#DC7B54, 5%);
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: #DC7B54 #181818;
+}
+
 a[rel="noopener noreferrer"],
 a.faq-link {
   background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
