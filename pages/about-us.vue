@@ -1,7 +1,27 @@
 <template>
   <div>
-    <h1>About us page (content to be uploaded)</h1>
-    <h3>THE TITLE IS -> {{ getAboutUsPageContent.data.title }}</h3>
+    <div class="page-wrapper">
+      <!-- Header Image -->
+      <div class="container-fluid header-image"
+           :style="{ '--colour': 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + getAboutUsPageContent.secondaryMediaUrl + ')' }"
+      >
+        <div class="container light-section" style="min-height: 530px; height: 100%">
+          <div class="row justify-content-center align-items-center h-100">
+            <div class="col-lg-4 text-center text-white">
+              <h1 class="text-uppercase mb-3 text-6xl about-title">
+                <b>{{ getAboutUsPageContent.data.title }}</b>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- About us page content -->
+      <div class="mt-5">
+        <div v-html="getAboutUsPageContent.data.content"></div>
+      </div>
+      <img :src="getAboutUsPageContent.data.primaryMediaUrl" class="img-fluid w-75" alt="About us secondary image">
+      {{JSON.stringify(getAboutUsPageContent.data)}}
+    </div>
   </div>
 </template>
 
@@ -9,15 +29,45 @@
 import {mapGetters} from "vuex";
 
 export default {
-  name: "about-us",
+  head() {
+    return {
+      title: "About Us",
+    };
+  },
   computed: {
     ...mapGetters({
       getAboutUsPageContent: "config/getAboutUsPageContent"
     })
   },
-}
+  mounted() {
+    this.isLoading = false;
+  },
+};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.header-image {
+  background-image: var(--colour);
+  background-color: #000;
+  background-repeat: no-repeat;
+  height: 507px;
+  background-position: 50%;
+  background-size: cover;
+}
 
+.stepper-box {
+  box-shadow: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .about-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .about-title {
+    font-size: 2.2rem;
+  }
+}
 </style>
