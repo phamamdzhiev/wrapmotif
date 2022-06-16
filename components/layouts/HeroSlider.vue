@@ -117,7 +117,6 @@ export default {
         type: "slide",
         rewind: true,
         width: 0,
-        height: '100%',
         gap: "1rem",
         pagination: false,
         fixedWidth: 240,
