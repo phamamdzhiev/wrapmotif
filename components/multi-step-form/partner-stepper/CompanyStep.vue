@@ -12,7 +12,7 @@
         <validated-text-field type="email" label="Company Email" v-model="form.companyEmail" :validation="$v.form.companyEmail" :error="validationErrors.companyEmail"></validated-text-field>
 
         <!-- Website -->
-        <input-field type="url" label="Website" v-model="form.companyWebsite" placeholder="http://www.example.com" :error="validationErrors.companyWebsite"></input-field>
+        <input-field type="url" label="Website" v-model="form.companyWebsite" placeholder="https://www.yourwebsite.com" :error="validationErrors.companyWebsite"></input-field>
 
         <!-- Services -->
         <validated-select-field v-model="form.service" label="Services" :options="allServices" :validation="$v.form.service" track="value" placeholder="Select">
