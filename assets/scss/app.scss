@@ -30,7 +30,7 @@
   --animate-repeat: 1;
 }
 
-.wrapper a {
+a[rel="noopener noreferrer"] {
   background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
