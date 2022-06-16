@@ -42,15 +42,15 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.nuxt-link-active {
-  color: black !important;
+.nuxt-link-active,
+.nuxt-link-exact-active {
+  background-image: linear-gradient(#6F3A1F 0%, #DC7B54 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nuxt-link-exact-active {
   border-bottom: 3px solid var(--primary) !important;
-  background-image: linear-gradient(#6F3A1F 0%, #DC7B54 55%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .nav-tabs {
