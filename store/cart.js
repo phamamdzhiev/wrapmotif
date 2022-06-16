@@ -36,6 +36,7 @@ export const mutations = {
     },
 
     REMOVE_FROM_CART(state, item) {
+        console.log('CardID payload item', item);
         let index = state.cart.indexOf(item);
         state.cart.splice(index, 1);
     },
@@ -59,7 +60,6 @@ export const actions = {
     },
 
     removeFromCart({ commit }, payload) {
-      console.log('Cart payload', payload);
         commit("REMOVE_FROM_CART", payload);
         commit("SAVE_DATA", payload);
     },

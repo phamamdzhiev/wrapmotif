@@ -64,7 +64,7 @@
                     </h4>
                   </div>
                   <div class="d-flex justify-content-end align-items-end h-100 pb-sm-4 pb-5">
-                    <a @click="removeFromCart" class="btn p-0"><i aria-hidden="true" class="fa fa-trash text-dark-gray"></i></a>
+                    <a @click="removeFromCart(cartItem.id)" class="btn p-0"><i aria-hidden="true" class="fa fa-trash text-dark-gray"></i></a>
                   </div>
                 </div>
               </div>
@@ -420,8 +420,8 @@ export default {
       }
     },
 
-    removeFromCart() {
-      this.$store.dispatch("cart/removeFromCart", { url: "/cart" });
+    removeFromCart(cartID) {
+      this.$store.dispatch("cart/removeFromCart", { cartID: cartID, url: "/cart" });
     },
 
     hideRegisterModal() {
