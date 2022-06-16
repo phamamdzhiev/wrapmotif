@@ -48,7 +48,7 @@ export default {};
 
 .nuxt-link-exact-active {
   border-bottom: 3px solid var(--primary) !important;
-  background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+  background-image: linear-gradient(#6F3A1F 0%, #DC7B54 55%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
