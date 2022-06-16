@@ -35,9 +35,8 @@ export const mutations = {
         localStorage.setItem("cart", JSON.stringify(state.cart));
     },
 
-    REMOVE_FROM_CART(state, item) {
-        console.log('CardID payload item', item);
-        let index = state.cart.indexOf(item);
+    REMOVE_FROM_CART(state, {cardID, url}) {
+        let index = state.cart.indexOf(cardID);
         state.cart.splice(index, 1);
     },
 
