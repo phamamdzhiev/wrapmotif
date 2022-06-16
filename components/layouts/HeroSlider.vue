@@ -4,7 +4,7 @@
     <splide :options="primaryOptions" ref="primary">
       <splide-slide v-for="slide in slides" :key="slide.url">
         <expandable-image v-if="expand" :style="{ imgHeight }" :src="slide.url" />
-        <img v-if="!expand" :style="{ imgHeight }" :src="slide.url"/>
+        <img v-if="!expand" :style="{ imgHeight }" :src="slide.url" alt="Product Main Image"/>
         <div class="d-flex align-items-center justify-content-center h-100">
           <div class="text-center text-white">
             <h2
@@ -47,7 +47,7 @@
         v-for="slide in slides"
         :key="slide.url"
       >
-        <img :src="slide.url" />
+        <img :src="slide.url" alt="Thumbnail Image"/>
       </splide-slide>
     </splide>
   </div>
@@ -86,7 +86,6 @@ export default {
     return {
       primaryOptions: {
         type: "loop",
-        pagination: false,
         cover: true,
         focus: "center",
         rewind: true,
@@ -120,8 +119,8 @@ export default {
         width: 0,
         gap: "1rem",
         pagination: false,
-        fixedWidth: 145,
-        fixedHeight: 85,
+        // fixedWidth: 145,
+        // fixedHeight: 85,
         cover: true,
         focus: "center",
         isNavigation: true,
