@@ -107,6 +107,13 @@ export default {
   font-weight: 600;
 }
 
+.faq-link .faq-plus,
+.faq-link .faq-minus {
+  background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .faq-link.collapsed .faq-plus,
 .faq-link.not-collapsed .faq-minus {
   display: block;
@@ -125,6 +132,7 @@ export default {
     font-size: 1.5rem;
   }
 }
+
 @media only screen and (max-width: 414px) {
   .faq-title {
     font-size: 2rem;
