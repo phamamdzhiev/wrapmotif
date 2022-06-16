@@ -14,7 +14,7 @@
 				</li>
 				<li class="nav-item">
 					<nuxt-link to="/profile/color-changes" class="
-            nav-link text-uppercase 
+            nav-link text-uppercase
           ">Color Changes</nuxt-link>
 				</li>
 				<li class="nav-item">
@@ -44,8 +44,10 @@ export default {};
 	color: black !important;
 }
 .nuxt-link-exact-active {
-	border-bottom: 3px solid var(--primary) !important;
-	color: var(--primary) !important;
+  background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%)!important;
+  -webkit-background-clip: text!important;
+  -webkit-text-fill-color: transparent!important;
+}
 }
 
 .nav-tabs {
