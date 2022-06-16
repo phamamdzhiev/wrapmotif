@@ -59,6 +59,7 @@ export const actions = {
     },
 
     removeFromCart({ commit }, payload) {
+      console.log('Cart payload', payload);
         commit("REMOVE_FROM_CART", payload);
         commit("SAVE_DATA", payload);
     },

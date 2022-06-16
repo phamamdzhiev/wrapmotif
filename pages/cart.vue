@@ -72,11 +72,11 @@
               <!-- Coupon -->
               <div>
                 <div v-if="$auth.loggedIn">
-                  <h4>Wrapmotif Discount Coupon</h4>
+                  <h4>Coupon</h4>
                   <div class="d-flex mt-4">
                     <input-field v-model="couponCode" :error="validationErrors.couponCode" placeholder="Coupon Code"></input-field>
                     <div class="ml-4">
-                      <button @click.prevent="verifyCoupon" class="btn btn-primary text-nowrap">Apply Coupon</button>
+                      <button @click.prevent="verifyCoupon" class="btn btn-primary text-nowrap">Apply</button>
                     </div>
                   </div>
                 </div>
