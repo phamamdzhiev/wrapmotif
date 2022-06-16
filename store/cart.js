@@ -36,8 +36,10 @@ export const mutations = {
   },
 
   REMOVE_FROM_CART(state, {cardID, url}) {
-    let index = state.cart.findIndex(e => console.log(e, '---', e.id));
-    console.log('Obejct cart', index);
+    let index = state.cart.findIndex(e => e.id === cardID);
+    let obj = state.cart.find(e => e.id === cardID);
+    console.log('Obejct cart ID', index);
+    console.log('Obejct', obj);
     // state.cart.splice(index, 1);
   },
 
