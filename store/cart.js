@@ -36,14 +36,8 @@ export const mutations = {
   },
 
   REMOVE_FROM_CART(state, {cartID, url}) {
-    console.log('CART STATE', state.cart);
-    console.log('CART ID', cartID);
-    let index = state.cart.findIndex((e) => {
-      console.log(e, '---' ,e.id, '----' , cartID);
-    });
-
-    console.log('Cart INDEX', index);
-    // state.cart.splice(index, 1);
+    let index = state.cart.findIndex(item => item.id === cartID);
+    state.cart.splice(index, 1);
   },
 
   SET_CART(state) {
