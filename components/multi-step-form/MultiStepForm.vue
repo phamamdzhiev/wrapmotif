@@ -138,7 +138,7 @@ export default {
 			z-index: 3;
 			&.active {
 				.step-btn {
-					background-color: var(--primary);
+          background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
 					color: var(--white);
 					font-weight: bold;
 				}
