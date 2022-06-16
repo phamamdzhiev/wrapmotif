@@ -186,7 +186,7 @@
                     <div class="form-group">
                       <div class="custom-control custom-checkbox">
                         <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input" />
-                        <label for="agree1" class="custom-control-label user-select-none">I have read and agree to the <a href="/terms-conditions#general-terms" class="text-primary" target="_blank" title="Wrapmotif Terms and Conditions">terms and conditions</a></label>
+                        <label for="agree1" class="custom-control-label user-select-none">I have read and agree to the <a href="/terms-conditions#general-terms" class="text-primary" target="_blank" title="Wrapmotif Terms and Conditions">terms and conditions</a>.</label>
                       </div>
                     </div>
                   </div>

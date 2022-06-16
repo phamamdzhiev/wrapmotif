@@ -203,7 +203,7 @@
 
               <p class="mt-3 text-footer-links">
                 © 2021 WRAPMOTIF.
-                <span class="ml-1">All rights reserved</span>
+                <span class="ml-1">All rights reserved.</span>
               </p>
             </div>
 
