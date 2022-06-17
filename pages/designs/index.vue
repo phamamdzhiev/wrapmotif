@@ -210,7 +210,7 @@ export default {
     },
     handleLoadMore($state) {
       this.$axios
-        .get(`/products?page=${this.page = this.page + 1}${this.getQueries()}`)
+        .get(`/products?page=${this.page}${this.getQueries()}`)
         .then(res => {
           const result = res.data.data;
           if (result.length) {
@@ -222,6 +222,7 @@ export default {
             $state.complete();
           }
         });
+      this.page = this.page + 1
     },
     focusInput() {
       this.$refs.searchInput.focus();
