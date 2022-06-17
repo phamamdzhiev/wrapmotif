@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-      <div class="container my-5">
+      <div class="container-lg my-5">
         <!-- About us page content -->
         <div class="text-xl text-center" v-html="getAboutUsPageContent.data.content"></div>
       </div>
