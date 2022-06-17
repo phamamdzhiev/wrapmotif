@@ -212,6 +212,8 @@ export default {
       this.$axios
         .get(`/products?page=${this.page}${this.getQueries()}`)
         .then(res => {
+          this.page = this.page + 1;
+
           const result = res.data.data;
           if (result.length) {
             result.forEach(value => {
@@ -222,8 +224,6 @@ export default {
             $state.complete();
           }
         });
-
-      this.page = this.page + 1;
     },
     focusInput() {
       this.$refs.searchInput.focus();
