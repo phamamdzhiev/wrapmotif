@@ -135,7 +135,7 @@ export default {
       categories: [],
       colors: [],
       tags: [],
-      page: 1,
+      page: 0,
       infiniteId: +new Date(),
       filters: {
         categories: [],
@@ -210,10 +210,8 @@ export default {
     },
     handleLoadMore($state) {
       this.$axios
-        .get(`/products?page=${this.page}${this.getQueries()}`)
+        .get(`/products?page=${this.page = this.page + 1}${this.getQueries()}`)
         .then(res => {
-          this.page = this.page + 1;
-
           const result = res.data.data;
           if (result.length) {
             result.forEach(value => {
