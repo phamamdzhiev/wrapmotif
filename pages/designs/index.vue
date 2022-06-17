@@ -95,7 +95,7 @@
         </div>
 
         <!-- Right side -->
-        <div :class="{ collapsed: !collapsed }" class="content col" style="min-height: 90vh;" ref="content">
+        <div :class="{ collapsed: !collapsed }" class="content col" ref="content">
           <h3 class="
               pt-4
               pb-1
