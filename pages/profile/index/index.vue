@@ -56,6 +56,7 @@ export default {};
 }
 
 .nav-tabs .nav-item {
+  position: relative;
   margin-bottom: -1px;
 
   a {
@@ -66,8 +67,11 @@ export default {};
       content: '';
       width: 0;
       height: 3px;
-      background-color: red;
+      background-image: linear-gradient(to left, #f19773, #ac6342);
       display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
 
     &.nuxt-link-exact-active {
