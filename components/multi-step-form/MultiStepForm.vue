@@ -7,7 +7,7 @@
 				<div v-if="barShow" v-for="(item, i) in stepData" :key="i" class="step-btn-wrapper text-center d-flex flex-column align-items-center step-li" :class="{ active: activeIndex >= i }">
 					<!--  -->
 					<span @click="i < activeIndex ? (activeIndex = i) : null" class="step-btn"><!--{{ i + 1 }}--></span>
-					<p class="step-title">{{ item.title }}</p>
+					<p class="step-title text-primary">{{ item.title }}</p>
 				</div>
 			</div>
 		</div>

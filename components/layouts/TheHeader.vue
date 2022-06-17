@@ -278,6 +278,9 @@ export default {
 .nav-link {
   padding: 0 0.23rem;
   color: black;
+  &:hover {
+    color: #8c8c8c!important;
+  }
 }
 
 .zindex {

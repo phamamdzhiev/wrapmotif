@@ -63,7 +63,7 @@
             <div class="custom-control custom-checkbox">
               <input v-model="confirmDemand" id="agree2" type="checkbox" class="custom-control-input" />
               <label for="agree2" class="custom-control-label">
-                I confirm that the demand is binding
+                I confirm that the demand is binding.
               </label>
             </div>
           </div>

@@ -62,6 +62,7 @@ Here you go:</p>
                   target="_blank"
                   :href="media.url"
                   title="READ ME - FULL WRAP - 1 STRIPE"
+                  class="text-primary"
                   >{{ media.name }}</a
                 >
               </li>

@@ -33,7 +33,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .nuxt-link-exact-active,
 .nuxt-link-active {
   background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
