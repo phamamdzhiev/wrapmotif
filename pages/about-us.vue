@@ -15,12 +15,12 @@
           </div>
         </div>
       </div>
-      <!-- About us page content -->
-      <div class="mt-5">
-        <div v-html="getAboutUsPageContent.data.content"></div>
+      <div class="container my-5">
+        <!-- About us page content -->
+        <div class="text-xl text-center" v-html="getAboutUsPageContent.data.content"></div>
       </div>
-      <img :src="getAboutUsPageContent.primaryMediaUrl" class="img-fluid w-75" alt="About us secondary image">
     </div>
+    <img :src="getAboutUsPageContent.primaryMediaUrl" class="img-fluid" alt="About us secondary image">
   </div>
 </template>
 
