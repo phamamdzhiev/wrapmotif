@@ -15,16 +15,16 @@
           </div>
         </div>
       </div>
-      <div class="container-lg my-5">
+      <div class="container my-5">
         <!-- About us page content -->
         <div class="row">
           <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8">
-            <div class="text-xl text-center" v-html="getAboutUsPageContent.data.content"></div>
+            <div class="text-xl pr-lg-12" v-html="getAboutUsPageContent.data.content"></div>
           </div>
         </div>
       </div>
     </div>
-    <img :src="getAboutUsPageContent.primaryMediaUrl" class="img-fluid" alt="About us secondary image">
+    <img :src="getAboutUsPageContent.primaryMediaUrl" class="img-fluid w-100" alt="About us secondary image">
   </div>
 </template>
 
