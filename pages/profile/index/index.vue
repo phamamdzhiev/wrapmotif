@@ -50,11 +50,6 @@ export default {};
   -webkit-text-fill-color: transparent;
 }
 
-.nuxt-link-exact-active {
-  &:after {
-    width: 100%;
-  }
-}
 
 .nav-tabs {
   border-bottom: 1px solid #dee2e6;
@@ -63,15 +58,23 @@ export default {};
 .nav-tabs .nav-item {
   margin-bottom: -1px;
 
-  &:after {
-    content: '';
-    width: 0;
-    height: 3px;
-    background-color: red;
-  }
-
   a {
     color: black;
+    display: inline-block;
+
+    &:after {
+      content: '';
+      width: 0;
+      height: 3px;
+      background-color: red;
+      display: block;
+    }
+
+    &.nuxt-link-exact-active {
+      &:after {
+        width: 100%;
+      }
+    }
   }
 }
 
