@@ -209,6 +209,8 @@ export default {
         });
     },
     handleLoadMore($state) {
+      debugger;
+
       this.$axios
         .get(`/products?page=${this.page}${this.getQueries()}`)
         .then(res => {
