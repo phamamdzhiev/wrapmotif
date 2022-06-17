@@ -95,7 +95,7 @@
         </div>
 
         <!-- Right side -->
-        <div :class="{ collapsed: !collapsed }" class="content col" ref="content">
+        <div :class="{ collapsed: !collapsed }" class="content col" style="min-height: 90vh;" ref="content">
           <h3 class="
               pt-4
               pb-1
@@ -110,7 +110,7 @@
             <product-card class="grid-item" v-for="(prod, i) in products" :key="i" :item="prod"></product-card>
           </div>
           <client-only>
-            <infinite-loading @distance="1" @infinite="handleLoadMore" :identifier="infiniteId">
+            <infinite-loading @distance="10" @infinite="handleLoadMore" :identifier="infiniteId">
               <span slot="no-more"></span>
             </infinite-loading>
           </client-only>
