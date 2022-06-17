@@ -19,7 +19,7 @@
         <!-- About us page content -->
         <div class="row">
           <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8">
-            <div class="text-xl pr-lg-12" v-html="getAboutUsPageContent.data.content"></div>
+            <div class="text-xl pr-lg-10" v-html="getAboutUsPageContent.data.content"></div>
           </div>
         </div>
       </div>
