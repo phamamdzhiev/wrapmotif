@@ -135,7 +135,7 @@ export default {
       categories: [],
       colors: [],
       tags: [],
-      page: 0,
+      page: 1,
       infiniteId: +new Date(),
       filters: {
         categories: [],
