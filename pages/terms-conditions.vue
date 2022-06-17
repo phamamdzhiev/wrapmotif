@@ -16,32 +16,32 @@
     <div class="row pb-8">
       <div class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
         <!-- GENERAL TERMS AND CONDITIONS -->
-        <div>
-          <h2 class="text-uppercase text-primary pt-8 pb-3 font-bold text-4xl terms-header">
+        <div class="pt-8 pb-3 ">
+          <h2 class="text-uppercase text-primary font-bold text-4xl terms-header">
             GENERAL TERMS AND CONDITIONS
           </h2>
           <div v-html="getTermsPageContent.data.general"></div>
         </div>
 
         <!-- SPECIAL TRADING CONDITIONS -->
-        <div>
-          <h2 id="special-conditions" class="text-uppercase text-primary pt-8 pb-3 mt-0 font-bold text-4xl terms-header">
+        <div class="pt-8 pb-3">
+          <h2 id="special-conditions" class="text-uppercase text-primary mt-0 font-bold text-4xl terms-header">
             SPECIAL TRADING CONDITIONS
           </h2>
           <div v-html="getTermsPageContent.data.special"></div>
         </div>
 
         <!-- licence -->
-        <div>
-          <h2 id="licence" class="text-uppercase text-primary pt-8 pb-3 mt-0 font-bold text-4xl terms-header">
+        <div class="pt-8 pb-3">
+          <h2 id="licence" class="text-uppercase text-primary  mt-0 font-bold text-4xl terms-header">
             Licence
           </h2>
           <div v-html="getTermsPageContent.data.license"></div>
         </div>
 
         <!-- Privacy Policy -->
-        <div>
-          <h2 id="privacy-policy" class="uppercase text-primary pt-8 pb-3 mt-0 font-bold text-4xl terms-header">
+        <div class="pt-8 pb-3">
+          <h2 id="privacy-policy" class="uppercase text-primary  mt-0 font-bold text-4xl terms-header">
             Privacy Policy
           </h2>
           <div v-html="getTermsPageContent.data.privacy"></div>
