@@ -224,6 +224,14 @@ export default {
   background-size: 100% 100%;
 }
 
+.navi {
+  .nuxt-link-active,
+  .nuxt-link-exact-active {
+    background-image: linear-gradient(#6F3A1F 0%, #DC7B54 65%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
 
 .navbar-toggle-icon {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
