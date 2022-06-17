@@ -17,7 +17,11 @@
       </div>
       <div class="container-lg my-5">
         <!-- About us page content -->
-        <div class="text-xl text-center" v-html="getAboutUsPageContent.data.content"></div>
+        <div class="row">
+          <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8">
+            <div class="text-xl text-center" v-html="getAboutUsPageContent.data.content"></div>
+          </div>
+        </div>
       </div>
     </div>
     <img :src="getAboutUsPageContent.primaryMediaUrl" class="img-fluid" alt="About us secondary image">
