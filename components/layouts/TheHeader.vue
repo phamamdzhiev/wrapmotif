@@ -13,16 +13,16 @@
 
       <!-- items -->
       <ul class="navbar-menu d-none d-lg-flex flex-row ml-auto p-0 m-0">
-        <li class="nav-item mx-lg-4">
+        <li class="nav-item mx-lg-4 navi">
           <nuxt-link class="nav-link" to="/designs">UNIVERSAL DESIGNS</nuxt-link>
         </li>
 
-        <li class="nav-item mx-lg-4">
+        <li class="nav-item mx-lg-4 navi">
           <nuxt-link class="nav-link" to="/custom-design"
             >CUSTOM DESIGN</nuxt-link
           >
         </li>
-        <li class="nav-item mx-lg-4">
+        <li class="nav-item mx-lg-4 navi">
           <nuxt-link class="nav-link" to="/partner">BECOME A PARTNER</nuxt-link>
         </li>
       </ul>
@@ -85,20 +85,19 @@
       <ul
         class="nav-menu d-flex p-0 mb-0 justify-content-around h-100 align-items-center w-100"
       >
-        <li class=" mx-lg-4 ">
+        <li class=" mx-lg-4 navi">
           <nuxt-link class="nav-link text-nowrap font-semibold" to="/designs"
             >UNIVERSAL DESIGNS</nuxt-link
           >
         </li>
-
-        <li class=" mx-lg-4 ">
+        <li class=" mx-lg-4 navi">
           <nuxt-link
             class="nav-link text-nowrap font-semibold"
             to="/custom-design"
             >CUSTOM DESIGN</nuxt-link
           >
         </li>
-        <li class=" mx-lg-4 ">
+        <li class=" mx-lg-4 navi">
           <nuxt-link class="nav-link text-nowrap font-semibold" to="/partner">
             <span class="d-none d-sm-inline">BECOME A PARTNER </span>
             <span class="d-sm-none">PARTNERS </span>
@@ -113,17 +112,17 @@
         <ul
           class=""
         >
-          <li class="pt-2" @click="show = false">
+          <li class="pt-2 navi" @click="show = false">
             <nuxt-link class="side-link text-nowrap font-semibold" to="/designs"  >UNIVERSAL DESIGNS</nuxt-link>
           </li>
 
-          <li class="pt-2" @click="show = false">
+          <li class="pt-2 navi" @click="show = false">
             <nuxt-link
               class="side-link text-nowrap font-semibold"
               to="/custom-design">CUSTOM DESIGN</nuxt-link
             >
           </li>
-          <li class="pt-2" @click="show = false">
+          <li class="pt-2 navi" @click="show = false">
             <nuxt-link class="side-link text-nowrap font-semibold" to="/partner" >
               <span class="">BECOME A PARTNER </span>
             </nuxt-link>
@@ -205,7 +204,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @media only screen and (max-width: 991px) {
   /*.navbar{
