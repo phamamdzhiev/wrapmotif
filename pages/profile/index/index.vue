@@ -44,20 +44,16 @@ export default {};
 <style lang="scss" scoped>
 .nuxt-link-active,
 .nuxt-link-exact-active {
+  border: none;
   background-image: linear-gradient(#5d2c16 0%, #e07e57 75%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  border-bottom: 3px solid white;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-image-slice: 1;
-
 }
 
 .nuxt-link-exact-active {
-  border-image-source: linear-gradient(to left, #5d2c16, #e07e57);
+  &:after {
+    width: 100%;
+  }
 }
 
 .nav-tabs {
@@ -66,6 +62,14 @@ export default {};
 
 .nav-tabs .nav-item {
   margin-bottom: -1px;
+
+  &:after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background-color: red;
+  }
+
   a {
     color: black;
   }
