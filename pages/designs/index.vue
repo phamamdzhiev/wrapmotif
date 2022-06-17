@@ -110,7 +110,7 @@
             <product-card class="grid-item" v-for="(prod, i) in products" :key="i" :item="prod"></product-card>
           </div>
           <client-only>
-            <infinite-loading @infinite="handleLoadMore" :identifier="infiniteId">
+            <infinite-loading @distance="1" @infinite="handleLoadMore" :identifier="infiniteId">
               <span slot="no-more"></span>
             </infinite-loading>
           </client-only>
