@@ -196,7 +196,8 @@
               </div>
 
               <!--              stripe checkout-->
-              <stripe-checkout :pk="pk" @error="onError"/>
+              <stripe-checkout :pk="pk" ref="checkoutRef" @error="onError"/>
+              <button @click="submit">Pay</button>
 
               <!-- login modal -->
               <div class="mt-3" v-if="!$auth.loggedIn">
@@ -340,6 +341,10 @@ export default {
   },
 
   methods: {
+    //payment submit
+    submit() {
+      this.$refs.checkoutRef.redirectToCheckout();
+    },
     // Handle color chage request after payment complete
     async handlePaymentCompletePaypal() {
       const res = await this.$axios.post("/color-changes", this.colorChange);
