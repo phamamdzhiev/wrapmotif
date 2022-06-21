@@ -201,6 +201,9 @@
                     <!-- Stripe -->
                     <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError" @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">
                     </stripe>
+
+                    <stripe-checkout :pk="pk" ref="checkoutElement"/>
+                    <button @click="submit">Proceed with Checkout</button>
                   </div>
                 </div>
 
@@ -224,6 +227,7 @@ import Stripe from "~/components/Stripe.vue";
 import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
+import {StripeCheckout} from '@vue-stripe/vue-stripe'
 
 export default {
   components: {
@@ -231,7 +235,8 @@ export default {
     CartPageRegister,
     CartPageLogin,
     Stripe,
-    PaymentMethodButton
+    PaymentMethodButton,
+    StripeCheckout
   },
   name: "Cart",
   head() {
@@ -241,6 +246,7 @@ export default {
   },
   data() {
     return {
+      pk: process.env.STRIPE_PUBLISHABLE_KEY,
       termsAgreed: false,
       paymentMethod: "",
       paymentButtons: [
@@ -345,6 +351,9 @@ export default {
   },
 
   methods: {
+    submit() {
+      return this.$refs.checkoutElement.redirectToCheckout();
+    },
     // Verify coupon
     async verifyCoupon() {
       try {
