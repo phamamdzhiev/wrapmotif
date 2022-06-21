@@ -97,9 +97,7 @@
               </keep-alive>
             </div>
           </div>
-          <!--              stripe checkout-->
-          <stripe-checkout :pk="pk" ref="checkoutRef" @error="onError"/>
-          <button id="pedla" @click="submit">Pay</button>
+
           <!-- right side -->
           <div class="col-lg-4">
             <div class="card border-0 sticky-summary">
@@ -219,7 +217,6 @@ import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
 import {mapGetters} from "vuex";
-import {StripeCheckout} from '@vue-stripe/vue-stripe'
 
 export default {
   components: {
@@ -228,12 +225,10 @@ export default {
     CartPageLogin,
     Stripe,
     PaymentMethodButton,
-    StripeCheckout
   },
   name: "color-change-cart",
   data() {
     return {
-      pk: process.env.STRIPE_PUBLISHABLE_KEY,
       vatType: "%",
       colorChangeAmount: 30,
       termsAgreed: false,
@@ -341,10 +336,6 @@ export default {
   },
 
   methods: {
-    //payment submit
-    submit() {
-      this.$refs.checkoutRef.redirectToCheckout();
-    },
     // Handle color chage request after payment complete
     async handlePaymentCompletePaypal() {
       const res = await this.$axios.post("/color-changes", this.colorChange);

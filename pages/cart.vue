@@ -109,6 +109,11 @@
               </div>
             </div>
 
+            <!--              stripe checkout-->
+            <stripe-checkout :pk="pk" ref="checkoutRef" @error="onError"/>
+            <button id="pedla" @click="submit">Pay</button>
+
+
             <!-- right side -->
             <div class="col-lg-4">
               <div class="card border-0 sticky-summary">
@@ -224,6 +229,8 @@ import Stripe from "~/components/Stripe.vue";
 import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
+import {StripeCheckout} from '@vue-stripe/vue-stripe'
+
 
 export default {
   components: {
@@ -231,7 +238,8 @@ export default {
     CartPageRegister,
     CartPageLogin,
     Stripe,
-    PaymentMethodButton
+    PaymentMethodButton,
+    StripeCheckout
   },
   name: "Cart",
   head() {
@@ -241,6 +249,7 @@ export default {
   },
   data() {
     return {
+      pk: process.env.STRIPE_PUBLISHABLE_KEY,
       termsAgreed: false,
       paymentMethod: "",
       paymentButtons: [
@@ -345,6 +354,11 @@ export default {
   },
 
   methods: {
+    //payment submit
+    submit() {
+      this.$refs.checkoutRef.redirectToCheckout();
+    },
+
     // Verify coupon
     async verifyCoupon() {
       try {
