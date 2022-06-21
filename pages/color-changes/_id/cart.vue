@@ -97,7 +97,9 @@
               </keep-alive>
             </div>
           </div>
-
+          <!--              stripe checkout-->
+          <stripe-checkout :pk="pk" ref="checkoutRef" @error="onError"/>
+          <button id="pedla" @click="submit">Pay</button>
           <!-- right side -->
           <div class="col-lg-4">
             <div class="card border-0 sticky-summary">
@@ -195,9 +197,7 @@
                 </div>
               </div>
 
-              <!--              stripe checkout-->
-              <stripe-checkout :pk="pk" ref="checkoutRef" @error="onError"/>
-              <button @click="submit">Pay</button>
+
 
               <!-- login modal -->
               <div class="mt-3" v-if="!$auth.loggedIn">
