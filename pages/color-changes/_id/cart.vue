@@ -30,7 +30,7 @@
             <!-- cart items -->
             <div class="bg-cream p-3 mb-5 row mx-0">
               <div class="col-12 col-md-4 px-0">
-                <img class="img-fluid" :src="product.thumbnailMediaUrl" alt="" />
+                <img class="img-fluid" :src="product.thumbnailMediaUrl" alt=""/>
               </div>
 
               <div class="col-8 col-md-6">
@@ -39,13 +39,13 @@
 
                 <p class="mt-2">
                   <span class="text-muted">
-                    <div class="pb-2">
-                      {{ product.description | truncate(50) }}
-                    </div>
-                    <div class="text-sm">
-                      {{ getCheckout.data.note_color }}
-                    </div>
-                  </span>
+                <div class="pb-2">
+                  {{ product.description | truncate(50) }}
+                </div>
+                <div class="text-sm">
+                  {{ getCheckout.data.note_color }}
+                </div>
+                </span>
                 </p>
               </div>
 
@@ -55,8 +55,8 @@
                     {{
                       colorChangeAmount
                         | currency(
-                          $store.state.currency.selectedCurrency,
-                          $store.state.currency.exchangeRate
+                        $store.state.currency.selectedCurrency,
+                        $store.state.currency.exchangeRate
                         )
                     }}
                   </h4>
@@ -69,7 +69,7 @@
                 <dynamic-field :fields="fields" v-model="colors"></dynamic-field>
               </div>
               <div class="col-12">
-                <text-field v-model="description" label="Description" />
+                <text-field v-model="description" label="Description"/>
               </div>
             </div>
 
@@ -77,7 +77,8 @@
             <div v-if="!$auth.loggedIn">
               <!-- login modal -->
               <keep-alive>
-                <b-modal id="modal-scrollable" scrollable centered hide-footer no-stacking no-close-on-backdrop title="Login" ref="login-modal">
+                <b-modal id="modal-scrollable" scrollable centered hide-footer no-stacking no-close-on-backdrop
+                         title="Login" ref="login-modal">
                   <cart-page-login :redirectUrl="`/color-changes/${product.id}/cart`"></cart-page-login>
                   <template>
                     <div class="d-flex justify-content-center">
@@ -89,7 +90,8 @@
 
               <!-- register modal -->
               <keep-alive>
-                <b-modal id="register-modal" scrollable size="lg" centered hide-footer no-close-on-backdrop title="Register" ref="register-modal">
+                <b-modal id="register-modal" scrollable size="lg" centered hide-footer no-close-on-backdrop
+                         title="Register" ref="register-modal">
                   <cart-page-register @registered="hideRegisterModal"></cart-page-register>
                 </b-modal>
               </keep-alive>
@@ -111,8 +113,8 @@
                     {{
                       colorChangeAmount
                         | currencyCart(
-                          $store.state.currency.selectedCurrency,
-                          $store.state.currency.exchangeRate
+                        $store.state.currency.selectedCurrency,
+                        $store.state.currency.exchangeRate
                         )
                     }}
                   </div>
@@ -120,23 +122,24 @@
 
                 <div class="row mt-3">
                   <div class="col-8">VAT ({{ vatAmount }}
-                    {{ vatType }})</div>
+                    {{ vatType }})
+                  </div>
                   <div class="col-4 text-right mossvat-price">
                     <span v-if="vatType == '%'">
-                      {{getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      {{ getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate) }}
                     </span>
                     <span v-else>
                       {{
                         vatAmount
                           | currencyCart(
-                            $store.state.currency.selectedCurrency,
-                            $store.state.currency.exchangeRate
+                          $store.state.currency.selectedCurrency,
+                          $store.state.currency.exchangeRate
                           )
                       }}
                     </span>
                   </div>
                 </div>
-                <hr />
+                <hr/>
                 <div class="row mt-3">
                   <div class="col-8">
                     <h5 class="mb-0">Total</h5>
@@ -146,7 +149,7 @@
                       {{
                         getCustomerGrandTotal
                           | currencySymbol(
-                            $store.state.currency.selectedCurrency
+                          $store.state.currency.selectedCurrency
                           )
                       }}
                     </h5>
@@ -169,9 +172,10 @@
                 <div class="col-12">
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                      <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input" />
+                      <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input"/>
                       <label for="agree1" class="custom-control-label user-select-none">I have read the
-                        <a href="/terms-conditions#general-terms" target="_blank" title="Wrapmotif Terms and Conditions" class="text-primary">terms and conditions</a>
+                        <a href="/terms-conditions#general-terms" target="_blank" title="Wrapmotif Terms and Conditions"
+                           class="text-primary">terms and conditions</a>
                         of the Wrapmotif and agree with them.</label>
                     </div>
                   </div>
@@ -182,7 +186,8 @@
               <div v-if="$auth.loggedIn">
                 <div class="card-body p-0 mb-5" :class="{ disabledPayment: !termsAgreed }">
                   <!-- Paypal -->
-                  <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal" @payment-complete="handlePaymentCompletePaypal"></paypal>
+                  <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
+                          @payment-complete="handlePaymentCompletePaypal"></paypal>
 
                   <!-- Stripe -->
                   <stripe v-show="paymentMethod === 'stripe'" @token-generated="handlePaymentCompleteStripe">
@@ -190,9 +195,13 @@
                 </div>
               </div>
 
+              <!--              stripe checkout-->
+              <stripe-checkout :pk="pk" @error="onError"/>
+
               <!-- login modal -->
               <div class="mt-3" v-if="!$auth.loggedIn">
-                <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!</b-button>
+                <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!
+                </b-button>
               </div>
             </div>
           </div>
@@ -209,6 +218,7 @@ import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
 import {mapGetters} from "vuex";
+import {StripeCheckout} from '@vue-stripe/vue-stripe'
 
 export default {
   components: {
@@ -216,18 +226,20 @@ export default {
     CartPageRegister,
     CartPageLogin,
     Stripe,
-    PaymentMethodButton
+    PaymentMethodButton,
+    StripeCheckout
   },
   name: "color-change-cart",
   data() {
     return {
+      pk: process.env.STRIPE_PUBLISHABLE_KEY,
       vatType: "%",
       colorChangeAmount: 30,
       termsAgreed: false,
       paymentMethod: "",
       product: null,
       description: "",
-      colors: [{ colorCode: "#000", description: "" }],
+      colors: [{colorCode: "#000", description: ""}],
       fields: [
         {
           name: "colorCode", //For v-model
@@ -332,6 +344,10 @@ export default {
     async handlePaymentCompletePaypal() {
       const res = await this.$axios.post("/color-changes", this.colorChange);
       this.$router.push("/color-changes/greeting");
+    },
+
+    onError(err) {
+      console.log('Stripe checkout error ---', err);
     },
 
     // Handle stripe payment
