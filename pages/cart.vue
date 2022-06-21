@@ -110,7 +110,7 @@
             </div>
 
             <!--              stripe checkout-->
-            <stripe-checkout :pk="pk" ref="checkoutRef" @error="onError"/>
+            <stripe-checkout :pk="pk" ref="checkoutRef"/>
             <button id="pedla" @click="submit">Pay</button>
 
 
