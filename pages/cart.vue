@@ -202,7 +202,7 @@
                     <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError" @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">
                     </stripe>
 
-                    <stripe-checkout :pk="pk" ref="checkoutElement"/>
+                    <stripe-checkout sessionId="tutu" :pk="pk" ref="checkoutElement"/>
                     <button @click="submit">Proceed with Checkout</button>
                   </div>
                 </div>
