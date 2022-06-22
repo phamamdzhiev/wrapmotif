@@ -60,6 +60,7 @@ export default {
     "~/plugins/pretty-checkbox.js",
     "~/plugins/vue-infinite-loading.js",
     "~/plugins/vue-pagination.js",
+    "~/plugins/vue-stripe.js",
     {
       src: "~/plugins/splide",
       ssr: false

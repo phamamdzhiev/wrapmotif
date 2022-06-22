@@ -223,7 +223,7 @@
 
                     <stripe-checkout :pk="pk"
                                      ref="checkoutElement"
-                                     :sessionId="sessionId"
+                                     :session-id="sessionId"
                     >
                     </stripe-checkout>
                     <button @click="submit">Proceed with Checkout</button>
@@ -252,7 +252,6 @@ import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
 import {StripeCheckout} from '@vue-stripe/vue-stripe'
-import axios from "@/plugins/axios";
 
 export default {
   components: {
@@ -386,7 +385,6 @@ export default {
         this.sessionId = res.data.id;
         console.log('++++++ GET SESSION DATA +++++', res.data);
       } catch (e) {
-        console.log('----- GET SESSION DATA ERROR ----', e);
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
       }
     },
