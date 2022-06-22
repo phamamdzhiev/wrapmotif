@@ -296,10 +296,11 @@ export default {
   },
   mounted() {
     this.getSession();
+    const cart = JSON.parse(localStorage.getItem('cart'));
     console.log(
       '--- card items and ptices---',
-      this.getCustomerGrandTotal,
-      this.getTotalItem
+      cart.price,
+      cart
     )
   },
   computed: {
