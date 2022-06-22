@@ -217,15 +217,15 @@
                             @payment-complete="handlePaymentCompletePaypal"></paypal>
 
                     <!-- Stripe -->
-                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"
-                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">
-                    </stripe>
+<!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
+<!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
+<!--                    </stripe>-->
 
-                      <stripe-checkout :pk="pk"
-                                       ref="checkoutElement"
-                                       :session-id="sessionId"
-                      />
-                      <button @click="submit">Proceed with Checkout</button>
+                    <stripe-checkout :pk="pk"
+                                     ref="checkoutElement"
+                                     :session-id="sessionId"
+                    />
+                    <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
 
                   </div>
                 </div>
@@ -383,9 +383,8 @@ export default {
   methods: {
     async getSession() {
       try {
-        const res = await this.$axios.get('/getSession?c=eur&t=235&q=1');
+        const res = await this.$axios.get(`/getSession?c=${this.$store.state.currency.selectedCurrency}&t=${this.getTotalPrice}&q=${this.getTotalItem}`);
         this.sessionId = res.data.id;
-        console.log('++++++ GET SESSION DATA +++++', res.data);
       } catch (e) {
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
       }
