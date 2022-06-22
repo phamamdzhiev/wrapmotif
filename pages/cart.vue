@@ -296,6 +296,10 @@ export default {
   },
   mounted() {
     this.getSession();
+    console.log(
+      '--- card items ---',
+      this.getCartItems
+    )
   },
   computed: {
     ...mapGetters({
