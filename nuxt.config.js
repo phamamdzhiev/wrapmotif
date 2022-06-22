@@ -22,7 +22,9 @@ export default {
       }
     ],
     head: {
-      script: []
+      script: [
+        { src: 'https://js.stripe.com/v3' },
+      ]
     },
     link: [
       {
