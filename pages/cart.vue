@@ -221,11 +221,11 @@
                             @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">
                     </stripe>
 
-                      <stripe-checkout :pk="pk"
-                                       ref="checkoutElement"
-                                       :session-id="sessionId"
-                      />
-                      <button @click="submit">Proceed with Checkout</button>
+                    <stripe-checkout :pk="pk"
+                                     ref="checkoutElement"
+                                     :session-id="sessionId"
+                    />
+                    <button @click="submit">Proceed with Checkout</button>
 
                   </div>
                 </div>
@@ -383,9 +383,13 @@ export default {
   methods: {
     async getSession() {
       try {
-        const res = await this.$axios.get('/getSession');
+        const res = await this.$axios.get('/getSession', {
+          data: {
+            total: this.getCustomerGrandTotal,
+            currency: this.$store.state.currency.selectedCurrency
+          }
+        });
         this.sessionId = res.data.id;
-        console.log('++++++ GET SESSION DATA +++++', res.data);
       } catch (e) {
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
       }
