@@ -377,12 +377,10 @@ export default {
     }
   },
 
-  watch: {
-    getCustomerGrandTotal: (oldItem, newItem) => {
-      console.log('old', oldItem)
-      console.log('new', newItem)
-        this.getSession();
-    }
+  mounted() {
+    this.$nextTick(() => {
+      this.getSession();
+    })
   },
   methods: {
     async getSession() {
