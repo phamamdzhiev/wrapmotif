@@ -383,11 +383,9 @@ export default {
   methods: {
     async getSession() {
       try {
-        const res = await this.$axios.get('/getSession', {
-          params: {
+        const res = await this.$axios.post('/getSession', {
             total: this.getCustomerGrandTotal,
             currency: this.$store.state.currency.selectedCurrency
-          }
         });
         this.sessionId = res.data.id;
       } catch (e) {
