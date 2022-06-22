@@ -280,27 +280,35 @@ export default {
           value: "paypal",
           name: "payment"
         },
-        {
-          src: "/images/cart/gplogo.png",
-          id: "payment_stripe",
-          value: "stripe",
-          name: "payment"
-        }
+        // {
+        //   src: "/images/cart/gplogo.png",
+        //   id: "payment_stripe",
+        //   value: "stripe",
+        //   name: "payment"
+        // }
       ],
       vatType: "%",
       disablePayButton: false,
       coupon: null,
       couponCode: "",
       note: null,
+      b: 0
+      p: 0
     };
   },
   mounted() {
     this.getSession();
     const cart = JSON.parse(localStorage.getItem('cart'));
-    console.log(
+
+    cart.forEach((e) => {
+      this.b++;
+      this.p += e.price
+    })
+
+     console.log(
       '--- card items and ptices---',
-      cart.price,
-      cart
+      this.p,
+      this.b
     )
   },
   computed: {
