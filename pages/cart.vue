@@ -297,8 +297,9 @@ export default {
   mounted() {
     this.getSession();
     console.log(
-      '--- card items ---',
-      this.getCartItems
+      '--- card items and ptices---',
+      this.getTotalPrice,
+      this.getTotalItem
     )
   },
   computed: {
@@ -383,7 +384,7 @@ export default {
   methods: {
     async getSession() {
       try {
-        const res = await this.$axios.get(`/getSession?c=${this.$store.state.currency.selectedCurrency}&t=${this.getTotalPrice}&q=${this.getTotalItem}`);
+        const res = await this.$axios.get(`/getSession?c=${this.$store.state.currency.selectedCurrency}&t=${1}&q=${1}`);
         this.sessionId = res.data.id;
       } catch (e) {
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
