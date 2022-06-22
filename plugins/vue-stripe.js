@@ -1,7 +1,6 @@
 import Vue from "vue";
 import { StripeElementCard, StripeCheckout, StripePlugin } from "@vue-stripe/vue-stripe";
 
-// Vue.component("stripe-element-card", StripeElementCard);
 
 // const options = {
 //   pk: process.env.STRIPE_PUBLISHABLE_KEY,
@@ -11,6 +10,7 @@ import { StripeElementCard, StripeCheckout, StripePlugin } from "@vue-stripe/vue
 // };
 
 export default () => {
+  Vue.component("stripe-element-card", StripeElementCard);
   Vue.component('StripeCheckout', StripeCheckout);
   Vue.use(StripePlugin, {pk: process.env.STRIPE_PUBLISHABLE_KEY});
 }
