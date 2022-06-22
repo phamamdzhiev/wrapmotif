@@ -220,14 +220,13 @@
                     <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"
                             @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">
                     </stripe>
-                    <no-ssr>
+
                       <stripe-checkout :pk="pk"
                                        ref="checkoutElement"
                                        :session-id="sessionId"
                       />
                       <button @click="submit">Proceed with Checkout</button>
 
-                    </no-ssr>
                   </div>
                 </div>
 
@@ -252,7 +251,6 @@ import Stripe from "~/components/Stripe.vue";
 import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
-import {StripeCheckout} from '@vue-stripe/vue-stripe'
 
 export default {
   components: {
@@ -261,7 +259,6 @@ export default {
     CartPageLogin,
     Stripe,
     PaymentMethodButton,
-    StripeCheckout
   },
   name: "Cart",
   head() {
