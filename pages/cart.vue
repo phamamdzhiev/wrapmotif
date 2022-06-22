@@ -212,10 +212,6 @@
                                        :session-id="sessionId"
                       />
                       <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
-                      <br>
-                      or
-                      <br>
-
 
                       <!-- Stripe -->
                       <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
