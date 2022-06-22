@@ -206,7 +206,7 @@
 
                   <!-- Payment buttons -->
                   <div v-if="getTotalItem > 0 && $auth.loggedIn">
-                    <div class="card-body p-0 mb-5" :class="{disabledPayment: !termsAgreed || disablePayButton}">
+                    <div class="card-body" :class="{disabledPayment: !termsAgreed || disablePayButton}">
                       <stripe-checkout :pk="pk"
                                        ref="checkoutElement"
                                        :session-id="sessionId"
