@@ -298,7 +298,7 @@ export default {
     this.getSession();
     console.log(
       '--- card items and ptices---',
-      this.getTotalPrice,
+      this.getCustomerGrandTotal,
       this.getTotalItem
     )
   },
