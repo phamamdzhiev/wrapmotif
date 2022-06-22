@@ -379,9 +379,9 @@ export default {
 
   watch: {
     getCustomerGrandTotal: (oldItem, newItem) => {
-      if (newItem > 0) {
+      console.log('old', oldItem)
+      console.log('new', newItem)
         this.getSession();
-      }
     }
   },
   methods: {
