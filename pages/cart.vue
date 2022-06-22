@@ -379,6 +379,10 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
+      console.log('1- ',this.getTotalPrice)
+      console.log('2- ',this.getGrandTotal)
+      console.log('3- ',this.getCustomerGrandTotal)
+      console.log('4- ',this.getVatAmount)
       this.getSession();
     })
   },
