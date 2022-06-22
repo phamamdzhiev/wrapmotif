@@ -190,47 +190,48 @@
                   <div class="p-3 border-bottom bg-black text-white">
                     <h4 class="mb-0 text-2xl">Payment method</h4>
                   </div>
-                  <div class="card-body">
-                    <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
-                  </div>
-                </div>
-
-                <!-- confirmation -->
-                <div class="row mt-3 mb-2" v-if="$auth.loggedIn && getTotalItem > 0">
-                  <div class="col-12">
-                    <div class="form-group">
-                      <div class="custom-control custom-checkbox">
-                        <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input"/>
-                        <label for="agree1" class="custom-control-label user-select-none">I have read and agree to the
-                          <a href="/terms-conditions#general-terms" class="text-primary" target="_blank"
-                             title="Wrapmotif Terms and Conditions">terms and conditions</a>.</label>
+                  <!-- confirmation -->
+                  <div class="row mt-3 mb-2" v-if="$auth.loggedIn && getTotalItem > 0">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                          <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input"/>
+                          <label for="agree1" class="custom-control-label user-select-none">I have read and agree to the
+                            <a href="/terms-conditions#general-terms" class="text-primary" target="_blank"
+                               title="Wrapmotif Terms and Conditions">terms and conditions</a>.</label>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- Payment buttons -->
-                <div v-if="getTotalItem > 0 && $auth.loggedIn">
-                  <div class="card-body p-0 mb-5" :class="{disabledPayment: !termsAgreed || disablePayButton}">
-                    <stripe-checkout :pk="pk"
-                                     ref="checkoutElement"
-                                     :session-id="sessionId"
-                    />
-                    <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
-                    <br>
-                    or
-                    <br>
-                    <!-- Paypal -->
-                    <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
-                            @payment-complete="handlePaymentCompletePaypal"></paypal>
-
-                    <!-- Stripe -->
-                    <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
-                    <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
-                    <!--                    </stripe>-->
+                  <!-- Payment buttons -->
+                  <div v-if="getTotalItem > 0 && $auth.loggedIn">
+                    <div class="card-body p-0 mb-5" :class="{disabledPayment: !termsAgreed || disablePayButton}">
+                      <stripe-checkout :pk="pk"
+                                       ref="checkoutElement"
+                                       :session-id="sessionId"
+                      />
+                      <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
+                      <br>
+                      or
+                      <br>
 
 
+                      <!-- Stripe -->
+                      <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
+                      <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
+                      <!--                    </stripe>-->
+
+
+                    </div>
                   </div>
+
+                  <div class="card-body">
+                    <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
+                  </div>
+                  <!-- Paypal -->
+                  <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
+                          @payment-complete="handlePaymentCompletePaypal"></paypal>
                 </div>
 
                 <!-- login modal -->
