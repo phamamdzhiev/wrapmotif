@@ -381,8 +381,13 @@ export default {
 
   methods: {
     async getSession() {
-      const res = await this.$axios.get('/getSession');
-      console.log('++++++ GET SESSION DATA +++++', res.data);
+      try {
+        const res = await this.$axios.get('/getSession');
+        console.log('++++++ GET SESSION DATA +++++', res.data);
+      } catch (e) {
+        console.log('----- GET SESSION DATA ERROR ----', e);
+        console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
+      }
     },
     submit() {
       return this.$refs.checkoutElement.redirectToCheckout();
