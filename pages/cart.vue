@@ -207,29 +207,20 @@
                   <!-- Payment buttons -->
                   <div v-if="getTotalItem > 0 && $auth.loggedIn">
                     <div class="card-body" :class="{disabledPayment: !termsAgreed || disablePayButton}">
-                      <stripe-checkout :pk="pk"
-                                       ref="checkoutElement"
-                                       :session-id="sessionId"
-                      />
-                      <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
-
                       <!-- Stripe -->
                       <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
-
-
+                      <stripe-checkout-custom :total-amount="this.getCustomerGrandTotal"/>
                     </div>
+                    <div class="card-body">
+                      <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
+                    </div>
+                    <!-- Paypal -->
+                    <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
+                            @payment-complete="handlePaymentCompletePaypal"/>
                   </div>
-
-                  <div class="card-body">
-                    <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
-                  </div>
-                  <!-- Paypal -->
-                  <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
-                          @payment-complete="handlePaymentCompletePaypal"></paypal>
                 </div>
-
                 <!-- login modal -->
                 <div class="mt-3" v-if="getTotalItem > 0 && !$auth.loggedIn">
                   <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!
@@ -251,6 +242,7 @@ import Stripe from "~/components/Stripe.vue";
 import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
+import StripeCheckoutCustom from "@/components/forms/stripe/StripeCheckoutCustom";
 
 export default {
   components: {
@@ -259,6 +251,7 @@ export default {
     CartPageLogin,
     Stripe,
     PaymentMethodButton,
+    StripeCheckoutCustom
   },
   name: "Cart",
   head() {
@@ -270,7 +263,6 @@ export default {
     return {
       sessionId: null,
       loading: false,
-      pk: process.env.STRIPE_PUBLISHABLE_KEY,
       termsAgreed: false,
       paymentMethod: "",
       paymentButtons: [
@@ -374,28 +366,7 @@ export default {
     }
   },
 
-  mounted() {
-    this.$nextTick(() => {
-      console.log('1- ',this.getTotalPrice)
-      console.log('2- ',this.getGrandTotal)
-      console.log('3- ',this.getCustomerGrandTotal)
-      console.log('4- ',this.getVatAmount)
-      this.getSession();
-    })
-  },
   methods: {
-    async getSession() {
-      try {
-        const res =
-          await this.$axios.get(`/getSession?c=${this.$store.state.currency.selectedCurrency}&t=${this.getCustomerGrandTotal}&q=${1}`);
-        this.sessionId = res.data.id;
-      } catch (e) {
-        console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
-      }
-    },
-    submit() {
-      return this.$refs.checkoutElement.redirectToCheckout();
-    },
     // Verify coupon
     async verifyCoupon() {
       try {
