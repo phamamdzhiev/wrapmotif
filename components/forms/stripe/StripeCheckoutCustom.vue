@@ -1,9 +1,11 @@
 <template>
-  <stripe-checkout :pk="pk"
-                   ref="checkoutElement"
-                   :session-id="sessionId"
-  />
-  <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
+  <div>
+    <stripe-checkout :pk="pk"
+                     ref="checkoutElement"
+                     :session-id="sessionId"
+    />
+    <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
+  </div>
 </template>
 
 <script>
