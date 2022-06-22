@@ -21,11 +21,9 @@ export default {
           "It's simple, choose a design you love, download it and contact a professional car wrapper."
       }
     ],
-    head: {
-      script: [
-        { src: 'https://js.stripe.com/v3' },
-      ]
-    },
+    script: [
+      {src: 'https://js.stripe.com/v3'},
+    ],
     link: [
       {
         rel: "icon",
@@ -60,9 +58,12 @@ export default {
     "~/plugins/pretty-checkbox.js",
     "~/plugins/vue-infinite-loading.js",
     "~/plugins/vue-pagination.js",
-    "~/plugins/vue-stripe.js",
     {
       src: "~/plugins/splide",
+      ssr: false
+    },
+    {
+      src: "~/plugins/vue-stripe.js",
       ssr: false
     },
     {
@@ -90,7 +91,7 @@ export default {
       src: "~/plugins/vue-google-map.js",
       ssr: false
     },
-    { src: "~/plugins/vue-html2pdf", mode: "client" }
+    {src: "~/plugins/vue-html2pdf", mode: "client"}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
