@@ -384,7 +384,7 @@ export default {
     async getSession() {
       try {
         const res = await this.$axios.get('/getSession', {
-          data: {
+          paramsg: {
             total: this.getCustomerGrandTotal,
             currency: this.$store.state.currency.selectedCurrency
           }
