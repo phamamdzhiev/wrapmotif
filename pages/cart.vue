@@ -220,14 +220,14 @@
                     <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"
                             @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">
                     </stripe>
-                    <client-only>
+                    <no-ssr>
                       <stripe-checkout :pk="pk"
                                        ref="checkoutElement"
                                        :session-id="sessionId"
-                      >
-                      </stripe-checkout>
-                    </client-only>F
-                    <button @click="submit">Proceed with Checkout</button>
+                      />
+                      <button @click="submit">Proceed with Checkout</button>
+
+                    </no-ssr>
                   </div>
                 </div>
 
