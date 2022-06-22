@@ -212,20 +212,23 @@
                 <!-- Payment buttons -->
                 <div v-if="getTotalItem > 0 && $auth.loggedIn">
                   <div class="card-body p-0 mb-5" :class="{disabledPayment: !termsAgreed || disablePayButton}">
-                    <!-- Paypal -->
-                    <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
-                            @payment-complete="handlePaymentCompletePaypal"></paypal>
-
-                    <!-- Stripe -->
-<!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
-<!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
-<!--                    </stripe>-->
-
                     <stripe-checkout :pk="pk"
                                      ref="checkoutElement"
                                      :session-id="sessionId"
                     />
                     <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
+                    <br>
+                    or
+                    <br>
+                    <!-- Paypal -->
+                    <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
+                            @payment-complete="handlePaymentCompletePaypal"></paypal>
+
+                    <!-- Stripe -->
+                    <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
+                    <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
+                    <!--                    </stripe>-->
+
 
                   </div>
                 </div>
@@ -292,25 +295,9 @@ export default {
       coupon: null,
       couponCode: "",
       note: null,
-      b: 0,
-      p: 0
     };
   },
-  mounted() {
-    this.getSession();
-    const cart = JSON.parse(localStorage.getItem('cart'));
 
-    cart.forEach((e) => {
-      this.b++;
-      this.p += e.price
-    })
-
-     console.log(
-      '--- card items and ptices---',
-      this.p,
-      this.b
-    )
-  },
   computed: {
     ...mapGetters({
       getCartItems: "cart/getCartItems",
@@ -390,10 +377,18 @@ export default {
     }
   },
 
+  watch: {
+    getCustomerGrandTotal: (oldItem, newItem) => {
+      if (newItem > 0) {
+        this.getSession();
+      }
+    }
+  },
   methods: {
     async getSession() {
       try {
-        const res = await this.$axios.get(`/getSession?c=${this.$store.state.currency.selectedCurrency}&t=${1}&q=${1}`);
+        const res =
+          await this.$axios.get(`/getSession?c=${this.$store.state.currency.selectedCurrency}&t=${this.getCustomerGrandTotal}&q=${1}`);
         this.sessionId = res.data.id;
       } catch (e) {
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
