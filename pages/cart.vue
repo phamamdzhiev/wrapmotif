@@ -292,7 +292,7 @@ export default {
       coupon: null,
       couponCode: "",
       note: null,
-      b: 0
+      b: 0,
       p: 0
     };
   },
