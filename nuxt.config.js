@@ -33,6 +33,9 @@ export default {
     ]
   },
 
+  env: {
+    STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["@/assets/scss/app.scss"],
 
