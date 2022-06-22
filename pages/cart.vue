@@ -211,7 +211,7 @@
                       <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
-                      <stripe-checkout-custom :total-amount="this.getCustomerGrandTotal"/>
+                      <stripe-checkout-custom :total-amount="getCustomerGrandTotal"></stripe-checkout-custom>
                       <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
                       <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
                               @payment-complete="handlePaymentCompletePaypal"/>
@@ -431,6 +431,7 @@ export default {
         });
         this.$toast.success("Thank you for the order!");
         this.$store.dispatch("cart/resetCart");
+        console.log('temp log', resStripe.data.data.id)
         this.$router.push(`/download/${resStripe.data.data.id}`);
       } catch (error) {
         console.log(error);
