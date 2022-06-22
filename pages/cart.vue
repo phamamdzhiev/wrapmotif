@@ -383,7 +383,7 @@ export default {
   methods: {
     async getSession() {
       try {
-        const res = await this.$axios.get('/getSession?c=eur&t=235');
+        const res = await this.$axios.get('/getSession?c=eur&t=235&q=1');
         this.sessionId = res.data.id;
         console.log('++++++ GET SESSION DATA +++++', res.data);
       } catch (e) {
