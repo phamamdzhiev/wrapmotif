@@ -10,12 +10,12 @@
               <span class="ml-2 text-nowrap">BACK TO DESIGNS</span>
             </nuxt-link>
           </div>
-<!--          <div class="col-md-4 d-none d-md-flex justify-content-md-around">-->
-<!--            <h2 class="mb-0 text-sm">-->
-<!--              MARKET-->
-<!--              <span class="text-primary">STOCK DESIGN</span>-->
-<!--            </h2>-->
-<!--          </div>-->
+          <!--          <div class="col-md-4 d-none d-md-flex justify-content-md-around">-->
+          <!--            <h2 class="mb-0 text-sm">-->
+          <!--              MARKET-->
+          <!--              <span class="text-primary">STOCK DESIGN</span>-->
+          <!--            </h2>-->
+          <!--          </div>-->
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
               <!-- cart items -->
               <div v-for="cartItem in getCartItems" :key="cartItem.id" class="bg-cream p-3 mb-3 row mx-0">
                 <div class="col-12 col-md-4 px-0">
-                  <img class="img-fluid" :src="cartItem.thumbnailMediaUrl" alt="" />
+                  <img class="img-fluid" :src="cartItem.thumbnailMediaUrl" alt=""/>
                 </div>
 
                 <div class="col-8 col-md-6">
@@ -41,13 +41,13 @@
 
                   <p class="mt-2">
                     <span class="text-muted">
-                      <div class="pb-2">
-                        {{ cartItem.description | truncate(50) }}
-                      </div>
-                      <div class="text-sm">
-                        {{ getCheckout.data.note_universal }}
-                      </div>
-                    </span>
+                  <div class="pb-2">
+                    {{ cartItem.description | truncate(50) }}
+                  </div>
+                  <div class="text-sm">
+                    {{ getCheckout.data.note_universal }}
+                  </div>
+                  </span>
                   </p>
                 </div>
 
@@ -57,14 +57,15 @@
                       {{
                         cartItem.price
                           | currency(
-                            $store.state.currency.selectedCurrency,
-                            $store.state.currency.exchangeRate
+                          $store.state.currency.selectedCurrency,
+                          $store.state.currency.exchangeRate
                           )
                       }}
                     </h4>
                   </div>
                   <div class="d-flex justify-content-end align-items-end h-100 pb-sm-4 pb-5">
-                    <a @click="removeFromCart(cartItem.id)" class="btn p-0"><i aria-hidden="true" class="fa fa-trash text-dark-gray"></i></a>
+                    <a @click="removeFromCart(cartItem.id)" class="btn p-0"><i aria-hidden="true"
+                                                                               class="fa fa-trash text-dark-gray"></i></a>
                   </div>
                 </div>
               </div>
@@ -74,23 +75,25 @@
                 <div v-if="$auth.loggedIn">
                   <h4>Coupon</h4>
                   <div class="d-flex mt-4">
-                    <input-field v-model="couponCode" :error="validationErrors.couponCode" placeholder="Coupon Code"></input-field>
+                    <input-field v-model="couponCode" :error="validationErrors.couponCode"
+                                 placeholder="Coupon Code"></input-field>
                     <div class="ml-4">
                       <button @click.prevent="verifyCoupon" class="btn btn-primary text-nowrap">Apply</button>
                     </div>
                   </div>
                 </div>
-<!--                <div class="mt-4">
-                  <h5>Notes</h5>
-                  <text-field v-model="note"></text-field>
-                </div>-->
+                <!--                <div class="mt-4">
+                                  <h5>Notes</h5>
+                                  <text-field v-model="note"></text-field>
+                                </div>-->
               </div>
 
               <!-- Customer information -->
               <div v-if="!$auth.loggedIn">
                 <!-- login modal -->
                 <keep-alive>
-                  <b-modal id="modal-scrollable" scrollable centered hide-footer no-stacking no-close-on-backdrop title="Login" ref="login-modal">
+                  <b-modal id="modal-scrollable" scrollable centered hide-footer no-stacking no-close-on-backdrop
+                           title="Login" ref="login-modal">
                     <cart-page-login redirectUrl="/cart"></cart-page-login>
                     <template>
                       <div class="d-flex justify-content-center">
@@ -102,7 +105,8 @@
 
                 <!-- register modal -->
                 <keep-alive>
-                  <b-modal id="register-modal" scrollable size="lg" centered hide-footer no-close-on-backdrop title="Register" ref="register-modal">
+                  <b-modal id="register-modal" scrollable size="lg" centered hide-footer no-close-on-backdrop
+                           title="Register" ref="register-modal">
                     <cart-page-register @registered="hideRegisterModal"></cart-page-register>
                   </b-modal>
                 </keep-alive>
@@ -123,7 +127,9 @@
                   <div class="row mt-3">
                     <div class="col-8">Amount</div>
                     <div class="col-4 text-right subtotal-price">
-                      {{getTotalPrice | currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      {{
+                        getTotalPrice | currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)
+                      }}
                     </div>
                   </div>
 
@@ -131,7 +137,9 @@
                   <div class="row mt-3">
                     <div class="col-8">Discount (-)</div>
                     <div class="col-4 text-right subtotal-price">
-                      {{discount | currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      {{
+                        discount | currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)
+                      }}
                     </div>
                   </div>
 
@@ -139,32 +147,39 @@
                   <div class="row mt-3">
                     <div class="col-8">Subtotal</div>
                     <div class="col-4 text-right subtotal-price">
-                      {{discountedAmount | currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      {{
+                        discountedAmount | currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)
+                      }}
                     </div>
                   </div>
 
                   <!-- Vat -->
                   <div class="row mt-3">
                     <div class="col-8">VAT ({{ vatAmount }}
-                      {{ vatType }})</div>
+                      {{ vatType }})
+                    </div>
                     <div class="col-4 text-right mossvat-price">
                       <span v-if="vatType == '%'">
-                        {{getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                        {{
+                          getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)
+                        }}
                       </span>
                       <span v-else>
-                        {{vatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                        {{
+                          vatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)
+                        }}
                       </span>
                     </div>
                   </div>
 
-                  <hr />
+                  <hr/>
                   <div class="row mt-3">
                     <div class="col-8">
                       <h5 class="mb-0">Total</h5>
                     </div>
                     <div class="col-4 text-right total-price">
                       <h5 class="mb-0">
-                        {{getCustomerGrandTotal | currencySymbol($store.state.currency.selectedCurrency)}}
+                        {{ getCustomerGrandTotal | currencySymbol($store.state.currency.selectedCurrency) }}
                       </h5>
                     </div>
                   </div>
@@ -185,8 +200,10 @@
                   <div class="col-12">
                     <div class="form-group">
                       <div class="custom-control custom-checkbox">
-                        <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input" />
-                        <label for="agree1" class="custom-control-label user-select-none">I have read and agree to the <a href="/terms-conditions#general-terms" class="text-primary" target="_blank" title="Wrapmotif Terms and Conditions">terms and conditions</a>.</label>
+                        <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input"/>
+                        <label for="agree1" class="custom-control-label user-select-none">I have read and agree to the
+                          <a href="/terms-conditions#general-terms" class="text-primary" target="_blank"
+                             title="Wrapmotif Terms and Conditions">terms and conditions</a>.</label>
                       </div>
                     </div>
                   </div>
@@ -196,20 +213,27 @@
                 <div v-if="getTotalItem > 0 && $auth.loggedIn">
                   <div class="card-body p-0 mb-5" :class="{disabledPayment: !termsAgreed || disablePayButton}">
                     <!-- Paypal -->
-                    <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal" @payment-complete="handlePaymentCompletePaypal"></paypal>
+                    <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
+                            @payment-complete="handlePaymentCompletePaypal"></paypal>
 
                     <!-- Stripe -->
-                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError" @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">
+                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"
+                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">
                     </stripe>
 
-                    <stripe-checkout sessionId="tutu" :pk="pk" ref="checkoutElement"/>
+                    <stripe-checkout :pk="pk"
+                                     ref="checkoutElement"
+                                     :sessionId="sessionId"
+                    >
+                    </stripe-checkout>
                     <button @click="submit">Proceed with Checkout</button>
                   </div>
                 </div>
 
                 <!-- login modal -->
                 <div class="mt-3" v-if="getTotalItem > 0 && !$auth.loggedIn">
-                  <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!</b-button>
+                  <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!
+                  </b-button>
                 </div>
               </div>
             </div>
@@ -221,13 +245,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
 import Paypal from "~/components/Paypal.vue";
 import Stripe from "~/components/Stripe.vue";
 import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
 import {StripeCheckout} from '@vue-stripe/vue-stripe'
+import axios from "@/plugins/axios";
 
 export default {
   components: {
@@ -246,6 +271,8 @@ export default {
   },
   data() {
     return {
+      sessionId: null,
+      loading: false,
       pk: process.env.STRIPE_PUBLISHABLE_KEY,
       termsAgreed: false,
       paymentMethod: "",
@@ -270,7 +297,9 @@ export default {
       note: null,
     };
   },
-
+  mounted() {
+    this.getSession();
+  },
   computed: {
     ...mapGetters({
       getCartItems: "cart/getCartItems",
@@ -281,10 +310,10 @@ export default {
     }),
     // Get discount amount
     discount() {
-      if(this.coupon){
-        if(this.coupon.type !== 'amount'){
+      if (this.coupon) {
+        if (this.coupon.type !== 'amount') {
           return (this.getTotalPrice * this.coupon.amount / 100).toFixed(1);
-        }else{
+        } else {
           this.coupon.amount
         }
       }
@@ -351,6 +380,10 @@ export default {
   },
 
   methods: {
+    async getSession() {
+      const res = await this.$axios.get('/getSession');
+      console.log('++++++ GET SESSION DATA +++++', res.data);
+    },
     submit() {
       return this.$refs.checkoutElement.redirectToCheckout();
     },
@@ -430,7 +463,7 @@ export default {
     },
 
     removeFromCart(cartID) {
-      this.$store.dispatch("cart/removeFromCart", { cartID: cartID, url: "/cart" });
+      this.$store.dispatch("cart/removeFromCart", {cartID: cartID, url: "/cart"});
     },
 
     hideRegisterModal() {
