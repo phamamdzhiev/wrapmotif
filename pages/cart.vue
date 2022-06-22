@@ -212,13 +212,10 @@
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
                       <stripe-checkout-custom :total-amount="this.getCustomerGrandTotal"/>
-                    </div>
-                    <div class="card-body">
                       <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
+                      <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
+                              @payment-complete="handlePaymentCompletePaypal"/>
                     </div>
-                    <!-- Paypal -->
-                    <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
-                            @payment-complete="handlePaymentCompletePaypal"/>
                   </div>
                 </div>
                 <!-- login modal -->
