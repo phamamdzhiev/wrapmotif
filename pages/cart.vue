@@ -381,7 +381,7 @@ export default {
     async getSession() {
       try {
         const res =
-          await this.$axios.post('/getSession', {
+          await this.$axios.post('/create-session', {
             c: this.getCustomerGrandTotal,
             q: 1
           });
