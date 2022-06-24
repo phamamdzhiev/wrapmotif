@@ -235,6 +235,7 @@
             </div>
           </div>
         </form>
+        <button @click="handlePaymentCompletePaypal">POS</button>
       </div>
     </div>
   </div>
@@ -435,6 +436,7 @@ export default {
         });
         this.$toast.success("Thank you for the order!");
         this.$store.dispatch("cart/resetCart");
+        console.log('Payment method----', res.data.data.id)
         this.$router.push(`/download/${res.data.data.id}`);
       } catch (error) {
         console.log(error);
