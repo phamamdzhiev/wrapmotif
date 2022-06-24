@@ -211,7 +211,15 @@
                       <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
-                      <stripe-checkout-custom :total-amount="getCustomerGrandTotal"></stripe-checkout-custom>
+<!--                      <stripe-checkout-custom :total-amount="getCustomerGrandTotal"></stripe-checkout-custom>-->
+
+
+                      <stripe-checkout :pk="pk"
+                                       ref="checkoutElement"
+                                       :session-id="sessionId"
+                      />
+                      <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
+
                       <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
                       <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
                               @payment-complete="handlePaymentCompletePaypal"/>
@@ -256,8 +264,14 @@ export default {
       title: "Cart"
     };
   },
+  mounted() {
+    this.$nextTick(() => {
+      this.getSession();
+    })
+  },
   data() {
     return {
+      pk: process.env.STRIPE_PUBLISHABLE_KEY,
       sessionId: null,
       loading: false,
       termsAgreed: false,
@@ -364,6 +378,25 @@ export default {
   },
 
   methods: {
+    async getSession() {
+      try {
+        const res =
+          await this.$axios.post('/getSession', {
+            c: this.getCustomerGrandTotal,
+            q: 1
+          });
+        console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
+        this.sessionId = res.data.id;
+      } catch (e) {
+        console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
+      }
+    },
+    submit() {
+      return this.$refs.checkoutElement.redirectToCheckout();
+    },
+
+
+
     // Verify coupon
     async verifyCoupon() {
       try {
