@@ -39,9 +39,12 @@ export default {
         "currency/setSelectedCurrency",
         this.selectedCurrency
       );
+
+      // window.location.reload();
     }
   },
   mounted() {
+    console.log('ROute naem-----',this.$route.name);
     this.$store.dispatch("currency/setCurrency");
     // Set the currency from store
     this.selectedCurrency = this.$store.state.currency.selectedCurrency;

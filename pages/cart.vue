@@ -211,14 +211,15 @@
                       <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
-<!--                      <stripe-checkout-custom :total-amount="getCustomerGrandTotal"></stripe-checkout-custom>-->
-
-
-                      <stripe-checkout :pk="pk"
-                                       ref="checkoutElement"
-                                       :session-id="sessionId"
-                      />
-                      <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
+                      <!--                      <stripe-checkout-custom :total-amount="getCustomerGrandTotal"></stripe-checkout-custom>-->
+                      <button v-if="this.getCustomerGrandTotal > 0" @click="this.getSession">Proceed to checkout</button>
+                      <div v-if="sessionId">
+                        <stripe-checkout :pk="pk"
+                                         ref="checkoutElement"
+                                         :session-id="sessionId"
+                        />
+                        <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
+                      </div>
 
                       <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
                       <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
@@ -235,7 +236,7 @@
             </div>
           </div>
         </form>
-        <button @click="handlePaymentCompletePaypal">POS</button>
+        <button @click="handlePaymentCompletePaypal">TEST ORDER</button>
       </div>
     </div>
   </div>
@@ -266,9 +267,9 @@ export default {
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      this.getSession();
-    })
+    // this.$nextTick(() => {
+    //   this.getSession();
+    // })
   },
   data() {
     return {
@@ -344,7 +345,6 @@ export default {
     },
     // Calculate grand total
     getCustomerGrandTotal() {
-      console.log(this.convertCurrency(this.getTotalPrice))
       return (
         this.convertCurrency(this.getTotalPrice) -
         this.convertCurrency(this.discount) +
@@ -395,7 +395,6 @@ export default {
     submit() {
       return this.$refs.checkoutElement.redirectToCheckout();
     },
-
 
 
     // Verify coupon
