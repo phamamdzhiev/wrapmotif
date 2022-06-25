@@ -393,9 +393,13 @@ export default {
         this.loading = true;
         const res =
           await this.$axios.post('create-session/design', {
+
+
             currency: this.$store.state.currency.selectedCurrency,
             total: this.getCustomerGrandTotal,
             quantity: 1,
+
+
             // metadata
             customerId: this.$auth.user.id,
             couponId: this.coupon ? this.coupon.id : null,
