@@ -246,7 +246,6 @@
             </div>
           </div>
         </form>
-        <button @click="handlePaymentCompletePaypal">TEST ORDER</button>
       </div>
     </div>
   </div>
@@ -447,33 +446,34 @@ export default {
     },
 
     // Handle order after payment complete
-    async handlePaymentCompletePaypal() {
-      try {
-        const res = await this.$axios.post("/orders", {
-          customerId: this.$auth.user.id,
-          couponId: this.coupon ? this.coupon.id : null,
-          customerCurrency: this.$store.state.currency.selectedCurrency,
-          totalAmount: this.getTotalPrice,
-          customerAmount: this.convertCurrency(this.getTotalPrice),
-          vat: this.vatAmount,
-          vatType: this.vatType,
-          vatAmount: this.getVatAmount,
-          customerVatAmount: this.convertCurrency(this.getVatAmount),
-          totalDiscount: this.discount,
-          customerTotalDiscount: this.convertCurrency(this.discount),
-          note: this.note,
-          orderItems: this.orderItems
-        });
-        this.$toast.success("Thank you for the order!");
-        await this.$store.dispatch("cart/resetCart");
-        console.log('Payment method----', res.data.data.id)
-        await this.$router.push(`/download/${res.data.data.id}`);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        this.disablePayButton = false;
-      }
-    },
+    //@deprecated
+    // async handlePaymentCompletePaypal() {
+    //   try {
+    //     const res = await this.$axios.post("/orders", {
+    //       customerId: this.$auth.user.id,
+    //       couponId: this.coupon ? this.coupon.id : null,
+    //       customerCurrency: this.$store.state.currency.selectedCurrency,
+    //       totalAmount: this.getTotalPrice,
+    //       customerAmount: this.convertCurrency(this.getTotalPrice),
+    //       vat: this.vatAmount,
+    //       vatType: this.vatType,
+    //       vatAmount: this.getVatAmount,
+    //       customerVatAmount: this.convertCurrency(this.getVatAmount),
+    //       totalDiscount: this.discount,
+    //       customerTotalDiscount: this.convertCurrency(this.discount),
+    //       note: this.note,
+    //       orderItems: this.orderItems
+    //     });
+    //     this.$toast.success("Thank you for the order!");
+    //     await this.$store.dispatch("cart/resetCart");
+    //     console.log('Payment method----', res.data.data.id)
+    //     await this.$router.push(`/download/${res.data.data.id}`);
+    //   } catch (error) {
+    //     console.log(error);
+    //   } finally {
+    //     this.disablePayButton = false;
+    //   }
+    // },
 
     // Handle stripe payment
     // async handlePaymentCompleteStripe(token) {
