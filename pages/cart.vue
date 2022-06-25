@@ -216,7 +216,7 @@
                       <stripe-checkout-custom></stripe-checkout-custom>
                       <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0 && !sessionId"
                               @click="this.getSession">
-                        <span v-if="isLoading">Loading ...</span>
+                        <span v-if="loading">Loading ...</span>
                         <span v-else>
                           Proceed to checkout
                         </span>
@@ -393,7 +393,7 @@ export default {
   methods: {
     async getSession() {
       try {
-        this.isLoading = true;
+        this.loading = true;
         const res =
           await this.$axios.post('create-session/design', {
             currency: this.$store.state.currency.selectedCurrency,
@@ -415,10 +415,10 @@ export default {
             orderItems: JSON.stringify(this.orderItems)
           });
         console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
-        this.isLoading = false;
+        this.loading = false;
         this.sessionId = res.data.id;
       } catch (e) {
-        this.isLoading = false;
+        this.loading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
       }
     },
