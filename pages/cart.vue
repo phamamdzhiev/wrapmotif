@@ -213,7 +213,7 @@
                       <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
-                      <!--                      <stripe-checkout-custom :total-amount="getCustomerGrandTotal"></stripe-checkout-custom>-->
+                      <stripe-checkout-custom></stripe-checkout-custom>
                       <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0 && !sessionId"
                               @click="this.getSession">
                         <span v-if="isLoading">Loading ...</span>
@@ -395,7 +395,7 @@ export default {
       try {
         this.isLoading = true;
         const res =
-          await this.$axios.post('/create-session', {
+          await this.$axios.post('create-session/design', {
             currency: this.$store.state.currency.selectedCurrency,
             total: this.getCustomerGrandTotal,
             quantity: 1,
@@ -464,9 +464,9 @@ export default {
           orderItems: this.orderItems
         });
         this.$toast.success("Thank you for the order!");
-        this.$store.dispatch("cart/resetCart");
+        await this.$store.dispatch("cart/resetCart");
         console.log('Payment method----', res.data.data.id)
-        this.$router.push(`/download/${res.data.data.id}`);
+        await this.$router.push(`/download/${res.data.data.id}`);
       } catch (error) {
         console.log(error);
       } finally {
@@ -475,34 +475,34 @@ export default {
     },
 
     // Handle stripe payment
-    async handlePaymentCompleteStripe(token) {
-      try {
-        const resStripe = await this.$axios.post("/payments/orders/stripe", {
-          token: token.id,
-          customerId: this.$auth.user.id,
-          couponId: this.coupon ? this.coupon.id : null,
-          customerCurrency: this.$store.state.currency.selectedCurrency,
-          totalAmount: this.getTotalPrice,
-          customerAmount: this.convertCurrency(this.getTotalPrice),
-          vat: this.vatAmount,
-          vatType: this.vatType,
-          vatAmount: this.getVatAmount,
-          customerVatAmount: this.convertCurrency(this.getVatAmount),
-          totalDiscount: this.discount,
-          customerTotalDiscount: this.convertCurrency(this.discount),
-          note: this.note,
-          orderItems: this.orderItems
-        });
-        this.$toast.success("Thank you for the order!");
-        this.$store.dispatch("cart/resetCart");
-        console.log('temp log', resStripe.data.data.id)
-        this.$router.push(`/download/${resStripe.data.data.id}`);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        this.disablePayButton = false;
-      }
-    },
+    // async handlePaymentCompleteStripe(token) {
+    //   try {
+    //     const resStripe = await this.$axios.post("/payments/orders/stripe", {
+    //       token: token.id,
+    //       customerId: this.$auth.user.id,
+    //       couponId: this.coupon ? this.coupon.id : null,
+    //       customerCurrency: this.$store.state.currency.selectedCurrency,
+    //       totalAmount: this.getTotalPrice,
+    //       customerAmount: this.convertCurrency(this.getTotalPrice),
+    //       vat: this.vatAmount,
+    //       vatType: this.vatType,
+    //       vatAmount: this.getVatAmount,
+    //       customerVatAmount: this.convertCurrency(this.getVatAmount),
+    //       totalDiscount: this.discount,
+    //       customerTotalDiscount: this.convertCurrency(this.discount),
+    //       note: this.note,
+    //       orderItems: this.orderItems
+    //     });
+    //     this.$toast.success("Thank you for the order!");
+    //     this.$store.dispatch("cart/resetCart");
+    //     console.log('temp log', resStripe.data.data.id)
+    //     this.$router.push(`/download/${resStripe.data.data.id}`);
+    //   } catch (error) {
+    //     console.log(error);
+    //   } finally {
+    //     this.disablePayButton = false;
+    //   }
+    // },
 
     removeFromCart(cartID) {
       this.$store.dispatch("cart/removeFromCart", {cartID: cartID, url: "/cart"});

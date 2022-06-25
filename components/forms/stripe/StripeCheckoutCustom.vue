@@ -1,10 +1,6 @@
 <template>
   <div>
-    <stripe-checkout :pk="pk"
-                     ref="checkoutElement"
-                     :session-id="sessionId"
-    />
-    <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
+   <h1>TESVAI KUCHE</h1>
   </div>
 </template>
 
