@@ -190,6 +190,8 @@
                   <div class="p-3 border-bottom bg-black text-white">
                     <h4 class="mb-0 text-2xl">Payment method</h4>
                   </div>
+
+
                   <!-- confirmation -->
                   <div class="row mt-3 mb-2" v-if="$auth.loggedIn && getTotalItem > 0">
                     <div class="col-12">
@@ -212,13 +214,22 @@
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
                       <!--                      <stripe-checkout-custom :total-amount="getCustomerGrandTotal"></stripe-checkout-custom>-->
-                      <button type="button" v-if="this.getCustomerGrandTotal > 0" @click="this.getSession">Proceed to checkout</button>
+                      <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0 && !sessionId"
+                              @click="this.getSession">
+                        <Loader v-if="isLoading"/>
+                        <span v-else>
+                          Proceed to checkout
+                        </span>
+                      </button>
+                      <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"
+                              @click="submit">Pay Now
+                      </button>
+
                       <div v-if="sessionId">
                         <stripe-checkout :pk="pk"
                                          ref="checkoutElement"
                                          :session-id="sessionId"
                         />
-                        <button class="btn btn-primary text-nowrap" @click="submit">Pay Now</button>
                       </div>
 
                       <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
@@ -250,6 +261,7 @@ import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
 import StripeCheckoutCustom from "@/components/forms/stripe/StripeCheckoutCustom";
+import Loader from "@/components/shared/Loader";
 
 export default {
   components: {
@@ -258,7 +270,8 @@ export default {
     CartPageLogin,
     Stripe,
     PaymentMethodButton,
-    StripeCheckoutCustom
+    StripeCheckoutCustom,
+    Loader
   },
   name: "Cart",
   head() {
@@ -273,6 +286,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       pk: process.env.STRIPE_PUBLISHABLE_KEY,
       sessionId: null,
       loading: false,
@@ -381,14 +395,17 @@ export default {
   methods: {
     async getSession() {
       try {
+        this.isLoading = true;
         const res =
           await this.$axios.post('/create-session', {
             c: this.getCustomerGrandTotal,
             q: 1
           });
         console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
+        this.isLoading = false;
         this.sessionId = res.data.id;
       } catch (e) {
+        this.isLoading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
       }
     },
@@ -493,4 +510,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn-black {
+  font-size: 20px;
+  padding: 20px;
+}
+
+.btn-primary {
+  width: 100%;
+  border-radius: 0;
+  font-size: 20px;
+  padding: 10px;
+}
 </style>

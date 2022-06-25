@@ -14,11 +14,11 @@
         class="custom-control-input"
       />
       <label :for="button.id" class="custom-control-label"
-        ><img
-          :src="button.src"
-          :alt="button.value"
-          style="height: 32px"
-          class="img-fluid"
+      ><img
+        :src="button.src"
+        :alt="button.value"
+        style="height: 40px"
+        class="img-fluid"
       /></label>
     </div>
   </div>
@@ -35,7 +35,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.custom-control {
+  padding-left: 0 !important;
+}
+
 .custom-control-label {
-  display: inline;
+  display: block;
+  width: 100%;
+  border: 2px solid black;
+  padding: 5px;
+  text-align: center;
+
+  &:after {
+    content: none;
+  }
 }
 </style>

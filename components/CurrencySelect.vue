@@ -15,12 +15,12 @@
 
 <script>
 export default {
-  props:{
-    showText:{
+  props: {
+    showText: {
       type: Boolean,
       default: false,
     },
-    closeMenu:{
+    closeMenu: {
       type: Function,
       default: () => 1,
     },
@@ -32,19 +32,17 @@ export default {
   },
   methods: {
     handleChange() {
-      if(this.showText){
+      if (this.showText) {
         this.closeMenu()
       }
       this.$store.dispatch(
         "currency/setSelectedCurrency",
         this.selectedCurrency
       );
-
-      // window.location.reload();
     }
   },
   mounted() {
-    console.log('ROute naem-----',this.$route.name);
+    console.log('ROute naem-----', this.$route.name);
     this.$store.dispatch("currency/setCurrency");
     // Set the currency from store
     this.selectedCurrency = this.$store.state.currency.selectedCurrency;

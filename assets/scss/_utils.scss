@@ -1,4 +1,4 @@
-.btn{
+.btn {
   font-size: 14px;
   border: 1px solid transparent;
   outline: none;
@@ -6,7 +6,7 @@
   border-radius: 100px;
 }
 
-.btn-primary{
+.btn-primary {
   @extend .btn-primary;
 
   // &:hover{
@@ -16,9 +16,14 @@
   background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
 }
 
-.bg-primary{
+.bg-primary {
   border-color: #c96130;
   background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
+}
+
+.btn-black {
+  background-color: black;
+  color: white;
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
@@ -26,28 +31,31 @@
   background: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   border: 1px solid #c85007 !important;
   //display: inline-block !important;
   background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 // Gradient text
-.text-primary{
+.text-primary {
   display: inline-block !important;
   background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-button.btn-primary:hover{
+
+button.btn-primary:hover {
   background: transparent;
   -webkit-text-fill-color: #c96130;
 }
 
-.btn-primary.section-btn:hover{
+.btn-primary.section-btn:hover {
   color: #FFFFFF !important;
 }
+
 .btn-primary-outline {
   background-color: transparent;
   border-color: $primary;
@@ -61,9 +69,9 @@ button.btn-primary:hover{
 }
 
 .btn-slider {
-  background-color: rgba(0,0,0,.6);
+  background-color: rgba(0, 0, 0, .6);
   color: $primary;
-  border:1px solid $primary;
+  border: 1px solid $primary;
   padding: 8px 45px;
 }
 
@@ -74,8 +82,8 @@ button.btn-primary:hover{
   color: white;
 }
 
-.btn-primary.section-btn:hover{
-  border:1px solid $primary;
+.btn-primary.section-btn:hover {
+  border: 1px solid $primary;
   color: $primary;
   background-color: #fff;
 }
@@ -104,7 +112,7 @@ button.btn-primary:hover{
   line-height: 1;
   color: #000;
   text-align: center;
-  font-weight:400;
+  font-weight: 400;
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 100px;
@@ -114,23 +122,23 @@ button.btn-primary:hover{
 
 // Font helpers
 
-$fonts : (
+$fonts: (
   xs: 12px,
   sm: 14px,
   bs: 1rem,
   lg: 1.125rem,
   xl : 1.25rem,
-  2xl: 1.5rem,
-  3xl: 1.875rem,
-  4xl: 2.25rem,
-  5xl: 3rem,
-  6xl: 3.75rem,
-  7xl: 4.5rem,
-  8xl: 6rem,
-  9xl: 8rem,
+  2 xl: 1.5rem,
+  3 xl: 1.875rem,
+  4 xl: 2.25rem,
+  5 xl: 3rem,
+  6 xl: 3.75rem,
+  7 xl: 4.5rem,
+  8 xl: 6rem,
+  9 xl: 8rem,
 );
 
-@each $name, $size in $fonts{
+@each $name, $size in $fonts {
   .text-#{$name} {
     font-size: $size;
   }
@@ -146,7 +154,7 @@ $weight: (
   "black": 900,
 );
 
-@each $name, $weight in $weight{
+@each $name, $weight in $weight {
   .font-#{$name} {
     font-weight: $weight;
   }

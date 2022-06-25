@@ -31,7 +31,7 @@
       <div class="ml-auto d-flex align-items-center justify-content-end">
         <!-- Currency icon -->
         <div class="nav-icon mr-2 d-desktop " style="cursor: pointer;">
-          <currency-select></currency-select>
+          <currency-select v-show="$route.name !== 'cart'"></currency-select>
         </div>
 
         <!-- cart icon -->
