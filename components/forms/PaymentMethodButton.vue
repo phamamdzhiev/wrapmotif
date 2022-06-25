@@ -46,7 +46,8 @@ export default {
   padding: 5px;
   text-align: center;
 
-  &:after {
+  &:after,
+  &:before {
     content: none;
   }
 }

@@ -232,7 +232,7 @@
                         />
                       </div>
 
-                      <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
+                      <payment-method-button v-if="sessionId" :buttons="paymentButtons" v-model="paymentMethod"/>
                       <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
                               @payment-complete="handlePaymentCompletePaypal"/>
                     </div>
@@ -512,10 +512,10 @@ export default {
 <style lang="scss" scoped>
 .btn-black {
   font-size: 20px;
-  padding: 20px;
+  padding: 10px;
 }
 
-.btn-primary {
+#pay-now-btn {
   width: 100%;
   border-radius: 0;
   font-size: 20px;
