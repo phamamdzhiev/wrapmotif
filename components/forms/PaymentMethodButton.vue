@@ -42,7 +42,7 @@ export default {
 .custom-control-label {
   display: block;
   width: 100%;
-  border: 2px solid black;
+  border: 3px solid black;
   padding: 5px;
   text-align: center;
 

@@ -208,7 +208,7 @@
 
                   <!-- Payment buttons -->
                   <div v-if="getTotalItem > 0 && $auth.loggedIn">
-                    <div class="card-body" :class="{disabledPayment: !termsAgreed || disablePayButton}">
+                    <div class="card-body p-0" :class="{disabledPayment: !termsAgreed || disablePayButton}">
                       <!-- Stripe -->
                       <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
@@ -216,7 +216,7 @@
                       <!--                      <stripe-checkout-custom :total-amount="getCustomerGrandTotal"></stripe-checkout-custom>-->
                       <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0 && !sessionId"
                               @click="this.getSession">
-                        <Loader v-if="isLoading"/>
+                        <span v-if="isLoading">Loading ...</span>
                         <span v-else>
                           Proceed to checkout
                         </span>
@@ -261,7 +261,6 @@ import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
 import StripeCheckoutCustom from "@/components/forms/stripe/StripeCheckoutCustom";
-import Loader from "@/components/shared/Loader";
 
 export default {
   components: {
@@ -271,7 +270,6 @@ export default {
     Stripe,
     PaymentMethodButton,
     StripeCheckoutCustom,
-    Loader
   },
   name: "Cart",
   head() {
@@ -398,8 +396,23 @@ export default {
         this.isLoading = true;
         const res =
           await this.$axios.post('/create-session', {
-            c: this.getCustomerGrandTotal,
-            q: 1
+            currency: this.$store.state.currency.selectedCurrency,
+            total: this.getCustomerGrandTotal,
+            quantity: 1,
+            // metadata
+            customerId: this.$auth.user.id,
+            couponId: this.coupon ? this.coupon.id : null,
+            customerCurrency: this.$store.state.currency.selectedCurrency,
+            totalAmount: this.getTotalPrice,
+            customerAmount: this.convertCurrency(this.getTotalPrice),
+            vat: this.vatAmount,
+            vatType: this.vatType,
+            vatAmount: this.getVatAmount,
+            customerVatAmount: this.convertCurrency(this.getVatAmount),
+            totalDiscount: this.discount,
+            customerTotalDiscount: this.convertCurrency(this.discount),
+            note: this.note,
+            orderItems: this.orderItems
           });
         console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
         this.isLoading = false;
@@ -420,7 +433,7 @@ export default {
         const res = await this.$axios.$post("/verify-coupon", {
           couponCode: this.couponCode,
           customerId: this.$auth.user.id,
-          orderAmount: this.getGrandTotal
+          orderAmount: this.getGrandTotal,
         });
         this.coupon = res.data;
         this.couponCode = null;
@@ -513,6 +526,7 @@ export default {
 .btn-black {
   font-size: 20px;
   padding: 10px;
+  cursor: pointer;
 }
 
 #pay-now-btn {
