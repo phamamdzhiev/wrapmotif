@@ -412,7 +412,7 @@ export default {
             totalDiscount: this.discount,
             customerTotalDiscount: this.convertCurrency(this.discount),
             note: this.note,
-            orderItems: this.orderItems
+            orderItems: JSON.stringify(this.orderItems)
           });
         console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
         this.isLoading = false;
