@@ -212,7 +212,7 @@
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
                       <!--                      <stripe-checkout-custom :total-amount="getCustomerGrandTotal"></stripe-checkout-custom>-->
-                      <button v-if="this.getCustomerGrandTotal > 0" @click="this.getSession">Proceed to checkout</button>
+                      <button type="button" v-if="this.getCustomerGrandTotal > 0" @click="this.getSession">Proceed to checkout</button>
                       <div v-if="sessionId">
                         <stripe-checkout :pk="pk"
                                          ref="checkoutElement"
