@@ -213,7 +213,6 @@
                       <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
-                      <stripe-checkout-custom></stripe-checkout-custom>
                       <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0 && !sessionId"
                               @click="this.getSession">
                         <span v-if="loading">Loading ...</span>
@@ -260,7 +259,6 @@ import Stripe from "~/components/Stripe.vue";
 import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
-import StripeCheckoutCustom from "@/components/forms/stripe/StripeCheckoutCustom";
 
 export default {
   components: {
@@ -269,7 +267,6 @@ export default {
     CartPageLogin,
     Stripe,
     PaymentMethodButton,
-    StripeCheckoutCustom,
   },
   name: "Cart",
   head() {
