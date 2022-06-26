@@ -277,12 +277,12 @@ export default {
           value: "paypal",
           name: "payment"
         },
-        {
-          src: "/images/cart/gplogo.png",
-          id: "payment_stripe",
-          value: "stripe",
-          name: "payment"
-        }
+        // {
+        //   src: "/images/cart/gplogo.png",
+        //   id: "payment_stripe",
+        //   value: "stripe",
+        //   name: "payment"
+        // }
       ]
     };
   },
