@@ -76,6 +76,7 @@ export default {
             shape: "pill",
             label: "checkout",
             tagline: false,
+            edges: "softEdges",
             layout: "vertical",
             fundingicons: "true",
             funding: {
