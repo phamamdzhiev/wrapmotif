@@ -182,22 +182,41 @@
                 </div>
               </div>
 
-              <!-- payment buttons -->
+              <!-- Payment buttons -->
               <div v-if="$auth.loggedIn">
-                <div class="card-body p-0 mb-5" :class="{ disabledPayment: !termsAgreed }">
-                  <!-- Paypal -->
-                  <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
-                          @payment-complete="handlePaymentCompletePaypal"></paypal>
-
+                <div class="card-body p-0" :class="{disabledPayment: !termsAgreed || disablePayButton}">
                   <!-- Stripe -->
-                  <stripe v-show="paymentMethod === 'stripe'" @token-generated="handlePaymentCompleteStripe">
-                  </stripe>
+                  <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
+                  <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
+                  <!--                    </stripe>-->
+                  <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0 && !sessionId"
+                          @click="getSession">
+                    <span v-if="loading">Loading ...</span>
+                    <span v-else>
+                          Proceed to checkout
+                        </span>
+                  </button>
+                  <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"
+                          @click="submit">Pay Now
+                  </button>
+
+                  <div v-if="sessionId">
+                    <stripe-checkout :pk="pk"
+                                     ref="checkoutElement"
+                                     :session-id="sessionId"
+                    />
+                  </div>
+
+                  <payment-method-button v-if="sessionId" :buttons="paymentButtons" v-model="paymentMethod"/>
+                  <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
+                          @payment-complete="handlePaymentCompletePaypal"/>
                 </div>
               </div>
+            </div>
 
 
 
-              <!-- login modal -->
+            <!-- login modal -->
               <div class="mt-3" v-if="!$auth.loggedIn">
                 <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!
                 </b-button>
@@ -229,6 +248,10 @@ export default {
   name: "color-change-cart",
   data() {
     return {
+      disablePayButton: false,
+      loading: false,
+      pk: process.env.STRIPE_PUBLISHABLE_KEY,
+      sessionId: null,
       vatType: "%",
       colorChangeAmount: 30,
       termsAgreed: false,
@@ -263,12 +286,12 @@ export default {
           value: "paypal",
           name: "payment"
         },
-        {
-          src: "/images/cart/gplogo.png",
-          id: "payment_stripe",
-          value: "stripe",
-          name: "payment"
-        }
+        // {
+        //   src: "/images/cart/gplogo.png",
+        //   id: "payment_stripe",
+        //   value: "stripe",
+        //   name: "payment"
+        // }
       ]
     };
   },
@@ -321,6 +344,7 @@ export default {
     // Prepare items for color change request create
     colorChange() {
       return {
+        customerId: this.$auth.user.id,
         productId: this.product.id,
         colors: this.colors,
         description: this.description,
@@ -336,7 +360,28 @@ export default {
   },
 
   methods: {
-    // Handle color chage request after payment complete
+    async getSession() {
+      try {
+        this.loading = true;
+        const res =
+          await this.$axios.post('create-session/color', {
+            ...this.colorChange
+          });
+
+        console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
+        this.loading = false;
+        this.sessionId = res.data.id;
+      } catch (e) {
+        this.loading = false;
+        console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
+      }
+    },
+    submit() {
+      return this.$refs.checkoutElement.redirectToCheckout();
+    },
+
+
+    // Handle color change request after payment complete
     async handlePaymentCompletePaypal() {
       const res = await this.$axios.post("/color-changes", this.colorChange);
       this.$router.push("/color-changes/greeting");
@@ -356,7 +401,7 @@ export default {
         }
       );
       this.$toast.success("Order completed successfully");
-      this.$router.push("/color-changes/greeting");
+      await this.$router.push("/color-changes/greeting");
     },
 
     hideRegisterModal() {
