@@ -126,7 +126,9 @@
                   </div>
                   <div class="col-4 text-right mossvat-price">
                     <span v-if="vatType == '%'">
-                      {{ getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate) }}
+                      {{
+                        getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)
+                      }}
                     </span>
                     <span v-else>
                       {{
@@ -186,9 +188,9 @@
                           Proceed to checkout
                         </span>
                   </button>
-<!--                  <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"-->
-<!--                          @click="submit">Pay Now-->
-<!--                  </button>-->
+                  <!--                  <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"-->
+                  <!--                          @click="submit">Pay Now-->
+                  <!--                  </button>-->
 
                   <div v-if="sessionId">
                     <stripe-checkout :pk="pk"
@@ -205,17 +207,16 @@
             </div>
 
 
-
             <!-- login modal -->
-              <div class="mt-3" v-if="!$auth.loggedIn">
-                <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!
-                </b-button>
-              </div>
+            <div class="mt-3" v-if="!$auth.loggedIn">
+              <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!
+              </b-button>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -362,7 +363,7 @@ export default {
         console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
         this.loading = false;
         this.sessionId = res.data.id;
-        return this.$refs.checkoutElement.redirectToCheckout()
+        this.submit()
       } catch (e) {
         this.loading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
