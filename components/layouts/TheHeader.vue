@@ -33,7 +33,7 @@
         <!-- Currency icon -->
         <div class="nav-icon mr-2 d-desktop " style="cursor: pointer;">
           <currency-select
-            v-show="$route.name !== 'preview-designs-id-detail' || $route.name !== 'color-changes-id-detail' || $route.name !== 'custom-design' || $route.name !== 'cart'"/>
+            v-show="$route.name !== 'preview-designs-id-detail' && $route.name !== 'color-changes-id-detail' && $route.name !== 'custom-design' && $route.name !== 'cart'"/>
         </div>
 
         <!-- cart icon -->

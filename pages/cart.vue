@@ -219,9 +219,9 @@
                           Proceed to checkout
                         </span>
                       </button>
-                      <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"
-                              @click="submit">Pay Now
-                      </button>
+<!--                      <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"-->
+<!--                              @click="submit">Pay Now-->
+<!--                      </button>-->
 
                       <div v-if="sessionId">
                         <stripe-checkout :pk="pk"
@@ -230,7 +230,7 @@
                         />
                       </div>
 
-                      <payment-method-button v-if="sessionId" :buttons="paymentButtons" v-model="paymentMethod"/>
+                      <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"/>
                       <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
                               @payment-complete="handlePaymentCompletePaypal"/>
                     </div>
@@ -339,7 +339,7 @@ export default {
     getVatAmount() {
       let vatAmount;
 
-      if (this.vatType == "%") {
+      if (this.vatType === "%") {
         vatAmount = (this.vatAmount / 100) * this.discountedAmount;
       } else {
         vatAmount = this.vatAmount;
@@ -417,6 +417,7 @@ export default {
         console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
         this.loading = false;
         this.sessionId = res.data.id;
+        await this.$nextTick(() => this.submit());
       } catch (e) {
         this.loading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
@@ -447,33 +448,33 @@ export default {
 
     // Handle order after payment complete
     //@deprecated
-    // async handlePaymentCompletePaypal() {
-    //   try {
-    //     const res = await this.$axios.post("/orders", {
-    //       customerId: this.$auth.user.id,
-    //       couponId: this.coupon ? this.coupon.id : null,
-    //       customerCurrency: this.$store.state.currency.selectedCurrency,
-    //       totalAmount: this.getTotalPrice,
-    //       customerAmount: this.convertCurrency(this.getTotalPrice),
-    //       vat: this.vatAmount,
-    //       vatType: this.vatType,
-    //       vatAmount: this.getVatAmount,
-    //       customerVatAmount: this.convertCurrency(this.getVatAmount),
-    //       totalDiscount: this.discount,
-    //       customerTotalDiscount: this.convertCurrency(this.discount),
-    //       note: this.note,
-    //       orderItems: this.orderItems
-    //     });
-    //     this.$toast.success("Thank you for the order!");
-    //     await this.$store.dispatch("cart/resetCart");
-    //     console.log('Payment method----', res.data.data.id)
-    //     await this.$router.push(`/download/${res.data.data.id}`);
-    //   } catch (error) {
-    //     console.log(error);
-    //   } finally {
-    //     this.disablePayButton = false;
-    //   }
-    // },
+    async handlePaymentCompletePaypal() {
+      try {
+        const res = await this.$axios.post("/orders", {
+          customerId: this.$auth.user.id,
+          couponId: this.coupon ? this.coupon.id : null,
+          customerCurrency: this.$store.state.currency.selectedCurrency,
+          totalAmount: this.getTotalPrice,
+          customerAmount: this.convertCurrency(this.getTotalPrice),
+          vat: this.vatAmount,
+          vatType: this.vatType,
+          vatAmount: this.getVatAmount,
+          customerVatAmount: this.convertCurrency(this.getVatAmount),
+          totalDiscount: this.discount,
+          customerTotalDiscount: this.convertCurrency(this.discount),
+          note: this.note,
+          orderItems: this.orderItems
+        });
+        this.$toast.success("Thank you for the order!");
+        await this.$store.dispatch("cart/resetCart");
+        console.log('Payment method----', res.data.data.id)
+        await this.$router.push(`/download/${res.data.data.id}`);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        this.disablePayButton = false;
+      }
+    },
 
     // Handle stripe payment
     // async handlePaymentCompleteStripe(token) {
