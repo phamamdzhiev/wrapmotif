@@ -197,7 +197,7 @@
                     />
                   </div>
 
-                  <payment-method-button v-if="sessionId" :buttons="paymentButtons" v-model="paymentMethod"/>
+                  <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"/>
                   <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
                           @payment-complete="handlePaymentCompletePaypal"/>
                 </div>
@@ -362,12 +362,11 @@ export default {
         console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
         this.loading = false;
         this.sessionId = res.data.id;
+        this.$refs.checkoutElement.redirectToCheckout()
       } catch (e) {
         this.loading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
       }
-
-      return this.$refs.checkoutElement.redirectToCheckout();
     },
     submit() {
       return this.$refs.checkoutElement.redirectToCheckout();
