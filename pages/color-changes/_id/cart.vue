@@ -217,7 +217,6 @@
       </div>
     </div>
   </div>
-  </div>
 </template>
 
 <script>
@@ -227,6 +226,7 @@ import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
 import CartPageLogin from "~/components/layouts/CartPageLogin.vue";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
 import {mapGetters} from "vuex";
+import {nextTick} from "async";
 
 export default {
   components: {
@@ -363,7 +363,7 @@ export default {
         console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
         this.loading = false;
         this.sessionId = res.data.id;
-        this.submit()
+        await nextTick(() => this.submit());
       } catch (e) {
         this.loading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
