@@ -366,6 +366,8 @@ export default {
         this.loading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
       }
+
+      return this.$refs.checkoutElement.redirectToCheckout();
     },
     submit() {
       return this.$refs.checkoutElement.redirectToCheckout();
