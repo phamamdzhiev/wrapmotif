@@ -1,7 +1,10 @@
 <template>
   <div class="col-lg-8 mx-auto">
     <p class="text-center">
-      One more step to complete your order. As this request is binding, we ask for a deposit amount. This deposit is part of the final price. After we complete your customized car wrap design, we will send you a preview of the design with the remaining amount. Next, you can provide us with feedback which we will process in the final design and thereafter you can purchase the printing data inside your profile.
+      One more step to complete your order. As this request is binding, we ask for a deposit amount. This deposit is
+      part of the final price. After we complete your customized car wrap design, we will send you a preview of the
+      design with the remaining amount. Next, you can provide us with feedback which we will process in the final design
+      and thereafter you can purchase the printing data inside your profile.
     </p>
     <h3 class="text-center mt-5 mb-3">Payment information</h3>
 
@@ -11,12 +14,12 @@
         <div class="d-flex justify-content-between lead">
           <p>Custom design deposit Exc. VAT</p>
           <span>{{
-            getDepositAmount
-              | currency(
+              getDepositAmount
+                | currency(
                 $store.state.currency.selectedCurrency,
                 $store.state.currency.exchangeRate
-              )
-          }}</span>
+                )
+            }}</span>
         </div>
         <div class="d-flex justify-content-between lead">
           <p>VAT</p>
@@ -28,8 +31,8 @@
             {{
               vatAmount
                 | currency(
-                  $store.state.currency.selectedCurrency,
-                  $store.state.currency.exchangeRate
+                $store.state.currency.selectedCurrency,
+                $store.state.currency.exchangeRate
                 )
             }}
           </span>
@@ -55,13 +58,15 @@
         <div class="col-md-8 col-xl-6 mx-auto">
           <div class="form-group mb-1">
             <div class="custom-control custom-checkbox">
-              <input v-model="termsAndCondition" id="agree1" type="checkbox" class="custom-control-input" />
-              <label for="agree1" class="custom-control-label">I have read and agree to the <a href="/terms-conditions#general-terms" target="_blank" class="text-primary" title="Wrapmotif Terms and Conditions">terms and conditions</a>.</label>
+              <input v-model="termsAndCondition" id="agree1" type="checkbox" class="custom-control-input"/>
+              <label for="agree1" class="custom-control-label">I have read and agree to the <a
+                href="/terms-conditions#general-terms" target="_blank" class="text-primary"
+                title="Wrapmotif Terms and Conditions">terms and conditions</a>.</label>
             </div>
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox">
-              <input v-model="confirmDemand" id="agree2" type="checkbox" class="custom-control-input" />
+              <input v-model="confirmDemand" id="agree2" type="checkbox" class="custom-control-input"/>
               <label for="agree2" class="custom-control-label">
                 I confirm that the demand is binding.
               </label>
@@ -70,14 +75,38 @@
 
           <!-- Provider Buttons -->
           <div class="card-body p-0 mb-5 w-100" :class="{ disabledPayment: !termsAndCondition || disablePayButton }">
-            <!-- Paypal -->
-            <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal" @payment-complete="handlePaymentCompletePaypal"></paypal>
 
-            <!-- Stripe -->
-            <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError" @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">
-            </stripe>
+            <!-- Payment buttons -->
+            <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0 && !sessionId"
+                    @click="getSession">
+              <span v-if="loading">Loading ...</span>
+              <span v-else>
+                          Proceed to checkout
+                        </span>
+            </button>
+            <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"
+                    @click="submit">Pay Now
+            </button>
+
+            <div v-if="sessionId">
+              <stripe-checkout :pk="pk"
+                               ref="checkoutElement"
+                               :session-id="sessionId"
+              />
+            </div>
+
+            <payment-method-button v-if="sessionId" :buttons="paymentButtons" v-model="paymentMethod"/>
+            <!-- Paypal -->
+
+            <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
+                    @payment-complete="handlePaymentCompletePaypal"/>
           </div>
         </div>
+
+
+        <!-- Stripe -->
+        <!--            <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError" @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
+        <!--            </stripe>-->
       </div>
     </div>
 
@@ -87,15 +116,19 @@
 </template>
 
 <script>
-import { sameAs } from "vuelidate/lib/validators";
+import {sameAs} from "vuelidate/lib/validators";
 import PaymentMethodButton from "~/components/forms/PaymentMethodButton.vue";
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
+
 export default {
   components: {
     PaymentMethodButton
   },
   data() {
     return {
+      pk: process.env.STRIPE_PUBLISHABLE_KEY,
+      sessionId: null,
+      loading: false,
       vatType: "%",
       termsAndCondition: false,
       confirmDemand: false,
@@ -118,6 +151,24 @@ export default {
     };
   },
   methods: {
+    async getSession() {
+      try {
+        this.loading = true;
+        const res = await this.sendData('create-session/custom', null);
+        this.loading = false;
+
+        this.sessionId = res.data.id;
+
+      } catch (e) {
+        this.loading = false;
+        console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
+      }
+    },
+    submit() {
+      return this.$refs.checkoutElement.redirectToCheckout();
+    },
+
+
     // Handle order after payment complete
     async handlePaymentCompletePaypal() {
       const apiUrl = "/custom-orders";
@@ -127,7 +178,7 @@ export default {
     // Handle stripe payment
     async handlePaymentCompleteStripe(token) {
       const apiUrl = "/payments/custom-orders/stripe";
-      this.sendData(apiUrl, token);
+      await this.sendData(apiUrl, token);
     },
     // Send Data to Backend
     async sendData(apiUrl, token = null) {
@@ -211,8 +262,8 @@ export default {
     }
   },
   validations: {
-    termsAndCondition: { sameAs: sameAs(() => true) },
-    confirmDemand: { sameAs: sameAs(() => true) }
+    termsAndCondition: {sameAs: sameAs(() => true)},
+    confirmDemand: {sameAs: sameAs(() => true)}
   },
   props: {
     decrement: {

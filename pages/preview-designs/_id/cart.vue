@@ -392,7 +392,7 @@ export default {
         }
       );
       this.$toast.success("Order completed successfully");
-      this.$router.push("/preview-designs/greeting");
+      await this.$router.push("/preview-designs/greeting");
     },
 
     hideRegisterModal() {

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+//DEPRICATED COMPONENT
 export default {
   name: "StipeCheckoutCustom",
   props: ['totalAmount'],
