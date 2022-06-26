@@ -50,7 +50,7 @@
     </div>
     <!-- Payment Type -->
     <div class="d-flex flex-column align-items-center" v-if="getCustomerAmount > 0">
-<!--      <p class="text-center mt-5 mb-3">Payment type:</p>-->
+      <!--      <p class="text-center mt-5 mb-3">Payment type:</p>-->
 
       <div class="row w-100 mt-4">
         <!-- Terms and condition -->
@@ -152,11 +152,24 @@ export default {
     async getSession() {
       try {
         this.loading = true;
-        const res = await this.sendData('create-session/custom', null);
+        const formData = new FormData();
+        for (const key in this.getCustomDesign) {
+          formData.append(key, this.getCustomDesign[key]);
+        }
+
+        formData.append("vat", this.vatAmount);
+        formData.append("vatType", this.vatType);
+        formData.append("vatAmount", this.getVatAmount);
+        formData.append("grandTotal", this.getGrandTotal);
+        formData.append(
+          "customerVatAmount",
+          this.convertCurrency(this.getVatAmount)
+        );
+
+        const res = await this.$axios.post('create-session/custom', formData);
+        console.log('----- GET SESSION DATA ERROR RESPONSE ----', res.data);
         this.loading = false;
-
         this.sessionId = res.data.id;
-
       } catch (e) {
         this.loading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
