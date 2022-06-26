@@ -92,7 +92,7 @@ export default {
   },
   mounted() {
     const script = document.createElement("script");
-    script.src = `https://www.paypal.com/sdk/js?client-id=${this.clientId}&disable-funding=credit,bancontact,paylater,blik,eps,giropay,ideal,mercadopago,mybank,p24,sepa,sofort,venmo`;
+    script.src = `https://www.paypal.com/sdk/js?client-id=${this.clientId}&disable-funding=card,credit,bancontact,paylater,blik,eps,giropay,ideal,mercadopago,mybank,p24,sepa,sofort,venmo`;
     script.addEventListener("load", this.setLoaded);
     document.body.appendChild(script);
   },
