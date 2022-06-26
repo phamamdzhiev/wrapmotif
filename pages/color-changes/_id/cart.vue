@@ -362,7 +362,7 @@ export default {
         console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
         this.loading = false;
         this.sessionId = res.data.id;
-        this.$refs.checkoutElement.redirectToCheckout()
+        return this.$refs.checkoutElement.redirectToCheckout()
       } catch (e) {
         this.loading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
