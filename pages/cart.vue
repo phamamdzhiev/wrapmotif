@@ -187,10 +187,6 @@
 
                 <!-- Payment method -->
                 <div v-if="getTotalItem > 0">
-                  <div class="p-3 border-bottom bg-black text-white">
-                    <h4 class="mb-0 text-2xl">Payment method</h4>
-                  </div>
-
                   <!-- confirmation -->
                   <div class="row mt-3 mb-2" v-if="$auth.loggedIn && getTotalItem > 0">
                     <div class="col-12">
