@@ -179,16 +179,16 @@
                   <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
                   <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                   <!--                    </stripe>-->
-                  <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0 && !sessionId"
+                  <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0"
                           @click="getSession">
                     <span v-if="loading">Loading ...</span>
                     <span v-else>
                           Proceed to checkout
                         </span>
                   </button>
-                  <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"
-                          @click="submit">Pay Now
-                  </button>
+<!--                  <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"-->
+<!--                          @click="submit">Pay Now-->
+<!--                  </button>-->
 
                   <div v-if="sessionId">
                     <stripe-checkout :pk="pk"
