@@ -337,6 +337,7 @@ export default {
     // Prepare items for color change request create
     previewDesign() {
       return {
+        customerId: this.$auth.user.id,
         productId: this.product.id,
         vehicleId: this.vehicleId,
         vehicleModelId: this.vehicleModelId,
@@ -358,7 +359,7 @@ export default {
         this.loading = true;
         const res =
           await this.$axios.post('create-session/preview', {
-            ...this.previewDesign
+            ...this.previewDesign,
           });
         console.log('----- GET PREVIEW SUCCEESS RESPONSE ----', res.data)
         this.loading = false;
