@@ -223,16 +223,10 @@
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0">
           <div class="d-flex justify-content-center pb-5 pl-5 pr-5 row">
             <img
-              src="/images/cart/paypal-white.png"
-              alt="PayPall"
+              src="/images/cart/footer_payment_providers.png"
+              alt="Payment Providers"
               style="height: 32px"
               class="img-fluid"
-            />
-            <img
-              src="/images/cart/gplogo-white.png"
-              alt="Stripe"
-              style="height: 32px"
-              class="img-fluid ml-2"
             />
           </div>
         </div>
