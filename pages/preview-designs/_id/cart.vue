@@ -359,9 +359,10 @@ export default {
             ...this.previewDesign,
           });
         console.log('----- GET PREVIEW SUCCEESS RESPONSE ----', res.data)
-        this.loading = false;
         this.sessionId = res.data.id;
         await this.$nextTick(() => this.submit());
+        this.loading = false;
+
       } catch (e) {
         this.loading = false;
         console.log('----- GET PREVIEW ERROR RESPONSE ----', e.response);

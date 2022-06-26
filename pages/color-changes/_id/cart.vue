@@ -360,9 +360,10 @@ export default {
           });
 
         console.log('----- GET SESSION DATA SUCCEESS RESPONSE ----', res.data)
-        this.loading = false;
         this.sessionId = res.data.id;
         await this.$nextTick(() => this.submit());
+        this.loading = false;
+
       } catch (e) {
         this.loading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);

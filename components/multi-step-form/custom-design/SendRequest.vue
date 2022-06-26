@@ -168,9 +168,10 @@ export default {
 
         const res = await this.$axios.post('create-session/custom', formData);
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', res.data);
-        this.loading = false;
         this.sessionId = res.data.id;
         await this.$nextTick(() => this.submit());
+        this.loading = false;
+
       } catch (e) {
         this.loading = false;
         console.log('----- GET SESSION DATA ERROR RESPONSE ----', e.response);
