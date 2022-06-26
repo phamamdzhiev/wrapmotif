@@ -83,8 +83,13 @@ export default {
       title: "Thank You"
     };
   },
-
+  mounted() {
+    this.resetCart();
+  },
   methods: {
+    async resetCart() {
+      await this.$store.dispatch("cart/resetCart");
+    },
     download() {
       this.$axios({
         url: `/orders/${this.$route.params.id}/download`,
@@ -117,6 +122,6 @@ export default {
     }
   }
 };
-</script
+</script>
 
 <style lang="scss" scoped></style>
