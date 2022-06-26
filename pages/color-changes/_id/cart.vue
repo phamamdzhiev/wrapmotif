@@ -157,16 +157,6 @@
                 </div>
               </div>
 
-              <!-- Payment method -->
-              <div>
-                <div class="p-3 border-bottom bg-black text-white">
-                  <h4 class="mb-0 text-2xl">Payment method</h4>
-                </div>
-                <div class="card-body">
-                  <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
-                </div>
-              </div>
-
               <!-- confirmation -->
               <div class="row mt-3 mb-2" v-if="$auth.loggedIn">
                 <div class="col-12">
@@ -354,7 +344,8 @@ export default {
         vat: this.vatAmount,
         vatType: this.vatType,
         vatAmount: this.getVatAmount,
-        customerVatAmount: this.convertCurrency(this.getVatAmount)
+        customerVatAmount: this.convertCurrency(this.getVatAmount),
+        total: this.getCustomerGrandTotal
       };
     }
   },
