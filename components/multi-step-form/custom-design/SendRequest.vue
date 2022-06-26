@@ -50,9 +50,8 @@
     </div>
     <!-- Payment Type -->
     <div class="d-flex flex-column align-items-center" v-if="getCustomerAmount > 0">
-      <p class="text-center mt-5 mb-3">Payment type:</p>
-      <!-- Methods -->
-      <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
+<!--      <p class="text-center mt-5 mb-3">Payment type:</p>-->
+
       <div class="row w-100 mt-4">
         <!-- Terms and condition -->
         <div class="col-md-8 col-xl-6 mx-auto">
@@ -94,7 +93,6 @@
                                :session-id="sessionId"
               />
             </div>
-
             <payment-method-button v-if="sessionId" :buttons="paymentButtons" v-model="paymentMethod"/>
             <!-- Paypal -->
 
@@ -140,12 +138,12 @@ export default {
           value: "paypal",
           name: "payment"
         },
-        {
-          src: "/images/cart/gplogo.png",
-          id: "payment_stripe",
-          value: "stripe",
-          name: "payment"
-        }
+        // {
+        //   src: "/images/cart/gplogo.png",
+        //   id: "payment_stripe",
+        //   value: "stripe",
+        //   name: "payment"
+        // }
       ],
       disablePayButton: false
     };
@@ -192,6 +190,7 @@ export default {
       formData.append("vat", this.vatAmount);
       formData.append("vatType", this.vatType);
       formData.append("vatAmount", this.getVatAmount);
+      formData.append("grandTotal", this.getGrandTotal);
       formData.append(
         "customerVatAmount",
         this.convertCurrency(this.getVatAmount)
