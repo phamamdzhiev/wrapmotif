@@ -363,7 +363,7 @@ export default {
           });
         console.log('----- GET PREVIEW SUCCEESS RESPONSE ----', res.data)
         this.loading = false;
-        this.sessionId = 1;
+        this.sessionId = res.data.id;
       } catch (e) {
         this.loading = false;
         console.log('----- GET PREVIEW ERROR RESPONSE ----', e.response);
