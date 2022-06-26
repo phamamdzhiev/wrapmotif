@@ -349,6 +349,7 @@ export default {
         vatType: this.vatType,
         vatAmount: this.getVatAmount,
         customerVatAmount: this.convertCurrency(this.getVatAmount)
+        total: this.getGrandTotal
       };
     }
   },
