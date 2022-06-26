@@ -191,7 +191,6 @@
                     <h4 class="mb-0 text-2xl">Payment method</h4>
                   </div>
 
-
                   <!-- confirmation -->
                   <div class="row mt-3 mb-2" v-if="$auth.loggedIn && getTotalItem > 0">
                     <div class="col-12">
@@ -214,7 +213,7 @@
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
                       <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0 && !sessionId"
-                              @click="this.getSession">
+                              @click="getSession">
                         <span v-if="loading">Loading ...</span>
                         <span v-else>
                           Proceed to checkout
@@ -237,6 +236,7 @@
                     </div>
                   </div>
                 </div>
+
                 <!-- login modal -->
                 <div class="mt-3" v-if="getTotalItem > 0 && !$auth.loggedIn">
                   <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!
@@ -524,16 +524,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.btn-black {
-  font-size: 20px;
-  padding: 10px;
-  cursor: pointer;
-}
 
-#pay-now-btn {
-  width: 100%;
-  border-radius: 0;
-  font-size: 20px;
-  padding: 10px;
-}
 </style>

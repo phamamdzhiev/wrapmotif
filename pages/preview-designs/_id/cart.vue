@@ -23,14 +23,14 @@
     <!-- cart -->
     <div class="my-5">
       <div class="container">
-        <h3>Your Reqeust</h3>
+        <h3>Your Request</h3>
         <div class="row">
           <!-- left side -->
           <div class="col-lg-8 mb-4">
             <!-- cart items -->
             <div class="bg-cream p-3 mb-5 row mx-0">
               <div class="col-12 col-md-4 px-0">
-                <img class="img-fluid" :src="product.thumbnailMediaUrl" alt="" />
+                <img class="img-fluid" :src="product.thumbnailMediaUrl" alt=""/>
               </div>
 
               <div class="col-8 col-md-6">
@@ -41,13 +41,13 @@
 
                 <p class="mt-2">
                   <span class="text-muted">
-                    <div class="pb-2">
-                      {{ product.description | truncate(50) }}
-                    </div>
-                    <div class="text-sm">
-                      {{ getCheckout.data.note_preview }}
-                    </div>
-                  </span>
+                <div class="pb-2">
+                  {{ product.description | truncate(50) }}
+                </div>
+                <div class="text-sm">
+                  {{ getCheckout.data.note_preview }}
+                </div>
+                </span>
                 </p>
               </div>
 
@@ -57,8 +57,8 @@
                     {{
                       previewDesignAmount
                         | currency(
-                          $store.state.currency.selectedCurrency,
-                          $store.state.currency.exchangeRate
+                        $store.state.currency.selectedCurrency,
+                        $store.state.currency.exchangeRate
                         )
                     }}
                   </h4>
@@ -68,14 +68,16 @@
 
             <div class="row">
               <div class="col-md-6">
-                <select-field label="Vehicles" :options="vehicles" v-model="vehicleId" @input="getVehicleModel" :error="validationErrors.vehicleId"></select-field>
+                <select-field label="Vehicles" :options="vehicles" v-model="vehicleId" @input="getVehicleModel"
+                              :error="validationErrors.vehicleId"></select-field>
               </div>
               <div class="col-md-6">
-                <select-field label="Vehicle Model" :options="vehicleModels" v-model="vehicleModelId" :error="validationErrors.vehicleModelId"></select-field>
+                <select-field label="Vehicle Model" :options="vehicleModels" v-model="vehicleModelId"
+                              :error="validationErrors.vehicleModelId"></select-field>
               </div>
 
               <div class="col-12">
-                <text-field v-model="description" :error="validationErrors.description" label="Description" />
+                <text-field v-model="description" :error="validationErrors.description" label="Description"/>
               </div>
             </div>
 
@@ -83,7 +85,8 @@
             <div v-if="!$auth.loggedIn">
               <!-- login modal -->
               <keep-alive>
-                <b-modal id="modal-scrollable" scrollable centered hide-footer no-stacking no-close-on-backdrop title="Login" ref="login-modal">
+                <b-modal id="modal-scrollable" scrollable centered hide-footer no-stacking no-close-on-backdrop
+                         title="Login" ref="login-modal">
                   <cart-page-login :redirectUrl="`/preview-designs/${product.id}/cart`"></cart-page-login>
                   <template>
                     <div class="d-flex justify-content-center">
@@ -95,7 +98,8 @@
 
               <!-- register modal -->
               <keep-alive>
-                <b-modal id="register-modal" scrollable size="lg" centered hide-footer no-close-on-backdrop title="Register" ref="register-modal">
+                <b-modal id="register-modal" scrollable size="lg" centered hide-footer no-close-on-backdrop
+                         title="Register" ref="register-modal">
                   <cart-page-register @registered="hideRegisterModal"></cart-page-register>
                 </b-modal>
               </keep-alive>
@@ -117,8 +121,8 @@
                     {{
                       previewDesignAmount
                         | currencyCart(
-                          $store.state.currency.selectedCurrency,
-                          $store.state.currency.exchangeRate
+                        $store.state.currency.selectedCurrency,
+                        $store.state.currency.exchangeRate
                         )
                     }}
                   </div>
@@ -126,23 +130,24 @@
 
                 <div class="row mt-3">
                   <div class="col-8">VAT ({{ vatAmount }}
-                    {{ vatType }})</div>
+                    {{ vatType }})
+                  </div>
                   <div class="col-4 text-right mossvat-price">
                     <span v-if="vatType == '%'">
-                      {{getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)}}
+                      {{ getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate) }}
                     </span>
                     <span v-else>
                       {{
                         vatAmount
                           | currencyCart(
-                            $store.state.currency.selectedCurrency,
-                            $store.state.currency.exchangeRate
+                          $store.state.currency.selectedCurrency,
+                          $store.state.currency.exchangeRate
                           )
                       }}
                     </span>
                   </div>
                 </div>
-                <hr />
+                <hr/>
                 <div class="row mt-3">
                   <div class="col-8">
                     <h5 class="mb-0">Total</h5>
@@ -152,7 +157,7 @@
                       {{
                         getCustomerGrandTotal
                           | currencySymbol(
-                            $store.state.currency.selectedCurrency
+                          $store.state.currency.selectedCurrency
                           )
                       }}
                     </h5>
@@ -165,40 +170,57 @@
                 <div class="p-3 border-bottom bg-black text-white">
                   <h4 class="mb-0 text-2xl">Payment method</h4>
                 </div>
-                <div class="card-body">
-                  <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"></payment-method-button>
-                </div>
-              </div>
 
-              <!-- confirmation -->
-              <div class="row mt-3 mb-2" v-if="$auth.loggedIn">
-                <div class="col-12">
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input" />
-                      <label for="agree1" class="custom-control-label user-select-none">I have read the
-                        <a href="/terms-conditions#general-terms" target="_blank" class="text-primary" title="Wrapmotif Terms and Conditions">terms and conditions</a>
-                        of the Wrapmotif and agree with them.</label>
+                <!-- confirmation -->
+                <div class="row mt-3 mb-2" v-if="$auth.loggedIn">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox">
+                        <input v-model="termsAgreed" id="agree1" type="checkbox" class="custom-control-input"/>
+                        <label for="agree1" class="custom-control-label user-select-none">I have read and agree to the
+                          <a href="/terms-conditions#general-terms" class="text-primary" target="_blank"
+                             title="Wrapmotif Terms and Conditions">terms and conditions</a>.</label>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- payment buttons -->
-              <div v-if="$auth.loggedIn">
-                <div class="card-body p-0 mb-5" :class="{ disabledPayment: !termsAgreed }">
-                  <!-- Paypal -->
-                  <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal" @payment-complete="handlePaymentCompletePaypal"></paypal>
+                <!-- Payment buttons -->
+                <div v-if="$auth.loggedIn">
+                  <div class="card-body p-0" :class="{disabledPayment: !termsAgreed || disablePayButton}">
+                    <!-- Stripe -->
+                    <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
+                    <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
+                    <!--                    </stripe>-->
+                    <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0 && !sessionId"
+                            @click="getSession">
+                      <span v-if="loading">Loading ...</span>
+                      <span v-else>
+                          Proceed to checkout
+                        </span>
+                    </button>
+                    <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"
+                            @click="submit">Pay Now
+                    </button>
 
-                  <!-- Stripe -->
-                  <stripe v-show="paymentMethod === 'stripe'" @token-generated="handlePaymentCompleteStripe">
-                  </stripe>
+                    <div v-if="sessionId">
+                      <stripe-checkout :pk="pk"
+                                       ref="checkoutElement"
+                                       :session-id="sessionId"
+                      />
+                    </div>
+
+                    <payment-method-button v-if="sessionId" :buttons="paymentButtons" v-model="paymentMethod"/>
+                    <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
+                            @payment-complete="handlePaymentCompletePaypal"/>
+                  </div>
                 </div>
               </div>
 
               <!-- login modal -->
               <div class="mt-3" v-if="!$auth.loggedIn">
-                <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!</b-button>
+                <b-button v-b-modal.modal-scrollable class="bg-primary text-xl form-control">Login to Checkout!
+                </b-button>
               </div>
             </div>
           </div>
@@ -209,7 +231,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
 import Paypal from "~/components/Paypal.vue";
 import Stripe from "~/components/Stripe.vue";
 import CartPageRegister from "~/components/layouts/CartPageRegister.vue";
@@ -232,6 +254,10 @@ export default {
   },
   data() {
     return {
+      pk: process.env.STRIPE_PUBLISHABLE_KEY,
+      loading: false,
+      sessionId: null,
+      disablePayButton: false,
       vatType: "%",
       previewDesignAmount: 30,
       vehicleId: null,
@@ -325,6 +351,12 @@ export default {
   },
 
   methods: {
+    getSession() {
+
+    },
+    submit() {
+      return this.$refs.checkoutElement.redirectToCheckout();
+    },
     // Handle color chage request after payment complete
     async handlePaymentCompletePaypal() {
       const res = await this.$axios.post(

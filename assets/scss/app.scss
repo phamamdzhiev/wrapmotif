@@ -36,3 +36,18 @@ a.faq-link {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+
+//Payment global checkout button
+.btn-black {
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#pay-now-btn {
+  width: 100%;
+  border-radius: 0;
+  font-size: 20px;
+  padding: 10px;
+}
