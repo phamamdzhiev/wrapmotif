@@ -208,8 +208,7 @@
                       />
                     </div>
 
-                    <payment-method-button :buttons="paymentButtons" v-model="paymentMethod"/>
-                    <paypal v-show="paymentMethod === 'paypal'" :checkoutItems="this.checkoutItemsForPaypal"
+                    <paypal :checkoutItems="this.checkoutItemsForPaypal"
                             @payment-complete="handlePaymentCompletePaypal"/>
                   </div>
                 </div>

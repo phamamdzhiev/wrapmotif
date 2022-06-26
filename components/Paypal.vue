@@ -73,10 +73,9 @@ export default {
           },
           style: {
             color: "blue",
-            shape: "pill",
+            shape: "rect",
             label: "checkout",
             tagline: false,
-            edges: "hardEdges",
             layout: "vertical",
             fundingicons: "true",
             funding: {
