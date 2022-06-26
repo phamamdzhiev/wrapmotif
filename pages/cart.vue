@@ -208,7 +208,7 @@
                       <!--                    <stripe v-show="paymentMethod === 'stripe'" @onError="stripeError"-->
                       <!--                            @token-generated="handlePaymentCompleteStripe" @onSubmit="onStripeSubmit">-->
                       <!--                    </stripe>-->
-                      <button class="btn-black w-100 mb-2" type="button" v-if="getCustomerGrandTotal > 0"
+                      <button class="btn-black w-100" type="button" v-if="getCustomerGrandTotal > 0"
                               @click="getSession">
                         <span v-if="loading">Loading ...</span>
                         <span v-else>
