@@ -225,7 +225,6 @@
             <img
               src="/images/cart/footer_payment_providers.png"
               alt="Payment Providers"
-              style="height: 32px"
               class="img-fluid"
             />
           </div>
