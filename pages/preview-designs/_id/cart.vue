@@ -134,7 +134,9 @@
                   </div>
                   <div class="col-4 text-right mossvat-price">
                     <span v-if="vatType == '%'">
-                      {{ getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate) }}
+                      {{
+                        getVatAmount| currencyCart($store.state.currency.selectedCurrency,$store.state.currency.exchangeRate)
+                      }}
                     </span>
                     <span v-else>
                       {{
@@ -351,8 +353,20 @@ export default {
   },
 
   methods: {
-    getSession() {
-
+    async getSession() {
+      try {
+        this.loading = true;
+        const res =
+          await this.$axios.post('create-session/preview', {
+            ...this.previewDesign
+          });
+        console.log('----- GET PREVIEW SUCCEESS RESPONSE ----', res.data)
+        this.loading = false;
+        this.sessionId = res.data.id;
+      } catch (e) {
+        this.loading = false;
+        console.log('----- GET PREVIEW ERROR RESPONSE ----', e.response);
+      }
     },
     submit() {
       return this.$refs.checkoutElement.redirectToCheckout();
