@@ -80,7 +80,7 @@
               <span v-if="loading">Loading ...</span>
               <span v-else>
                  <img class="img-fluid" src="@/static/images/cart/payment-icon.png" id="cart-payment-icon"
-                      alt="Payment Icon">F
+                      alt="Payment Icon">
                           Proceed to checkout
                         </span>
             </button>
