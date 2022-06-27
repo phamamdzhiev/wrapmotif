@@ -12,35 +12,40 @@
                     to="/about-us"
                     title="Wrapmotif About us"
                     class="text-footer-links text-nowrap"
-                  >About us</nuxt-link>
+                  >About us
+                  </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link
                     to="/designs"
                     title="Wrapmotif designs"
                     class="text-footer-links text-nowrap"
-                  >Universal designs</nuxt-link>
+                  >Universal designs
+                  </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link
                     to="/custom-design"
                     title="Custom design"
                     class="text-footer-links text-nowrap"
-                  >Custom design</nuxt-link>
+                  >Custom design
+                  </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link
                     to="/wrapping-companies"
                     title="Wrap your car"
                     class="text-footer-links text-nowrap"
-                  >Wrap your car</nuxt-link>
+                  >Wrap your car
+                  </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link
                     to="/how-it-works"
                     title="How it works"
                     class="text-footer-links text-nowrap"
-                  >How it works</nuxt-link>
+                  >How it works
+                  </nuxt-link>
                 </li>
               </ul>
             </div>
@@ -55,14 +60,16 @@
                     to="/partner"
                     title="Wrapping companies"
                     class="text-footer-links text-nowrap"
-                  >Become a partner</nuxt-link>
+                  >Become a partner
+                  </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link
                     to="/partner/become-partner"
                     title="Printing companies"
                     class="text-footer-links text-nowrap"
-                  >Sign up as a partner</nuxt-link>
+                  >Sign up as a partner
+                  </nuxt-link>
                 </li>
               </ul>
             </div>
@@ -77,14 +84,16 @@
                     to="/terms-conditions#general-terms"
                     title="General Terms"
                     class="text-footer-links text-nowrap"
-                  >General Terms</nuxt-link>
+                  >General Terms
+                  </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link
                     to="/terms-conditions#special-conditions"
                     title="Special Conditions"
                     class="text-footer-links text-nowrap"
-                  >Special Conditions</nuxt-link>
+                  >Special Conditions
+                  </nuxt-link>
                 </li>
 
                 <li>
@@ -92,7 +101,8 @@
                     to="/terms-conditions#licence"
                     title="License"
                     class="text-footer-links text-nowrap"
-                  >License</nuxt-link>
+                  >License
+                  </nuxt-link>
                 </li>
 
                 <li>
@@ -100,7 +110,8 @@
                     to="/terms-conditions#privacy-policy"
                     title="Privacy Policy"
                     class="text-footer-links text-nowrap"
-                  >Privacy Policy</nuxt-link>
+                  >Privacy Policy
+                  </nuxt-link>
                 </li>
               </ul>
             </div>
@@ -115,14 +126,16 @@
                     to="/faq"
                     title="FAQ - Frequently Asked Questions"
                     class="text-footer-links text-nowrap"
-                  >FAQ</nuxt-link>
+                  >FAQ
+                  </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link
                     to="/contact"
                     title="Contact"
                     class="text-footer-links text-nowrap"
-                  >Contact</nuxt-link>
+                  >Contact
+                  </nuxt-link>
                 </li>
               </ul>
             </div>
@@ -131,7 +144,7 @@
       </div>
     </div>
 
-    <hr class="mt-5 mb-4 white-line" />
+    <hr class="mt-5 mb-4 white-line"/>
 
     <div class="container">
       <div class="row">
@@ -187,7 +200,8 @@
                     <button
                       type="submit"
                       class="btn btn-subs sub-btn rounded-pill py-2 px-4 btn-blue"
-                    >Subscribe</button>
+                    >Subscribe
+                    </button>
                   </div>
                 </div>
                 <error
@@ -225,6 +239,7 @@
             <img
               src="/images/cart/footer_payment_providers.png"
               alt="Payment Providers"
+              style="width: 750px; margin: auto"
               class="img-fluid"
             />
           </div>
@@ -235,7 +250,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
+
 export default {
   props: ["bgWhite"],
 
@@ -277,34 +293,35 @@ export default {
 <style lang="scss" scoped>
 
 @media only screen and (min-width: 500px) {
-  .order-sm-2{
+  .order-sm-2 {
     order: 2;
   }
 
-  .order-sm-0{
+  .order-sm-0 {
     order: 0;
   }
 
-  .order-sm-1{
+  .order-sm-1 {
     order: 1;
   }
 }
 
-.white-line{
+.white-line {
   background: #505050;
 }
 
-.blue-gradient{
+.blue-gradient {
   background: linear-gradient(#33A49B 0%, #00FFEB 75%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.btn-blue{
+.btn-blue {
   background: linear-gradient(#33A49B 0%, #00FFEB 75%);
   border: 1px solid #2dafa5;
 
 }
+
 .text-footer-links {
   color: #b0b0b0 !important;
 }
@@ -329,6 +346,7 @@ footer ul {
 .social-insta {
   background-image: url(/images/social/insta-grey.png);
 }
+
 .social-insta:hover {
   background-image: url(/images/social/insta-color.png);
 }
@@ -336,6 +354,7 @@ footer ul {
 .social-fb {
   background-image: url(/images/social/fb-grey.png);
 }
+
 .social-fb:hover {
   background-image: url(/images/social/fb-color.png);
 }
@@ -343,6 +362,7 @@ footer ul {
 .social-pinterest {
   background-image: url(/images/social/pinterest-grey.png);
 }
+
 .social-pinterest:hover {
   background-image: url(/images/social/pinterest-color.png);
 }
@@ -350,6 +370,7 @@ footer ul {
 .social-yt {
   background-image: url(/images/social/yt-grey.png);
 }
+
 .social-yt:hover {
   background-image: url(/images/social/yt-color.png);
 }
@@ -398,6 +419,7 @@ footer ul {
   background-color: #30d5c8;
   color: white;
 }
+
 .btn-subs:hover {
   background-color: #25c7bb;
 }
