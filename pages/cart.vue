@@ -212,6 +212,7 @@
                               @click="getSession">
                         <span v-if="loading">Loading ...</span>
                         <span v-else>
+                           <img class="img-fluid" src="@/static/images/cart/payment-icon.png" id="cart-payment-icon" alt="Payment Icon">
                           Proceed to checkout
                         </span>
                       </button>
@@ -230,6 +231,8 @@
                       <paypal :checkoutItems="this.checkoutItemsForPaypal"
                               @payment-complete="handlePaymentCompletePaypal"/>
                     </div>
+                    <img class="img-fluid" src="@/static/images/cart/wrapmotif-payments.png" id="cart-payment-providers"
+                         alt="Payment Providers"/>
                   </div>
                 </div>
 

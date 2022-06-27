@@ -80,12 +80,14 @@
                     @click="getSession">
               <span v-if="loading">Loading ...</span>
               <span v-else>
+                 <img class="img-fluid" src="@/static/images/cart/payment-icon.png" id="cart-payment-icon"
+                      alt="Payment Icon">F
                           Proceed to checkout
                         </span>
             </button>
-<!--            <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"-->
-<!--                    @click="submit">Pay Now-->
-<!--            </button>-->
+            <!--            <button type="button" v-if="sessionId" id="pay-now-btn" class="btn btn-primary text-nowrap"-->
+            <!--                    @click="submit">Pay Now-->
+            <!--            </button>-->
 
             <div v-if="sessionId">
               <stripe-checkout :pk="pk"
@@ -96,6 +98,9 @@
             <!-- Paypal -->
             <paypal :checkoutItems="this.checkoutItemsForPaypal"
                     @payment-complete="handlePaymentCompletePaypal"/>
+
+            <img class="img-fluid" src="@/static/images/cart/wrapmotif-payments.png" id="cart-payment-providers"
+                 alt="Payment Providers"/>
           </div>
         </div>
 
