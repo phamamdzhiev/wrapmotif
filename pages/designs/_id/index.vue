@@ -75,9 +75,8 @@
             <div class="d-flex flex-column mt-3">
               <addtocart-button :item="product"> </addtocart-button>
               <img
-                src="/images/secure.png"
+                src="/images/power-by-stripe.png"
                 alt="Trust Badge"
-                style=""
                 class="img-fluid m-2"
               />
               <nuxt-link class="btn btn-secondary mt-2" :to="`/color-changes/${product.id}/detail`">
