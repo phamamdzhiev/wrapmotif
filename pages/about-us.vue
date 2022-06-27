@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="page-wrapper" id="about__us">
+    <div class="page-wrapper">
       <!-- Header Image -->
       <div class="container-fluid header-image"
            :style="{ '--colour': 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + getAboutUsPageContent.secondaryMediaUrl + ')' }"
@@ -18,7 +18,7 @@
       <div class="container my-5">
         <!-- About us page content -->
         <div class="row">
-          <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8">
+          <div class="col-sm-10 col-md-9 offset-sm-1 col-lg-8" id="about__us">
             <div class="text-xl pr-lg-10" v-html="getAboutUsPageContent.data.content"></div>
           </div>
         </div>
@@ -62,10 +62,8 @@ export default {
   box-shadow: none;
 }
 
-#about__us {
-  a {
-    display: inline-block !important;
-  }
+#about__us a {
+  display: inline-block !important;
 }
 
 @media only screen and (max-width: 600px) {
