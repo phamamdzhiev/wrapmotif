@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="page-wrapper">
+    <div class="page-wrapper" id="about__us">
       <!-- Header Image -->
       <div class="container-fluid header-image"
            :style="{ '--colour': 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + getAboutUsPageContent.secondaryMediaUrl + ')' }"
@@ -60,6 +60,12 @@ export default {
 
 .stepper-box {
   box-shadow: none;
+}
+
+#about__us {
+  a {
+    display: inline-block !important;g
+  }
 }
 
 @media only screen and (max-width: 600px) {
