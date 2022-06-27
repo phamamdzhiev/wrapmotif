@@ -71,7 +71,6 @@
               </label>
             </div>
           </div>
-
           <!-- Provider Buttons -->
           <div class="card-body p-0 mb-5 w-100" :class="{ disabledPayment: !termsAndCondition || disablePayButton }">
 
@@ -98,10 +97,9 @@
             <!-- Paypal -->
             <paypal :checkoutItems="this.checkoutItemsForPaypal"
                     @payment-complete="handlePaymentCompletePaypal"/>
-
-            <img class="img-fluid" src="@/static/images/cart/wrapmotif-payments.png" id="cart-payment-providers"
-                 alt="Payment Providers"/>
           </div>
+          <img class="img-fluid" src="@/static/images/cart/wrapmotif-payments.png" id="cart-payment-providers"
+               alt="Payment Providers"/>
         </div>
 
 

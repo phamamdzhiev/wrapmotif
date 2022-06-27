@@ -212,6 +212,8 @@
                     <paypal :checkoutItems="this.checkoutItemsForPaypal"
                             @payment-complete="handlePaymentCompletePaypal"/>
                   </div>
+                  <img class="img-fluid" src="@/static/images/cart/wrapmotif-payments.png" id="cart-payment-providers"
+                       alt="Payment Providers"/>
                 </div>
               </div>
 
