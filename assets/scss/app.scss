@@ -30,6 +30,11 @@
   --animate-repeat: 1;
 }
 
+a[rel="noopener noreferrer"] {
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
 a[rel="noopener noreferrer"],
 a.faq-link {
   background-image: linear-gradient(#6F3A1F 0%, #DC7B54 85%);
