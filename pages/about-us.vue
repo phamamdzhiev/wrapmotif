@@ -64,7 +64,7 @@ export default {
 
 #about__us {
   a {
-    display: inline-block !important;g
+    display: inline-block !important;
   }
 }
 
