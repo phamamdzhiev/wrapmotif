@@ -235,14 +235,12 @@
     <div class="container">
       <div class="row pb-5 ">
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0">
-          <div class="d-flex justify-content-center pb-5 pl-5 pr-5 row">
             <img
               src="/images/cart/footer_payment_providers.png"
               alt="Payment Providers"
-              style="width: 750px; margin: auto"
+              style="width: 1000px; margin: auto"
               class="img-fluid"
             />
-          </div>
         </div>
       </div>
     </div>
