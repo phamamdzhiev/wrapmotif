@@ -62,10 +62,6 @@ export default {
   box-shadow: none;
 }
 
-#about__us a {
-  display: inline-block !important;
-}
-
 @media only screen and (max-width: 600px) {
   .about-title {
     font-size: 2.5rem;
