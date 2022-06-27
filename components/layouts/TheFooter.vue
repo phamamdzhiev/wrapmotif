@@ -237,7 +237,7 @@
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0">
           <div class="d-flex justify-content-center pb-5 pl-5 pr-5 row">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDJ-x74VRVPNa3SKwF3aLJYdVReLyZgQ9VYh_l5oofccXe9Z0rqWzrywc2hjv-L7jq2U4&usqp=CAU"
+              src="/images/cart/footer_payment_providers.png"
               alt="Payment Providers"
               style="width: 750px; margin: auto"
               class="img-fluid"
