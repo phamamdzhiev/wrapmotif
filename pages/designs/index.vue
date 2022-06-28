@@ -161,7 +161,7 @@ export default {
         this.page = 1;
         this.products = [];
         // this.infiniteId++;
-        this.handleFilter();
+        // this.handleFilter();
       },
       deep: true
     }
@@ -197,7 +197,6 @@ export default {
       this.$axios
         .get(`/products?page=${this.page}${this.getQueries()}`)
         .then(res => {
-          this.page++
           const result = res.data.data;
           this.products = [];
 
@@ -213,7 +212,6 @@ export default {
       this.$axios
         .get(`/products?page=${this.page}${this.getQueries()}`)
         .then(res => {
-          this.page++
           const result = res.data.data;
           if (result.length) {
             result.forEach(value => {
@@ -224,6 +222,7 @@ export default {
             $state.complete();
           }
         });
+      this.page = this.page + 1
     },
     focusInput() {
       this.$refs.searchInput.focus();
