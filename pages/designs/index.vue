@@ -17,7 +17,7 @@
             </button>
 
             <div class="ml-2">
-              <select v-model="filters.sort" @change="this.handleFilter" class="custom-select custom-select-sm w-75">
+              <select v-model="filters.sort" class="custom-select custom-select-sm w-75">
                 <option value="created_at,desc">Recent</option>
                 <option value="popular,desc">Popular</option>
                 <option value="comment,desc">Most commented</option>
@@ -164,21 +164,21 @@ export default {
   },
 
   watch: {
-    // filters: {
-    //   handler: function (newValue, oldValue) {
-    //     if (this.isObjectEqual(newValue, oldValue)) {
-    //       // if (this.page === 1) {
-    //       //   this.page++;
-    //       // } else {
-    //       //   this.page = 1;
-    //       // }
-    //
-    //       this.products = [];
-    //       this.handleFilter();
-    //     }
-    //   },
-    //   deep: true
-    // }
+    filters: {
+      handler: function (newValue, oldValue) {
+        if (this.isObjectEqual(newValue, oldValue)) {
+          // if (this.page === 1) {
+          //   this.page++;
+          // } else {
+          //   this.page = 1;
+          // }
+
+          this.products = [];
+          this.handleFilter();
+        }
+      },
+      deep: true
+    }
   },
 
   mounted() {
@@ -190,19 +190,19 @@ export default {
   },
 
   methods: {
-    // isObjectEqual(object1, object2) {
-    //   const keys1 = Object.keys(object1);
-    //   const keys2 = Object.keys(object2);
-    //   if (keys1.length !== keys2.length) {
-    //     return false;
-    //   }
-    //   for (let key of keys1) {
-    //     if (object1[key] !== object2[key]) {
-    //       return false;
-    //     }
-    //   }
-    //   return true;
-    // },
+    isObjectEqual(object1, object2) {
+      const keys1 = Object.keys(object1);
+      const keys2 = Object.keys(object2);
+      if (keys1.length !== keys2.length) {
+        return false;
+      }
+      for (let key of keys1) {
+        if (object1[key] !== object2[key]) {
+          return false;
+        }
+      }
+      return true;
+    },
 
     toggleSidebar() {
       this.collapsed = !this.collapsed;
@@ -257,14 +257,7 @@ export default {
       this.$refs.searchInput.focus();
     },
     resetFilters() {
-      this.page = 1;
-      this.filters.categories = [];
-      this.filters.tags = [];
-      this.filters.search = "";
-      this.filters.colors = [];
-      this.filters.sort = "created_at,desc";
-
-      this.handleLoadMore();
+      window.location.reload();
     }
   },
 
