@@ -176,100 +176,101 @@ export default {
         }
       },
       deep: true
-    },
+    }
+  },
 
-    mounted() {
-      this.windowWidth = window.innerWidth;
-      if (this.windowWidth > 576) {
-        this.$refs.sidebar.classList.remove("collapsed");
-        this.$refs.content.classList.add("collapsed");
+  mounted() {
+    this.windowWidth = window.innerWidth;
+    if (this.windowWidth > 576) {
+      this.$refs.sidebar.classList.remove("collapsed");
+      this.$refs.content.classList.add("collapsed");
+    }
+  },
+
+  methods: {
+    isObjectEqual(object1, object2) {
+      const keys1 = Object.keys(object1);
+      const keys2 = Object.keys(object2);
+      if (keys1.length !== keys2.length) {
+        return false;
       }
-    },
-
-    methods: {
-      isObjectEqual(object1, object2) {
-        const keys1 = Object.keys(object1);
-        const keys2 = Object.keys(object2);
-        if (keys1.length !== keys2.length) {
+      for (let key of keys1) {
+        if (object1[key] !== object2[key]) {
           return false;
         }
-        for (let key of keys1) {
-          if (object1[key] !== object2[key]) {
-            return false;
-          }
-        }
-        return true;
-      },
-
-      toggleSidebar() {
-        this.collapsed = !this.collapsed;
-      },
-      /**
-       * Get the base 64 filter string
-       */
-      getQueries() {
-        let queryString = "";
-        for (const key in this.filters) {
-          if (this.filters[key] && this.filters[key].length) {
-            queryString += `&${key}=${this.filters[key]}`;
-          }
-        }
-
-        return queryString;
-      },
-      handleFilter() {
-        this.products = [];
-        this.$axios
-          .get(`/products?page=${this.page}${this.getQueries()}`)
-          .then(res => {
-            const result = res.data.data;
-            this.products = [];
-
-            if (result.length) {
-              result.forEach(value => {
-                this.products.push(value);
-              });
-              // this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
-            }
-          });
-      },
-      handleLoadMore($state) {
-        this.$axios
-          .get(`/products?page=${this.page}${this.getQueries()}`)
-          .then(res => {
-            const result = res.data.data;
-            if (result.length) {
-              result.forEach(value => {
-                this.products.push(value);
-              });
-              $state.loaded();
-            } else {
-              $state.complete();
-            }
-          });
-        this.page = this.page + 1
-      },
-      focusInput() {
-        this.$refs.searchInput.focus();
-      },
-      resetFilters() {
-        this.filters.categories = [];
-        this.filters.tags = [];
-        this.filters.search = "";
-        this.filters.colors = [];
-        this.filters.sort = "created_at,desc";
       }
+      return true;
     },
 
-    async fetch() {
-      const resCategory = await this.$axios.get("/categories");
-      this.categories = resCategory.data.data;
-      const resColor = await this.$axios.get("/colors");
-      this.colors = resColor.data.data;
-      const resTag = await this.$axios.get("/tags");
-      this.tags = resTag.data.data;
+    toggleSidebar() {
+      this.collapsed = !this.collapsed;
+    },
+    /**
+     * Get the base 64 filter string
+     */
+    getQueries() {
+      let queryString = "";
+      for (const key in this.filters) {
+        if (this.filters[key] && this.filters[key].length) {
+          queryString += `&${key}=${this.filters[key]}`;
+        }
+      }
+
+      return queryString;
+    },
+    handleFilter() {
+      this.products = [];
+      this.$axios
+        .get(`/products?page=${this.page}${this.getQueries()}`)
+        .then(res => {
+          const result = res.data.data;
+          this.products = [];
+
+          if (result.length) {
+            result.forEach(value => {
+              this.products.push(value);
+            });
+            // this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
+          }
+        });
+    },
+    handleLoadMore($state) {
+      this.$axios
+        .get(`/products?page=${this.page}${this.getQueries()}`)
+        .then(res => {
+          const result = res.data.data;
+          if (result.length) {
+            result.forEach(value => {
+              this.products.push(value);
+            });
+            $state.loaded();
+          } else {
+            $state.complete();
+          }
+        });
+      this.page = this.page + 1
+    },
+    focusInput() {
+      this.$refs.searchInput.focus();
+    },
+    resetFilters() {
+      this.filters.categories = [];
+      this.filters.tags = [];
+      this.filters.search = "";
+      this.filters.colors = [];
+      this.filters.sort = "created_at,desc";
     }
-  };
+  },
+
+  async fetch() {
+    const resCategory = await this.$axios.get("/categories");
+    this.categories = resCategory.data.data;
+    const resColor = await this.$axios.get("/colors");
+    this.colors = resColor.data.data;
+    const resTag = await this.$axios.get("/tags");
+    this.tags = resTag.data.data;
+  }
+};
 </script>
 
 <style scoped>
