@@ -257,11 +257,14 @@ export default {
       this.$refs.searchInput.focus();
     },
     resetFilters() {
+      this.page = 1;
       this.filters.categories = [];
       this.filters.tags = [];
       this.filters.search = "";
       this.filters.colors = [];
       this.filters.sort = "created_at,desc";
+
+      this.handleLoadMore();
     }
   },
 
