@@ -2,7 +2,8 @@
   <div class="mb-5">
     <!-- Headers -->
     <client-only>
-      <hero-slider class="hero-slider" v-if="getDesignPageSlider && getDesignPageSlider.slides.length" :slides="getDesignPageSlider.slides"></hero-slider>
+      <hero-slider class="hero-slider" v-if="getDesignPageSlider && getDesignPageSlider.slides.length"
+                   :slides="getDesignPageSlider.slides"></hero-slider>
     </client-only>
 
     <!-- filter bar -->
@@ -34,7 +35,7 @@
 
           <div class="col-4">
             <div class="align-items-center d-flex justify-content-end w-100">
-              <input type="text" class="form-control search-input" ref="searchInput" v-model="filters.search" />
+              <input type="text" class="form-control search-input" ref="searchInput" v-model="filters.search"/>
 
               <button @click="focusInput" class="btn search ml-1">
                 <i class="fas fa-search"></i>
@@ -69,7 +70,10 @@
                     justify-content-start
                     align-content-around
                   ">
-                  <checkbox-field v-for="color in colors" :key="color.id" class="colors-padding" :id="`color-id-${color.id}`" :value="color.id" :isBigBox="true" :bgColor="color.code" :title="color.name" :gradient="color.primaryMediaUrl" checkmarkColor="#FFFFFF" v-model="filters.colors"></checkbox-field>
+                  <checkbox-field v-for="color in colors" :key="color.id" class="colors-padding"
+                                  :id="`color-id-${color.id}`" :value="color.id" :isBigBox="true" :bgColor="color.code"
+                                  :title="color.name" :gradient="color.primaryMediaUrl" checkmarkColor="#FFFFFF"
+                                  v-model="filters.colors"></checkbox-field>
                 </div>
               </div>
             </div>
@@ -79,7 +83,9 @@
               <h6 class="font-semibold text-lg">TYPE OF WRAP</h6>
 
               <div class="mt-3">
-                <checkbox-field v-for="category in categories" :key="category.id" :label="category.name" :value="category.id" :id="`category-id-${category.id}`" v-model="filters.categories" class="mb-2"></checkbox-field>
+                <checkbox-field v-for="category in categories" :key="category.id" :label="category.name"
+                                :value="category.id" :id="`category-id-${category.id}`" v-model="filters.categories"
+                                class="mb-2"></checkbox-field>
               </div>
             </div>
 
@@ -88,7 +94,8 @@
               <h6 class="font-semibold text-lg">TYPE OF DESIGN</h6>
 
               <div>
-                <checkbox-field v-for="tag in tags" :key="tag.id" :id="tag.id" :label="tag.name" :value="tag.id" v-model="filters.tags" class="mb-2"></checkbox-field>
+                <checkbox-field v-for="tag in tags" :key="tag.id" :id="tag.id" :label="tag.name" :value="tag.id"
+                                v-model="filters.tags" class="mb-2"></checkbox-field>
               </div>
             </div>
           </div>
@@ -121,7 +128,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
+
 export default {
   name: "ChooseDesigns",
   head() {
@@ -157,8 +165,8 @@ export default {
 
   watch: {
     filters: {
-      handler: function(newValue, oldValue) {
-        console.log('is the same ?', JSON.stringify(newValue) === JSON.stringify(oldValue))
+      handler: function (newValue, oldValue) {
+        console.log('is the same ?', this.shallowEqual(newValue, oldValue))
         this.page = 1;
         this.products = [];
         // this.infiniteId++;
@@ -177,6 +185,20 @@ export default {
   },
 
   methods: {
+    shallowEqual(object1, object2) {
+      const keys1 = Object.keys(object1);
+      const keys2 = Object.keys(object2);
+      if (keys1.length !== keys2.length) {
+        return false;
+      }
+      for (let key of keys1) {
+        if (object1[key] !== object2[key]) {
+          return false;
+        }
+      }
+      return true;
+    },
+
     toggleSidebar() {
       this.collapsed = !this.collapsed;
     },
