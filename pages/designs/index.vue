@@ -166,12 +166,18 @@ export default {
   watch: {
     filters: {
       handler: function (newValue, oldValue) {
-        if (this.isObjectEqual(newValue, oldValue)) {
+        if (this.page !== 1) {
           this.page = 1;
-          this.products = [];
-          // this.infiniteId++;
-          this.handleFilter();
         }
+
+        this.products = [];
+        this.handleFilter();
+        // if (this.isObjectEqual(newValue, oldValue)) {
+        //   this.page = 1;
+        //   this.products = [];
+        //   // this.infiniteId++;
+        //   this.handleFilter();
+        // }
       },
       deep: true
     }
