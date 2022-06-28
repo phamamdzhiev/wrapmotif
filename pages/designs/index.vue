@@ -167,7 +167,9 @@ export default {
     filters: {
       handler: function (newValue, oldValue) {
         if (this.isObjectEqual(newValue, oldValue)) {
-          if (this.page !== 1) {
+          if (this.page === 1) {
+            this.page++;
+          } else {
             this.page = 1;
           }
 
