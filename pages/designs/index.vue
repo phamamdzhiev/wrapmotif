@@ -168,7 +168,7 @@ export default {
       handler: function (newValue, oldValue) {
         if (this.isObjectEqual(newValue, oldValue)) {
           this.products = [];
-          this.handleFilter();
+          this.handleLoadMore();
         }
       },
       deep: true
@@ -215,7 +215,6 @@ export default {
       return queryString;
     },
     handleFilter() {
-      (this.page === 1) ? this.page++ : this.page = 1;
       this.products = [];
       this.$axios
         .get(`/products?page=${this.page}${this.getQueries()}`)
