@@ -238,9 +238,9 @@ export default {
             result.forEach(value => {
               this.products.push(value);
             });
-            $state.loaded();
+            // $state.loaded();
           } else {
-            $state.complete();
+            // $state.complete();
           }
         });
       this.page++
