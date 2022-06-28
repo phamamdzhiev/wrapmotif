@@ -215,14 +215,12 @@ export default {
       return queryString;
     },
     handleFilter() {
-      this.page = this.page + 1
+      (this.page === 1) ? this.page++ : this.page = 1;
       this.products = [];
       this.$axios
         .get(`/products?page=${this.page}${this.getQueries()}`)
         .then(res => {
           const result = res.data.data;
-          this.products = [];
-
           if (result.length) {
             result.forEach(value => {
               this.products.push(value);
