@@ -230,6 +230,8 @@ export default {
         });
     },
     handleLoadMore($state) {
+      this.page++
+
       this.$axios
         .get(`/products?page=${this.page}${this.getQueries()}`)
         .then(res => {
@@ -243,7 +245,6 @@ export default {
             // $state.complete();
           }
         });
-      this.page++
 
     },
     focusInput() {
