@@ -250,7 +250,13 @@ export default {
       this.$refs.searchInput.focus();
     },
     resetFilters() {
-      window.location.reload();
+      this.filters = {
+        categories: [],
+        tags: [],
+        search: "",
+        colors: [],
+        sort: "created_at,desc"
+      };
     }
   },
 
