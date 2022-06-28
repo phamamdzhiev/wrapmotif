@@ -158,8 +158,7 @@ export default {
   watch: {
     filters: {
       handler: function(newValue, oldValue) {
-        console.log('new value', newValue)
-        console.log('old value', oldValue)
+        console.log('is the same ?', JSON.stringify(newValue) === JSON.stringify(oldValue))
         this.page = 1;
         this.products = [];
         // this.infiniteId++;
