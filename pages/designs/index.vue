@@ -230,7 +230,6 @@ export default {
         });
     },
     handleLoadMore($state) {
-      this.page++
 
       this.$axios
         .get(`/products?page=${this.page}${this.getQueries()}`)
@@ -240,12 +239,12 @@ export default {
             result.forEach(value => {
               this.products.push(value);
             });
-            // $state.loaded();
+            $state.loaded();
           } else {
-            // $state.complete();
+            $state.complete();
           }
         });
-
+      this.page = this.page + 1
     },
     focusInput() {
       this.$refs.searchInput.focus();
