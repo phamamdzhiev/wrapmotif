@@ -166,11 +166,12 @@ export default {
   watch: {
     filters: {
       handler: function (newValue, oldValue) {
-        console.log('is the same ?', this.shallowEqual(newValue, oldValue))
-        this.page = 1;
-        this.products = [];
-        // this.infiniteId++;
-        // this.handleFilter();
+        if (this.isObjectEqual(newValue, oldValue)) {
+          this.page = 1;
+          this.products = [];
+          // this.infiniteId++;
+          this.handleFilter();
+        }
       },
       deep: true
     }
@@ -185,18 +186,18 @@ export default {
   },
 
   methods: {
-    shallowEqual(object1, object2) {
+    isObjectEqual(object1, object2) {
       const keys1 = Object.keys(object1);
       const keys2 = Object.keys(object2);
-      if (keys1.length !== keys2.length) {
-        return false;
+      if (keys1.length === keys2.length) {
+        return true;
       }
       for (let key of keys1) {
-        if (object1[key] !== object2[key]) {
-          return false;
+        if (object1[key] === object2[key]) {
+          return true;
         }
       }
-      return true;
+      return false;
     },
 
     toggleSidebar() {
