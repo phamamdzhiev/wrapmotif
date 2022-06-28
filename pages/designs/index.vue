@@ -167,6 +167,7 @@ export default {
     filters: {
       handler: function (newValue, oldValue) {
         if (this.isObjectEqual(newValue, oldValue)) {
+          this.page = 1;
           this.products = [];
           this.handleLoadMore();
         }
@@ -232,6 +233,7 @@ export default {
       this.$axios
         .get(`/products?page=${this.page}${this.getQueries()}`)
         .then(res => {
+          this.page++
           const result = res.data.data;
           if (result.length) {
             result.forEach(value => {
@@ -242,7 +244,7 @@ export default {
             $state.complete();
           }
         });
-      this.page = this.page + 1
+
     },
     focusInput() {
       this.$refs.searchInput.focus();
