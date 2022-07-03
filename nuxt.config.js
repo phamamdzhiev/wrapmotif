@@ -41,7 +41,7 @@ export default {
 
   // Customize the progress-bar color
   loading: {
-    color: "#1dbf73"
+    color: "#c96130"
   },
   // Routes Global Configuration
   router: {
