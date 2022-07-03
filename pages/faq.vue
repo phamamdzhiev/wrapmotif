@@ -45,10 +45,10 @@
         <div id="wrappingAccordion" class="accordion">
           <!-- vue-bootstrap toggle -->
           <div class="card faq-card" v-for="(companyFaq, i) in faqs.wrapping_company" :key="i">
-            <div class="card-header faq-card-header">
+            <div class="card-header faq-card-header position-relative">
               <a v-b-toggle :href="`#companyId${companyFaq.id}`" class="faq-link" @click.prevent>
                 {{ companyFaq.question }}
-                <span class="float-right">
+                <span class="position-absolute faq-caret">
                   <!-- <i class="faq-plus fas fa-plus"></i>
                   <i class="faq-minus fas fa-minus"></i> -->
                   <i class="fas fa-chevron-down faq-plus"></i>
