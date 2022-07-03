@@ -101,7 +101,7 @@ export default {
   background-color: transparent;
   border: 0;
   border-top: 1px solid gray;
-  padding: .75rem;
+  padding: .75rem 1.35rem .75rem .75rem;
 }
 
 .faq-link {
@@ -127,7 +127,7 @@ export default {
 
 .faq-caret {
   top: 50%;
-  transform: translateX(-50%);
+  transform: translateY(-50%);
   right: .5rem;
 }
 
