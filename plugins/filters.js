@@ -1,7 +1,7 @@
 import Vue from "vue";
 
 Vue.filter("currency", function(value, currency, exchangeRate) {
-  if (currency == "EUR") {
+  if (currency.toUpperCase() === "EUR") {
     return "€ " + Math.ceil(value);
   } else {
     return "$ " + Math.ceil(parseFloat(value) * parseFloat(exchangeRate));
@@ -9,7 +9,7 @@ Vue.filter("currency", function(value, currency, exchangeRate) {
 });
 
 Vue.filter("currencyCart", function(value, currency, exchangeRate) {
-  if (currency == "EUR") {
+  if (currency.toUpperCase() === "EUR") {
     // return "€ " + Math.ceil(value);
     return "€ " + formatNumber(value);
   } else {
@@ -19,7 +19,7 @@ Vue.filter("currencyCart", function(value, currency, exchangeRate) {
 });
 
 Vue.filter("currencySymbol", function(value, currency) {
-  if (currency == "EUR") {
+  if (currency.toUpperCase() === "EUR") {
     // return "€ " + Math.ceil(value);
     return "€ " + formatNumber(value);
   } else {
