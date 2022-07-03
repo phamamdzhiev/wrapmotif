@@ -5,13 +5,13 @@
       <form class="card-body" @submit.prevent="login">
         <input-field
           type="email"
-          label="Your Email"
+          label="Email"
           v-model="form.email"
           :error="validationErrors.email"
         ></input-field>
         <input-field
           type="password"
-          label="Your Password"
+          label="Password"
           v-model="form.password"
           :error="validationErrors.password"
         ></input-field>
@@ -26,7 +26,7 @@
             id="rememberPassword"
           />
           <span class="mt-3 d-block forgot-pass">
-            <nuxt-link to="/forgot-password">I forgot my password</nuxt-link>
+            <nuxt-link to="/forgot-password" class="text-primary">I forgot my password</nuxt-link>
           </span>
         </div>
         <!-- Buttons -->

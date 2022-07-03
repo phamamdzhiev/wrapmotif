@@ -57,7 +57,7 @@
           <input v-model="form.agree" type="checkbox" class="form-check-input" id="exampleCheck1" />
           <label class="form-check-label" for="exampleCheck1">
             I have read and agree to the
-            <nuxt-link to="/terms-conditions" :class="{ 'text-dark': form.agree }">terms and conditions.</nuxt-link>
+            <nuxt-link to="/terms-conditions" class="text-primary">terms and conditions.</nuxt-link>
           </label>
         </div>
         <div class="d-flex justify-content-center">

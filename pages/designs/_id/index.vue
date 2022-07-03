@@ -79,10 +79,10 @@
                 alt="Trust Badge"
                 class="img-fluid m-2"
               />
-              <nuxt-link class="btn btn-secondary mt-2" :to="`/color-changes/${product.id}/detail`">
+              <nuxt-link class="btn btn-black-outline mt-2" :to="`/color-changes/${product.id}/detail`">
                 COLOR CHANGE
               </nuxt-link>
-              <nuxt-link class="btn btn-warning mt-2" :to="`/preview-designs/${product.id}/detail`">
+              <nuxt-link class="btn btn-black-outline mt-2" :to="`/preview-designs/${product.id}/detail`">
                 PREVIEW DESIGN
               </nuxt-link>
             </div>

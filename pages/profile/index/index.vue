@@ -42,8 +42,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.nuxt-link-active,
-.nuxt-link-exact-active {
+.nuxt-link-active {
   border: none;
   background-image: linear-gradient(#5d2c16 0%, #e07e57 75%);
   -webkit-background-clip: text;
@@ -74,7 +73,7 @@ export default {};
       left: 0;
     }
 
-    &.nuxt-link-exact-active {
+    &.nuxt-link-active {
       &:after {
         width: 100%;
       }
@@ -84,8 +83,7 @@ export default {};
 
 .nav-link {
   border: none;
-  padding: 16px;
-  padding-bottom: 12px;
+  padding: 16px 16px 12px 16px;
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 600;

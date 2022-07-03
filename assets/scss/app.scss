@@ -48,6 +48,18 @@ a.faq-link {
   margin-bottom: 8px;
 }
 
+.btn-black-outline {
+  border: 1px solid black;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus:hover {
+    background-color: #8c8c8c;
+    color: white;
+  }
+}
+
 #pay-now-btn {
   width: 100%;
   border-radius: 0;
@@ -58,3 +70,5 @@ a.faq-link {
 #cart-payment-icon {
   width: 35px;
 }
+
+//Tasks done: 1,2,6 (7?, 8?)

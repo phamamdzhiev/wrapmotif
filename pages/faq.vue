@@ -15,10 +15,10 @@
         <div id="customerAccordion" class="accordion">
           <!-- vue-bootstrap toggle -->
           <div class="card faq-card" v-for="(customerFaq, i) in faqs.customer" :key="i">
-            <div class="card-header faq-card-header">
+            <div class="card-header faq-card-header position-relative">
               <a v-b-toggle :href="`#customerId${customerFaq.id}`" class="faq-link" @click.prevent>
                 {{ customerFaq.question }}
-                <span class="float-right">
+                <span class="position-absolute faq-caret">
                   <!-- <i class="faq-plus fas fa-plus"></i>
                   <i class="faq-minus fas fa-minus"></i> -->
                   <i class="fas fa-chevron-down faq-plus"></i>
@@ -101,6 +101,7 @@ export default {
   background-color: transparent;
   border: 0;
   border-top: 1px solid gray;
+  padding: .75rem;
 }
 
 .faq-link {
@@ -122,6 +123,12 @@ export default {
 .faq-link.collapsed .faq-minus,
 .faq-link.not-collapsed .faq-plus {
   display: none;
+}
+
+.faq-caret {
+  top: 50%;
+  transform: translateX(-50%);
+  right: .5rem;
 }
 
 @media only screen and (max-width: 600px) {
