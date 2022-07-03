@@ -19,7 +19,7 @@ Vue.mixin({
     },*/
 
     convertCurrency(value) {
-      if (this.$store.state.currency.selectedCurrency == "EUR") {
+      if (this.$store.state.currency.selectedCurrency === "EUR") {
         return roundToTwo(value);
       } else {
         return roundToTwo(
